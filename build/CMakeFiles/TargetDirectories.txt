@@ -1,0 +1,3 @@
+/home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/build/CMakeFiles/CLIProject.dir
+/home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/build/CMakeFiles/edit_cache.dir
+/home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/build/CMakeFiles/rebuild_cache.dir
