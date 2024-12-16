@@ -11,7 +11,7 @@
 #include "../CommandClasses/exitcommand.h"
 
 Command* Parser::parse(std::string input)
-{
+{ 
     std::vector<std::string> divided;
 
     std::string curr = "";
@@ -56,8 +56,6 @@ Command* Parser::parse(std::string input)
     }
 
     Command* komanda = Parser::createCommand(command_type, input, arguments, options, "", "");
-
-
 
     return komanda;
 }

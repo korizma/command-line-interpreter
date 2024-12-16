@@ -49,3 +49,9 @@ void Terminal::start()
 }
 
 
+void Terminal::changeSign(std::string new_sign)
+{
+    ready_sign = new_sign;
+}
+
+

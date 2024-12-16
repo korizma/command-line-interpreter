@@ -15,9 +15,14 @@ class IOHandler
 
         static void createFile(const std::string& filename);
 
+        static void clearFile(const std::string& filename);
+        
+        static void deleteFile(const std::string& filename);
+
         static std::string getInput();
 
         static std::string getLine();
+
 };
 
 inline std::string IOHandler::readFile(const std::string& filename)
@@ -59,7 +64,7 @@ inline std::string IOHandler::getInput()
         input += c;
     std::cin.clear();
     //for linux use
-    std::freopen("/dev/tty", "r", stdin); 
+    std::freopen("/dev/tty", "r", stdin);       
     // for windows use 
     // std::freopen("CON", "r", stdin); 
     return input;
@@ -89,6 +94,42 @@ inline void IOHandler::createFile(const std::string& filename)
         throw FileException("what!");
     }
     file.close();
+}
+    
+inline void IOHandler::clearFile(const std::string& filename)
+{
+    std::string full_path = Terminal::getInstance()->getPath() + "/" + filename;
+
+    std::ifstream check_if_exists(full_path);
+    if (!check_if_exists.is_open())
+    {
+        throw FileException("this file doesn't exists!");
+    }
+
+    std::ofstream file(full_path);
+    if (!file.is_open()) 
+    {
+        throw FileException("what!");
+    }
+    file << "";
+    file.close();
+}
+
+inline void IOHandler::deleteFile(const std::string& filename)
+{
+    std::string full_path = Terminal::getInstance()->getPath() + "/" + filename;
+    std::ifstream file(full_path);
+
+    if (!file.is_open()) 
+    {
+        throw FileException("this file does't exist!");
+    }
+    file.close();
+
+    if (!std::remove(full_path.c_str()))
+    {
+        throw FileException("something went wrong!");
+    }
 }
 
 
