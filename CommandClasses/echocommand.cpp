@@ -8,11 +8,11 @@ void EchoCommand::isValid()
 {
     if (arguments.size() > 1)
     {
-        throw ArgumentException("this command takes only 1 argument!");
+        throw ArgumentException(1, arguments.size());
     }
     if (options.size() != 0)
     {
-        throw OptionException("this command doesn't have options!");
+        throw OptionException(0, options.size());
     }
 }
 

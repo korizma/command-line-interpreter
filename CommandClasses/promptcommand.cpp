@@ -9,15 +9,15 @@ void PromptCommand::isValid()
 {
     if (arguments.size() != 1)
     {
-        throw ArgumentException("this command takes only 1 argument!");
+        throw ArgumentException(1, arguments.size());
     }
     if (arguments.size() == 1 && !(arguments[0][0] == '\'' || arguments[0][0] == '\"'))
     {
-        throw ArgumentException("argument format invalid!");
+        throw ArgumentException(false);
     }
     if (options.size() != 0)
     {
-        throw OptionException("this command doesn't have options!");
+        throw OptionException(0, options.size());
     }
 }
 

@@ -10,11 +10,11 @@ void DateCommand::isValid()
 {
     if (arguments.size() != 0)
     {
-        throw ArgumentException("this command doesn't have arguments!");
+        throw ArgumentException(0, arguments.size());
     }
     if (options.size() != 0)
     {
-        throw OptionException("this command doesn't have options!");
+        throw OptionException(0, options.size());
     }
 }
 
@@ -37,7 +37,7 @@ void DateCommand::execute()
     }
     catch (const OptionException& e)
     {
-        std::cerr << "Option Error: " << e.what() << std::endl;
+        std::cerr << "Option error: " << e.what() << std::endl;
         return;
     }
     catch (const std::exception& e)
