@@ -9,15 +9,15 @@ void WcCommand::isValid()
 {
     if (arguments.size() > 1)
     {
-        throw ArgumentException("this command takes only 1 argument!");
+        throw ArgumentException(1, arguments.size());
+    }
+    if (options.size() == 1 && options[0] != "-w" && options[0] != "-c")
+    {
+        throw OptionException(options[0]);
     }
     if (options.size() != 1)
     {
-        if (options[0] != "-w" && options[0] != "-c")
-        {
-            throw OptionException("unknown argument: \'" + options[0] + "\' !");
-        }
-        throw OptionException("this command takes only 1 option!");
+        throw OptionException(1, options.size());
     }
 }
 

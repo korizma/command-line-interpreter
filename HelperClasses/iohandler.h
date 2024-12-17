@@ -5,6 +5,7 @@
 #include "../terminal.h"
 #include "../ExceptionClasses/exception.h"
 #include <limits>
+#include <iostream>
 
 class IOHandler 
 {
@@ -32,7 +33,7 @@ inline std::string IOHandler::readFile(const std::string& filename)
 
     if (!file.is_open()) 
     {
-        throw FileException("this file does't exist!");
+        throw FileException(filename, false);
     }
     std::string content;
     std::string line;
@@ -50,7 +51,7 @@ inline void IOHandler::writeFile(const std::string& filename, const std::string&
     std::ofstream file(full_path);
     if (!file.is_open()) 
     {
-        throw FileException("what!");
+        throw FileException(filename);
     }
     file << content;
     file.close();
@@ -85,13 +86,13 @@ inline void IOHandler::createFile(const std::string& filename)
     if (check_if_exists.is_open())
     {
         check_if_exists.close();
-        throw FileException("this file exists!");
+        throw FileException(filename, true);
     }
 
     std::ofstream file(full_path);
     if (!file.is_open()) 
     {
-        throw FileException("what!");
+        throw FileException(filename);
     }
     file.close();
 }
@@ -103,13 +104,13 @@ inline void IOHandler::clearFile(const std::string& filename)
     std::ifstream check_if_exists(full_path);
     if (!check_if_exists.is_open())
     {
-        throw FileException("this file doesn't exists!");
+        throw FileException(filename, true);
     }
 
     std::ofstream file(full_path);
     if (!file.is_open()) 
     {
-        throw FileException("what!");
+        throw FileException(filename);
     }
     file << "";
     file.close();
@@ -122,13 +123,13 @@ inline void IOHandler::deleteFile(const std::string& filename)
 
     if (!file.is_open()) 
     {
-        throw FileException("this file does't exist!");
+        throw FileException(filename, false);
     }
     file.close();
 
     if (!std::remove(full_path.c_str()))
     {
-        throw FileException("something went wrong!");
+        throw FileException(filename);
     }
 }
 

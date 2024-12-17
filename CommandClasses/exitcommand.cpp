@@ -7,12 +7,12 @@ void ExitCommand::isValid()
 {
     if (arguments.size() != 0)
     {
-        throw ArgumentException("this command doesn't take arguments!");
+        throw ArgumentException(0, arguments.size());
     }
     if (options.size() != 0)
     {
         
-        throw OptionException("this command doesn't have options!");
+        throw OptionException(0, options.size());
     }
 }
 
