@@ -80,4 +80,74 @@ private:
     std::string message;
 };
 
+class CommandException : public std::exception
+{
+    public:
+        explicit CommandException(const std::string& command) 
+        {
+             message = "Invalid command: \'" + command + "\'!";
+        }
+
+        virtual const char* what() const noexcept override {
+            return message.c_str();
+        }
+
+    private:
+        std::string message;
+};
+
+class SyntaxException : public std::exception
+{
+    public:
+        explicit SyntaxException(const std::string& line, const std::vector<int>& indx_errors) 
+        {
+            message = "Unexpected characters:\n";
+
+            message += line;
+            message += '\n';
+
+            std::string temp = "";
+            for (int i = 0; i < line.size(); i++)
+                temp += " ";
+            
+            for (int i = 0; i < indx_errors.size(); i++)
+                temp[indx_errors[i]] = '^';
+            
+            message += temp;
+        }
+
+
+        virtual const char* what() const noexcept override {
+            return message.c_str();
+        }
+
+    private:
+        std::string message;
+};
+
+class SemanticFlowException : public std::exception
+{
+    public:
+        explicit SemanticFlowException(const bool& input_flow_error) 
+        {
+            if (input_flow_error)
+                message = "Input flow collision!";
+            else
+                message = "Ouput flow collision!";
+        }
+
+        explicit SemanticFlowException(const std::string& type) 
+        {
+            message = "No source/destination after: \'" + type + "\'!";
+        }
+
+
+        virtual const char* what() const noexcept override {
+            return message.c_str();
+        }
+
+    private:
+        std::string message;
+};
+
 #endif 

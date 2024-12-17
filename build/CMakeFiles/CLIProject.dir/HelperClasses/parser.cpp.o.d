@@ -154,16 +154,27 @@ CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o: \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc \
+ /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../ExceptionClasses/exception.h \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/parser.h \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/command.h \
  /usr/include/c++/13/fstream /usr/include/c++/13/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
+ /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/iohandler.h \
+ /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../terminal.h \
+ /usr/include/c++/13/limits \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/echocommand.h \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/command.h \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/timecommand.h \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/datecommand.h \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/touchcommand.h \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/wccommand.h \
- /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/exitcommand.h
+ /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/exitcommand.h \
+ /usr/include/c++/13/algorithm /usr/include/c++/13/bits/stl_algo.h \
+ /usr/include/c++/13/bits/algorithmfwd.h \
+ /usr/include/c++/13/bits/stl_heap.h \
+ /usr/include/c++/13/bits/uniform_int_dist.h \
+ /usr/include/c++/13/bits/stl_tempbuf.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/pstl/execution_defs.h

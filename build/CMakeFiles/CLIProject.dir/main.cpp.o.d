@@ -152,12 +152,12 @@ CMakeFiles/CLIProject.dir/main.cpp.o: \
  /usr/include/c++/13/bits/istream.tcc \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/terminal.h \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/parser.h \
- /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/command.h \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
- /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/fstream \
- /usr/include/c++/13/bits/codecvt.h \
+ /usr/include/c++/13/bits/vector.tcc \
+ /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/command.h \
+ /usr/include/c++/13/fstream /usr/include/c++/13/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \

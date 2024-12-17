@@ -5,6 +5,7 @@
 #include "../terminal.h"
 #include "../ExceptionClasses/exception.h"
 #include <limits>
+#include <iostream>
 
 class IOHandler 
 {

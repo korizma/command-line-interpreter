@@ -1277,12 +1277,17 @@ CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o: /home/korizma/Documents/Fa
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/timecommand.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/touchcommand.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/wccommand.h \
+  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/ExceptionClasses/exception.h \
+  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/terminal.h \
+  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/iohandler.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/parser.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/c++/13/algorithm \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
+  /usr/include/c++/13/bits/algorithmfwd.h \
   /usr/include/c++/13/bits/alloc_traits.h \
   /usr/include/c++/13/bits/allocator.h \
   /usr/include/c++/13/bits/basic_ios.h \
@@ -1325,20 +1330,24 @@ CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o: /home/korizma/Documents/Fa
   /usr/include/c++/13/bits/refwrap.h \
   /usr/include/c++/13/bits/requires_hosted.h \
   /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/stl_algo.h \
   /usr/include/c++/13/bits/stl_algobase.h \
   /usr/include/c++/13/bits/stl_bvector.h \
   /usr/include/c++/13/bits/stl_construct.h \
   /usr/include/c++/13/bits/stl_function.h \
+  /usr/include/c++/13/bits/stl_heap.h \
   /usr/include/c++/13/bits/stl_iterator.h \
   /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/13/bits/stl_iterator_base_types.h \
   /usr/include/c++/13/bits/stl_pair.h \
+  /usr/include/c++/13/bits/stl_tempbuf.h \
   /usr/include/c++/13/bits/stl_uninitialized.h \
   /usr/include/c++/13/bits/stl_vector.h \
   /usr/include/c++/13/bits/streambuf.tcc \
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/bits/string_view.tcc \
   /usr/include/c++/13/bits/stringfwd.h \
+  /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/uses_allocator.h \
   /usr/include/c++/13/bits/uses_allocator_args.h \
   /usr/include/c++/13/bits/utility.h \
@@ -1365,8 +1374,11 @@ CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o: /home/korizma/Documents/Fa
   /usr/include/c++/13/iosfwd \
   /usr/include/c++/13/iostream \
   /usr/include/c++/13/istream \
+  /usr/include/c++/13/limits \
   /usr/include/c++/13/new \
   /usr/include/c++/13/ostream \
+  /usr/include/c++/13/pstl/execution_defs.h \
+  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
   /usr/include/c++/13/pstl/pstl_config.h \
   /usr/include/c++/13/stdexcept \
   /usr/include/c++/13/streambuf \
@@ -1928,6 +1940,16 @@ CMakeFiles/CLIProject.dir/terminal.cpp.o: /home/korizma/Documents/Faks/OOP1/Proj
 
 /usr/include/x86_64-linux-gnu/sys/ucontext.h:
 
+/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/stack_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigval_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h:
+
 /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h:
 
 /usr/include/pthread.h:
@@ -1994,8 +2016,6 @@ CMakeFiles/CLIProject.dir/terminal.cpp.o: /home/korizma/Documents/Faks/OOP1/Proj
 
 /usr/include/c++/13/bits/functional_hash.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h:
-
 /usr/include/c++/13/debug/assertions.h:
 
 /usr/include/c++/13/ctime:
@@ -2010,6 +2030,8 @@ CMakeFiles/CLIProject.dir/terminal.cpp.o: /home/korizma/Documents/Faks/OOP1/Proj
 
 /usr/include/c++/13/cstddef:
 
+/usr/include/c++/13/bits/stl_algo.h:
+
 /usr/include/c++/13/cerrno:
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
@@ -2023,8 +2045,6 @@ CMakeFiles/CLIProject.dir/terminal.cpp.o: /home/korizma/Documents/Faks/OOP1/Proj
 /usr/include/c++/13/bits/stl_function.h:
 
 /usr/include/c++/13/bits/uses_allocator_args.h:
-
-/usr/include/x86_64-linux-gnu/bits/long-double.h:
 
 /usr/include/c++/13/exception:
 
@@ -2078,6 +2098,10 @@ CMakeFiles/CLIProject.dir/terminal.cpp.o: /home/korizma/Documents/Faks/OOP1/Proj
 
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
+/usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/ss_flags.h:
+
 /usr/include/c++/13/bits/cpp_type_traits.h:
 
 /usr/include/c++/13/string:
@@ -2105,6 +2129,8 @@ CMakeFiles/CLIProject.dir/terminal.cpp.o: /home/korizma/Documents/Faks/OOP1/Proj
 /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h:
 
 /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/parser.h:
+
+/usr/include/c++/13/pstl/execution_defs.h:
 
 /usr/include/c++/13/bits/basic_ios.h:
 
@@ -2182,13 +2208,9 @@ CMakeFiles/CLIProject.dir/terminal.cpp.o: /home/korizma/Documents/Faks/OOP1/Proj
 
 /usr/include/c++/13/bits/quoted_string.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/sigval_t.h:
+/usr/include/c++/13/bits/uniform_int_dist.h:
 
 /usr/include/c++/13/bits/locale_classes.tcc:
-
-/usr/include/x86_64-linux-gnu/bits/ss_flags.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h:
 
 /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/iohandler.h:
 
@@ -2308,6 +2330,10 @@ CMakeFiles/CLIProject.dir/terminal.cpp.o: /home/korizma/Documents/Faks/OOP1/Proj
 
 /usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
 
+/usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
 /usr/include/c++/13/bits/charconv.h:
@@ -2329,6 +2355,8 @@ CMakeFiles/CLIProject.dir/terminal.cpp.o: /home/korizma/Documents/Faks/OOP1/Proj
 /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
+
+/usr/include/c++/13/bits/stl_tempbuf.h:
 
 /usr/include/asm-generic/errno.h:
 
@@ -2412,6 +2440,16 @@ CMakeFiles/CLIProject.dir/terminal.cpp.o: /home/korizma/Documents/Faks/OOP1/Proj
 
 /usr/include/x86_64-linux-gnu/bits/sigthread.h:
 
+/usr/include/c++/13/algorithm:
+
+/usr/include/x86_64-linux-gnu/bits/long-double.h:
+
+/usr/include/c++/13/bits/algorithmfwd.h:
+
+/usr/include/c++/13/bits/stl_heap.h:
+
+/usr/include/c++/13/pstl/glue_algorithm_defs.h:
+
 /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/main.cpp:
 
 /usr/include/linux/close_range.h:
@@ -2431,13 +2469,3 @@ CMakeFiles/CLIProject.dir/terminal.cpp.o: /home/korizma/Documents/Faks/OOP1/Proj
 /usr/include/x86_64-linux-gnu/bits/signum-arch.h:
 
 /usr/include/x86_64-linux-gnu/bits/sigstack.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/stack_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h:
-
-/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:

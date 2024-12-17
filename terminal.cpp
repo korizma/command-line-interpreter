@@ -42,9 +42,32 @@ void Terminal::start()
     {
         std::cout << ready_sign;
         line = IOHandler::getLine();
-        curr_command = Parser::parse(line);
-        curr_command->execute();
-        delete curr_command;
+        try 
+        {
+            curr_command = Parser::parse(line);
+            curr_command->execute();
+            delete curr_command;
+        }
+        catch (const SyntaxException& e)
+        {
+            std::cerr << "Syntax Error: " << e.what() << std::endl; 
+        }
+        catch (const CommandException& e)
+        {
+            std::cerr << "Command Error: " << e.what() << std::endl; 
+        }
+        catch (const SemanticFlowException& e)
+        {
+            std::cerr << "Flow Error: " << e.what() << std::endl; 
+        }
+        catch (const FileException& e)
+        {
+            std::cerr << "File Error: " << e.what() << std::endl; 
+        }
+        catch (const std::exception& e)
+        {
+            std::cerr << "Error: " << e.what() << std::endl; 
+        }
     }
 }
 
