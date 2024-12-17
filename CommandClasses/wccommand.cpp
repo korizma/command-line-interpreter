@@ -17,7 +17,7 @@ void WcCommand::isValid()
         {
             throw OptionException("unknown argument: \'" + options[0] + "\' !");
         }
-        throw OptionException("this command has only 1 option!");
+        throw OptionException("this command takes only 1 option!");
     }
 }
 

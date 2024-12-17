@@ -9,6 +9,12 @@
 #include "../CommandClasses/touchcommand.h"
 #include "../CommandClasses/wccommand.h"
 #include "../CommandClasses/exitcommand.h"
+#include "../CommandClasses/headcommand.h"
+#include "../CommandClasses/promptcommand.h"
+#include "../CommandClasses/rmcommand.h"
+#include "../CommandClasses/trcommand.h"
+#include "../CommandClasses/trunicatecommand.h"
+#include "../CommandClasses/batchcommand.h"
 
 Command* Parser::parse(std::string input)
 { 
@@ -85,6 +91,30 @@ Command* Parser::createCommand(const std::string& cmd_name, std::string original
     if (cmd_name == ExitCommand::getType())
     {
         return new ExitCommand(original_command, arguments, options, in, out);
+    }
+    if (cmd_name == HeadCommand::getType())
+    {
+        return new HeadCommand(original_command, arguments, options, in, out);
+    }
+    if (cmd_name == PromptCommand::getType())
+    {
+        return new PromptCommand(original_command, arguments, options, in, out);
+    }
+    if (cmd_name == RmCommand::getType())
+    {
+        return new RmCommand(original_command, arguments, options, in, out);
+    }
+    if (cmd_name == TrCommand::getType())
+    {
+        return new TrCommand(original_command, arguments, options, in, out);
+    }
+    if (cmd_name == TrunicateCommand::getType())
+    {
+        return new TrunicateCommand(original_command, arguments, options, in, out);
+    }
+    if (cmd_name == BatchCommand::getType())
+    {
+        return new BatchCommand(original_command, arguments, options, in, out);
     }
 
     return NULL;
