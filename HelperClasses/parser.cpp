@@ -111,7 +111,6 @@ std::vector<int> Parser::checkTokenRedirectSyntax(const std::string& token, cons
         }
         else if (token[0] != token[token.size()-1])
         {
-            std::cout << "token is bad: " << token << std::endl;
             indx_errors.push_back(pos_in_line);
             indx_errors.push_back(pos_in_line + token.size()-1);
         }
@@ -186,7 +185,7 @@ std::vector<int> Parser::checkTokenSyntax(const std::string& token, const int& p
             indx_errors.push_back(pos_in_line);
         else
             for (int i = 1; i < token.size(); i++)
-                if (!std::isalpha(token[i]))
+                if (!std::isalnum(token[i]))
                     indx_errors.push_back(i + pos_in_line);
     }
     else if (std::isalpha(token[0]))
@@ -220,7 +219,7 @@ std::vector<int> Parser::checkTokenSyntax(const std::string& token, const int& p
     return indx_errors;
 }
 
-Command* Parser::createCommand(const std::string& cmd_name, const std::vector<std::string>& arguments, const std::vector<std::string>& options)
+Command* Parser::createCommand(const std::string& cmd_name, const std::vector<std::string>& arguments, const std::vector<std::string>& options) 
 {
     if (cmd_name == EchoCommand::getType())
     {
@@ -244,33 +243,57 @@ Command* Parser::createCommand(const std::string& cmd_name, const std::vector<st
     }
     if (cmd_name == ExitCommand::getType())
     {
-        return new ExitCommand(original_command, arguments, options, in, out);
+        return new ExitCommand(arguments, options);
     }
     if (cmd_name == HeadCommand::getType())
     {
-        return new HeadCommand(original_command, arguments, options, in, out);
+        return new HeadCommand(arguments, options);
     }
     if (cmd_name == PromptCommand::getType())
     {
-        return new PromptCommand(original_command, arguments, options, in, out);
+        return new PromptCommand(arguments, options);
     }
     if (cmd_name == RmCommand::getType())
     {
-        return new RmCommand(original_command, arguments, options, in, out);
+        return new RmCommand(arguments, options);
     }
     if (cmd_name == TrCommand::getType())
     {
-        return new TrCommand(original_command, arguments, options, in, out);
+        return new TrCommand(arguments, options);
     }
     if (cmd_name == TrunicateCommand::getType())
     {
-        return new TrunicateCommand(original_command, arguments, options, in, out);
+        return new TrunicateCommand(arguments, options);
     }
     if (cmd_name == BatchCommand::getType())
     {
-        return new BatchCommand(original_command, arguments, options, in, out);
+        return new BatchCommand(arguments, options);
     }
 
-    return NULL;
+    throw CommandException(cmd_name);
+}
+
+void Parser::checkTokensSemantics(std::vector<std::string>& args)
+{
+    bool reg_input = false, redirect_input = false, redirect_output = false;
+
+    for (int i = 0; i < args.size(); i++)
+    {
+        if  (isalpha(args[0][0]) || args[0][0] == '\'' || args[0][0] == '\"')
+            reg_input = true;
+        if (args[0][0] == '<')
+            if (redirect_output)
+                throw SemanticFlowException(false);
+            else
+                redirect_output = true;
+        if (args[0][0] == '>')
+            if (redirect_input)
+                throw SemanticFlowException(true);
+            else
+                redirect_input = true;
+    }
+
+    if (reg_input && redirect_input)
+        throw SemanticFlowException(true);
 }
 

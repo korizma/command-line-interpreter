@@ -167,10 +167,94 @@ CMakeFiles/CLIProject.dir/CommandClasses/exitcommand.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CLIProject.dir/CommandClasses/exitcommand.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/exitcommand.cpp -o CMakeFiles/CLIProject.dir/CommandClasses/exitcommand.cpp.s
 
+CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.o: CMakeFiles/CLIProject.dir/flags.make
+CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.o: /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/batchcommand.cpp
+CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.o: CMakeFiles/CLIProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.o -MF CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.o.d -o CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.o -c /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/batchcommand.cpp
+
+CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/batchcommand.cpp > CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.i
+
+CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/batchcommand.cpp -o CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.s
+
+CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.o: CMakeFiles/CLIProject.dir/flags.make
+CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.o: /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/headcommand.cpp
+CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.o: CMakeFiles/CLIProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.o -MF CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.o.d -o CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.o -c /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/headcommand.cpp
+
+CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/headcommand.cpp > CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.i
+
+CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/headcommand.cpp -o CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.s
+
+CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.o: CMakeFiles/CLIProject.dir/flags.make
+CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.o: /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/trcommand.cpp
+CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.o: CMakeFiles/CLIProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.o -MF CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.o.d -o CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.o -c /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/trcommand.cpp
+
+CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/trcommand.cpp > CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.i
+
+CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/trcommand.cpp -o CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.s
+
+CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.o: CMakeFiles/CLIProject.dir/flags.make
+CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.o: /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/trunicatecommand.cpp
+CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.o: CMakeFiles/CLIProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.o -MF CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.o.d -o CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.o -c /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/trunicatecommand.cpp
+
+CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/trunicatecommand.cpp > CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.i
+
+CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/trunicatecommand.cpp -o CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.s
+
+CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.o: CMakeFiles/CLIProject.dir/flags.make
+CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.o: /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/promptcommand.cpp
+CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.o: CMakeFiles/CLIProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.o -MF CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.o.d -o CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.o -c /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/promptcommand.cpp
+
+CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/promptcommand.cpp > CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.i
+
+CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/promptcommand.cpp -o CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.s
+
+CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.o: CMakeFiles/CLIProject.dir/flags.make
+CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.o: /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/rmcommand.cpp
+CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.o: CMakeFiles/CLIProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.o -MF CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.o.d -o CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.o -c /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/rmcommand.cpp
+
+CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/rmcommand.cpp > CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.i
+
+CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/rmcommand.cpp -o CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.s
+
 CMakeFiles/CLIProject.dir/terminal.cpp.o: CMakeFiles/CLIProject.dir/flags.make
 CMakeFiles/CLIProject.dir/terminal.cpp.o: /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/terminal.cpp
 CMakeFiles/CLIProject.dir/terminal.cpp.o: CMakeFiles/CLIProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/CLIProject.dir/terminal.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/CLIProject.dir/terminal.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CLIProject.dir/terminal.cpp.o -MF CMakeFiles/CLIProject.dir/terminal.cpp.o.d -o CMakeFiles/CLIProject.dir/terminal.cpp.o -c /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/terminal.cpp
 
 CMakeFiles/CLIProject.dir/terminal.cpp.i: cmake_force
@@ -184,7 +268,7 @@ CMakeFiles/CLIProject.dir/terminal.cpp.s: cmake_force
 CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o: CMakeFiles/CLIProject.dir/flags.make
 CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o: /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/parser.cpp
 CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o: CMakeFiles/CLIProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o -MF CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o.d -o CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o -c /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/parser.cpp
 
 CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.i: cmake_force
@@ -204,6 +288,12 @@ CLIProject_OBJECTS = \
 "CMakeFiles/CLIProject.dir/CommandClasses/touchcommand.cpp.o" \
 "CMakeFiles/CLIProject.dir/CommandClasses/wccommand.cpp.o" \
 "CMakeFiles/CLIProject.dir/CommandClasses/exitcommand.cpp.o" \
+"CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.o" \
+"CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.o" \
+"CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.o" \
+"CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.o" \
+"CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.o" \
+"CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.o" \
 "CMakeFiles/CLIProject.dir/terminal.cpp.o" \
 "CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o"
 
@@ -217,11 +307,17 @@ CLIProject: CMakeFiles/CLIProject.dir/CommandClasses/datecommand.cpp.o
 CLIProject: CMakeFiles/CLIProject.dir/CommandClasses/touchcommand.cpp.o
 CLIProject: CMakeFiles/CLIProject.dir/CommandClasses/wccommand.cpp.o
 CLIProject: CMakeFiles/CLIProject.dir/CommandClasses/exitcommand.cpp.o
+CLIProject: CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.o
+CLIProject: CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.o
+CLIProject: CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.o
+CLIProject: CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.o
+CLIProject: CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.o
+CLIProject: CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.o
 CLIProject: CMakeFiles/CLIProject.dir/terminal.cpp.o
 CLIProject: CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o
 CLIProject: CMakeFiles/CLIProject.dir/build.make
 CLIProject: CMakeFiles/CLIProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable CLIProject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable CLIProject"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CLIProject.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

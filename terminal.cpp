@@ -48,6 +48,14 @@ void Terminal::start()
             curr_command->execute();
             delete curr_command;
         }
+        catch (const ArgumentException& e)
+        {
+            std::cerr << "Argument Error: " << e.what() << std::endl; 
+        }
+        catch (const OptionException& e)
+        {
+            std::cerr << "Option Error: " << e.what() << std::endl; 
+        }
         catch (const SyntaxException& e)
         {
             std::cerr << "Syntax Error: " << e.what() << std::endl; 

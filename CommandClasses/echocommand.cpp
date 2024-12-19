@@ -24,25 +24,7 @@ std::string EchoCommand::getType()
 
 void EchoCommand::execute()
 {
-    try 
-    {
-        isValid();
-    }    
-    catch (const ArgumentException& e)
-    {
-        std::cerr << "Argument error: " << e.what() << std::endl;
-        return;
-    }
-    catch (const OptionException& e)
-    {
-        std::cerr << "Option Error: " << e.what() << std::endl;
-        return;
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << "An error occurred: " << e.what() << std::endl;
-        return;
-    }
+    isValid();
 
     if (arguments.size() == 0)
     {
@@ -54,15 +36,8 @@ void EchoCommand::execute()
         std::cout << arguments[0].substr(1, arguments[0].size()-2) << std::endl;
     else
     {
-        try 
-        {
-            std::string file_input = IOHandler::readFile(arguments[0]);
-            std::cout << file_input << std::endl;
-        }
-        catch (const FileException& e)
-        {
-            std::cerr << "File error: " << e.what() << std::endl;
-        }
+        std::string file_input = IOHandler::readFile(arguments[0]);
+        std::cout << file_input << std::endl;
     }
 }
 

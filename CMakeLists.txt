@@ -22,6 +22,19 @@ set(SOURCES
     CommandClasses/wccommand.cpp
     CommandClasses/exitcommand.h
     CommandClasses/exitcommand.cpp
+    CommandClasses/batchcommand.h
+    CommandClasses/batchcommand.cpp
+    CommandClasses/headcommand.h
+    CommandClasses/headcommand.cpp
+    CommandClasses/trcommand.h
+    CommandClasses/trcommand.cpp
+    CommandClasses/trunicatecommand.h
+    CommandClasses/trunicatecommand.cpp
+    CommandClasses/promptcommand.h
+    CommandClasses/promptcommand.cpp
+    CommandClasses/rmcommand.h
+    CommandClasses/rmcommand.cpp
+
     terminal.h
     terminal.cpp
     HelperClasses/iohandler.h

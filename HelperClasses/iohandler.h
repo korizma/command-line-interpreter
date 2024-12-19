@@ -127,7 +127,7 @@ inline void IOHandler::deleteFile(const std::string& filename)
     }
     file.close();
 
-    if (!std::remove(full_path.c_str()))
+    if (std::remove(full_path.c_str()))
     {
         throw FileException(filename);
     }

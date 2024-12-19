@@ -25,25 +25,7 @@ std::string TimeCommand::getType()
 
 void TimeCommand::execute()
 {
-    try 
-    {
-        isValid();
-    }    
-    catch (const ArgumentException& e)
-    {
-        std::cerr << "Argument error: " << e.what() << std::endl;
-        return;
-    }
-    catch (const OptionException& e)
-    {
-        std::cerr << "Option Error: " << e.what() << std::endl;
-        return;
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << "An error occurred: " << e.what() << std::endl;
-        return;
-    }
+    isValid();
 
     std::time_t current_time = std::time(nullptr);
     std::tm* local_time = std::localtime(&current_time);

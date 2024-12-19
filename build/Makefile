@@ -129,6 +129,30 @@ CLIProject/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/build
 .PHONY : CLIProject/fast
 
+CommandClasses/batchcommand.o: CommandClasses/batchcommand.cpp.o
+.PHONY : CommandClasses/batchcommand.o
+
+# target to build an object file
+CommandClasses/batchcommand.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.o
+.PHONY : CommandClasses/batchcommand.cpp.o
+
+CommandClasses/batchcommand.i: CommandClasses/batchcommand.cpp.i
+.PHONY : CommandClasses/batchcommand.i
+
+# target to preprocess a source file
+CommandClasses/batchcommand.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.i
+.PHONY : CommandClasses/batchcommand.cpp.i
+
+CommandClasses/batchcommand.s: CommandClasses/batchcommand.cpp.s
+.PHONY : CommandClasses/batchcommand.s
+
+# target to generate assembly for a file
+CommandClasses/batchcommand.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/batchcommand.cpp.s
+.PHONY : CommandClasses/batchcommand.cpp.s
+
 CommandClasses/datecommand.o: CommandClasses/datecommand.cpp.o
 .PHONY : CommandClasses/datecommand.o
 
@@ -201,6 +225,78 @@ CommandClasses/exitcommand.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/exitcommand.cpp.s
 .PHONY : CommandClasses/exitcommand.cpp.s
 
+CommandClasses/headcommand.o: CommandClasses/headcommand.cpp.o
+.PHONY : CommandClasses/headcommand.o
+
+# target to build an object file
+CommandClasses/headcommand.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.o
+.PHONY : CommandClasses/headcommand.cpp.o
+
+CommandClasses/headcommand.i: CommandClasses/headcommand.cpp.i
+.PHONY : CommandClasses/headcommand.i
+
+# target to preprocess a source file
+CommandClasses/headcommand.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.i
+.PHONY : CommandClasses/headcommand.cpp.i
+
+CommandClasses/headcommand.s: CommandClasses/headcommand.cpp.s
+.PHONY : CommandClasses/headcommand.s
+
+# target to generate assembly for a file
+CommandClasses/headcommand.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/headcommand.cpp.s
+.PHONY : CommandClasses/headcommand.cpp.s
+
+CommandClasses/promptcommand.o: CommandClasses/promptcommand.cpp.o
+.PHONY : CommandClasses/promptcommand.o
+
+# target to build an object file
+CommandClasses/promptcommand.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.o
+.PHONY : CommandClasses/promptcommand.cpp.o
+
+CommandClasses/promptcommand.i: CommandClasses/promptcommand.cpp.i
+.PHONY : CommandClasses/promptcommand.i
+
+# target to preprocess a source file
+CommandClasses/promptcommand.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.i
+.PHONY : CommandClasses/promptcommand.cpp.i
+
+CommandClasses/promptcommand.s: CommandClasses/promptcommand.cpp.s
+.PHONY : CommandClasses/promptcommand.s
+
+# target to generate assembly for a file
+CommandClasses/promptcommand.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.s
+.PHONY : CommandClasses/promptcommand.cpp.s
+
+CommandClasses/rmcommand.o: CommandClasses/rmcommand.cpp.o
+.PHONY : CommandClasses/rmcommand.o
+
+# target to build an object file
+CommandClasses/rmcommand.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.o
+.PHONY : CommandClasses/rmcommand.cpp.o
+
+CommandClasses/rmcommand.i: CommandClasses/rmcommand.cpp.i
+.PHONY : CommandClasses/rmcommand.i
+
+# target to preprocess a source file
+CommandClasses/rmcommand.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.i
+.PHONY : CommandClasses/rmcommand.cpp.i
+
+CommandClasses/rmcommand.s: CommandClasses/rmcommand.cpp.s
+.PHONY : CommandClasses/rmcommand.s
+
+# target to generate assembly for a file
+CommandClasses/rmcommand.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/rmcommand.cpp.s
+.PHONY : CommandClasses/rmcommand.cpp.s
+
 CommandClasses/timecommand.o: CommandClasses/timecommand.cpp.o
 .PHONY : CommandClasses/timecommand.o
 
@@ -248,6 +344,54 @@ CommandClasses/touchcommand.s: CommandClasses/touchcommand.cpp.s
 CommandClasses/touchcommand.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/touchcommand.cpp.s
 .PHONY : CommandClasses/touchcommand.cpp.s
+
+CommandClasses/trcommand.o: CommandClasses/trcommand.cpp.o
+.PHONY : CommandClasses/trcommand.o
+
+# target to build an object file
+CommandClasses/trcommand.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.o
+.PHONY : CommandClasses/trcommand.cpp.o
+
+CommandClasses/trcommand.i: CommandClasses/trcommand.cpp.i
+.PHONY : CommandClasses/trcommand.i
+
+# target to preprocess a source file
+CommandClasses/trcommand.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.i
+.PHONY : CommandClasses/trcommand.cpp.i
+
+CommandClasses/trcommand.s: CommandClasses/trcommand.cpp.s
+.PHONY : CommandClasses/trcommand.s
+
+# target to generate assembly for a file
+CommandClasses/trcommand.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/trcommand.cpp.s
+.PHONY : CommandClasses/trcommand.cpp.s
+
+CommandClasses/trunicatecommand.o: CommandClasses/trunicatecommand.cpp.o
+.PHONY : CommandClasses/trunicatecommand.o
+
+# target to build an object file
+CommandClasses/trunicatecommand.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.o
+.PHONY : CommandClasses/trunicatecommand.cpp.o
+
+CommandClasses/trunicatecommand.i: CommandClasses/trunicatecommand.cpp.i
+.PHONY : CommandClasses/trunicatecommand.i
+
+# target to preprocess a source file
+CommandClasses/trunicatecommand.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.i
+.PHONY : CommandClasses/trunicatecommand.cpp.i
+
+CommandClasses/trunicatecommand.s: CommandClasses/trunicatecommand.cpp.s
+.PHONY : CommandClasses/trunicatecommand.s
+
+# target to generate assembly for a file
+CommandClasses/trunicatecommand.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIProject.dir/build.make CMakeFiles/CLIProject.dir/CommandClasses/trunicatecommand.cpp.s
+.PHONY : CommandClasses/trunicatecommand.cpp.s
 
 CommandClasses/wccommand.o: CommandClasses/wccommand.cpp.o
 .PHONY : CommandClasses/wccommand.o
@@ -354,6 +498,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... CLIProject"
+	@echo "... CommandClasses/batchcommand.o"
+	@echo "... CommandClasses/batchcommand.i"
+	@echo "... CommandClasses/batchcommand.s"
 	@echo "... CommandClasses/datecommand.o"
 	@echo "... CommandClasses/datecommand.i"
 	@echo "... CommandClasses/datecommand.s"
@@ -363,12 +510,27 @@ help:
 	@echo "... CommandClasses/exitcommand.o"
 	@echo "... CommandClasses/exitcommand.i"
 	@echo "... CommandClasses/exitcommand.s"
+	@echo "... CommandClasses/headcommand.o"
+	@echo "... CommandClasses/headcommand.i"
+	@echo "... CommandClasses/headcommand.s"
+	@echo "... CommandClasses/promptcommand.o"
+	@echo "... CommandClasses/promptcommand.i"
+	@echo "... CommandClasses/promptcommand.s"
+	@echo "... CommandClasses/rmcommand.o"
+	@echo "... CommandClasses/rmcommand.i"
+	@echo "... CommandClasses/rmcommand.s"
 	@echo "... CommandClasses/timecommand.o"
 	@echo "... CommandClasses/timecommand.i"
 	@echo "... CommandClasses/timecommand.s"
 	@echo "... CommandClasses/touchcommand.o"
 	@echo "... CommandClasses/touchcommand.i"
 	@echo "... CommandClasses/touchcommand.s"
+	@echo "... CommandClasses/trcommand.o"
+	@echo "... CommandClasses/trcommand.i"
+	@echo "... CommandClasses/trcommand.s"
+	@echo "... CommandClasses/trunicatecommand.o"
+	@echo "... CommandClasses/trunicatecommand.i"
+	@echo "... CommandClasses/trunicatecommand.s"
 	@echo "... CommandClasses/wccommand.o"
 	@echo "... CommandClasses/wccommand.i"
 	@echo "... CommandClasses/wccommand.s"

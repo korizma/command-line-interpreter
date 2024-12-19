@@ -29,39 +29,9 @@ std::string TrunicateCommand::getType()
 
 void TrunicateCommand::execute()
 {
-    try 
-    {
-        isValid();
-    }    
-    catch (const ArgumentException& e)
-    {
-        std::cerr << "Argument error: " << e.what() << std::endl;
-        return;
-    }
-    catch (const OptionException& e)
-    {
-        std::cerr << "Option Error: " << e.what() << std::endl;
-        return;
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << "An error occurred: " << e.what() << std::endl;
-        return;
-    }
+    isValid();
     
-    try
-    {
-        IOHandler::clearFile(arguments[0]);
-    }
-    catch (const FileException& e)
-    {
-        std::cerr << "File error: " << e.what() << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-    
+    IOHandler::clearFile(arguments[0]);
 }
 
 

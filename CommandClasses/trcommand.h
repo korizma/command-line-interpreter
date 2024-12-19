@@ -1,0 +1,22 @@
+#ifndef TRCOMMAND_H
+#define TRCOMMAND_H
+
+#include <string>
+#include "command.h"
+
+class TrCommand : public Command 
+{
+    private:
+        virtual void isValid() override;
+
+    public:
+        TrCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options)
+                : Command(arguments, options) {}
+        ~TrCommand();
+
+        virtual void execute() override;
+
+        static std::string getType();
+};
+
+#endif // TRCOMMAND_H

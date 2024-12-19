@@ -29,25 +29,7 @@ std::string WcCommand::getType()
 
 void WcCommand::execute()
 {
-    try 
-    {
-        isValid();
-    }    
-    catch (const ArgumentException& e)
-    {
-        std::cerr << "Argument error: " << e.what() << std::endl;
-        return;
-    }
-    catch (const OptionException& e)
-    {
-        std::cerr << "Option Error: " << e.what() << std::endl;
-        return;
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << "An error occurred: " << e.what() << std::endl;
-        return;
-    }
+    isValid();
 
     if (arguments.size() == 0)
     {
@@ -58,21 +40,8 @@ void WcCommand::execute()
     
     if (arguments[0][0] != '\'' && arguments[0][0] != '\"')
     {
-        try
-        {
-            std::string file_input = IOHandler::readFile(arguments[0]);
-            arguments[0] = file_input;
-        }
-        catch (const FileException& e)
-        {
-            std::cerr << "File error: " << e.what() << std::endl;
-            return;
-        }
-        catch (const std::exception& e)
-        {
-            std::cerr << "An error occurred: " << e.what() << std::endl;
-            return;
-        }
+        std::string file_input = IOHandler::readFile(arguments[0]);
+        arguments[0] = file_input;
     } 
     else
     {
