@@ -9,8 +9,8 @@ class DateCommand : public Command
         virtual void isValid() override;
 
     public:
-        DateCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options)
-                : Command(arguments, options) {}
+        DateCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline = NULL)
+                : Command(arguments, options, next_in_pipeline) {}
         ~DateCommand();
 
         virtual void execute() override;

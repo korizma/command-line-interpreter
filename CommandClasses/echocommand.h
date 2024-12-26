@@ -9,8 +9,8 @@ class EchoCommand : public Command
         virtual void isValid() override;
 
     public:
-        EchoCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options)
-                : Command(arguments, options) {}
+        EchoCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline = NULL)
+                : Command(arguments, options, next_in_pipeline) {}
         ~EchoCommand();
 
         virtual void execute() override;

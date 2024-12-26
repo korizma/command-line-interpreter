@@ -9,8 +9,8 @@ class WcCommand : public Command
         virtual void isValid() override;
 
     public:
-        WcCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options)
-                : Command(arguments, options) {}
+        WcCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline = NULL)
+                : Command(arguments, options, next_in_pipeline) {}
         ~WcCommand();
 
         virtual void execute() override;

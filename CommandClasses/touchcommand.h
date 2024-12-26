@@ -9,8 +9,8 @@ class TouchCommand : public Command
         virtual void isValid() override;
 
     public:
-        TouchCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options)
-                : Command(arguments, options) {}
+        TouchCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline = NULL)
+                : Command(arguments, options, next_in_pipeline) {}
         ~TouchCommand();
 
         virtual void execute() override;

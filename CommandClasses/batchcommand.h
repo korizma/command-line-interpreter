@@ -11,8 +11,8 @@ class BatchCommand : public Command
         virtual void isValid() override;
 
     public:
-        BatchCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options)
-                : Command(arguments, options) {}
+        BatchCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline = NULL)
+                : Command(arguments, options, next_in_pipeline) {}
         ~BatchCommand();
 
         virtual void execute() override;

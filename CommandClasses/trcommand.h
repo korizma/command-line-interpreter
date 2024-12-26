@@ -10,8 +10,8 @@ class TrCommand : public Command
         virtual void isValid() override;
 
     public:
-        TrCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options)
-                : Command(arguments, options) {}
+        TrCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline = NULL)
+                : Command(arguments, options, next_in_pipeline) {}
         ~TrCommand();
 
         virtual void execute() override;

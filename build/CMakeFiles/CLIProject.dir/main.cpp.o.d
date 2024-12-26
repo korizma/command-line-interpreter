@@ -161,10 +161,11 @@ CMakeFiles/CLIProject.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
- /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/iohandler.h \
- /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../terminal.h \
- /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../ExceptionClasses/exception.h \
+ /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/../HelperClasses/iohandler.h \
+ /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/../HelperClasses/../terminal.h \
+ /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/../HelperClasses/../ExceptionClasses/exception.h \
  /usr/include/c++/13/limits \
+ /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/iohandler.h \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/command.h \
  /usr/include/c++/13/csignal /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \

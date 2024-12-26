@@ -9,8 +9,8 @@ class RmCommand : public Command
         virtual void isValid() override;
 
     public:
-        RmCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options)
-                : Command(arguments, options) {}
+        RmCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline = NULL)
+                : Command(arguments, options, next_in_pipeline) {}
         ~RmCommand();
 
         virtual void execute() override;

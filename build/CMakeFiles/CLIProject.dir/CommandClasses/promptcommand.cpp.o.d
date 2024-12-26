@@ -159,12 +159,13 @@ CMakeFiles/CLIProject.dir/CommandClasses/promptcommand.cpp.o: \
  /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
- /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/iostream \
+ /usr/include/c++/13/bits/fstream.tcc \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/../HelperClasses/iohandler.h \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/../HelperClasses/../terminal.h \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/../HelperClasses/../ExceptionClasses/exception.h \
- /usr/include/c++/13/limits /usr/include/c++/13/ctime \
- /usr/include/c++/13/iomanip /usr/include/c++/13/locale \
+ /usr/include/c++/13/limits /usr/include/c++/13/iostream \
+ /usr/include/c++/13/ctime /usr/include/c++/13/iomanip \
+ /usr/include/c++/13/locale \
  /usr/include/c++/13/bits/locale_facets_nonio.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \

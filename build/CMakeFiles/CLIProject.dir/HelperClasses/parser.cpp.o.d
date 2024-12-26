@@ -161,9 +161,11 @@ CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
- /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/iohandler.h \
- /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../terminal.h \
+ /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/../HelperClasses/iohandler.h \
+ /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/../HelperClasses/../terminal.h \
+ /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/../HelperClasses/../ExceptionClasses/exception.h \
  /usr/include/c++/13/limits \
+ /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/iohandler.h \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/echocommand.h \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/command.h \
  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/../CommandClasses/timecommand.h \
