@@ -16,14 +16,16 @@ class Command
         Command* next;
 
         virtual void isValid() = 0;
+
         void output(std::string& text);
 
+        virtual std::string getOutput() = 0;
 
     public:
         Command(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline);
         ~Command();
 
-        virtual void execute() = 0;
+        void execute();
         
         void acceptArgument(std::string& argument);
 
@@ -60,13 +62,22 @@ inline void Command::output(std::string& text)
     
     if (next == NULL)
         std::cout << text << std::endl;
-
-    next->acceptArgument(text);
+    else
+        next->acceptArgument(text);
 }
 
 inline void Command::acceptArgument(std::string& argument)
 {
-    arguments.push_back(argument);
+    arguments.push_back("\'" + argument + "\'");
+}
+
+inline void Command::execute()
+{
+    isValid();
+    std::string text = getOutput();
+    output(text);
+    if (next)
+        next->execute();
 }
 
 

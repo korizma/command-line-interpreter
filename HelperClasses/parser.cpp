@@ -21,32 +21,28 @@ Command* Parser::parse(const std::string& input)
 { 
     std::vector<std::string> tokens = tokenize(input); 
 
-    std::vector<std::string> arguments, options;
-    std::string command_type = tokens[0];
-    bool input_redirect = false;
+    
+    bool input_redirect = false, pipeline = false;
 
     for (int i = 1; i < tokens.size(); i++)
     {
-        if (tokens[i] == ">")
-            input_redirect = true;
-
-        if (tokens[i][0] == '-')
-            options.push_back(tokens[i]);
-        else
+        if (tokens[i] == "|")
         {
-            if (tokens[i] == "<" || tokens[i] == "<<" || tokens[i] == ">")
-                if (i == tokens.size()-1 || !isalpha(tokens[i+1][0]))
-                    throw SemanticFlowException(tokens[i]);
-                else
-                {
-                    std::string new_arg = tokens[i] + tokens[i+1];
-                    i++;
-                    arguments.push_back(new_arg);
-                }
-            else
-                arguments.push_back(tokens[i]);
+            pipeline = true;
+            break;
+        }
+        if (tokens[i][0] == '>')
+        {
+            input_redirect = true;
         }
     }
+
+    if (pipeline)
+        return createPipeline(tokens);
+
+    std::vector<std::string> arguments, options;
+    std::string command_type;
+    classifyTokens(tokens, command_type, arguments, options);
 
     checkTokensSemantics(arguments);
 
@@ -219,61 +215,61 @@ std::vector<int> Parser::checkTokenSyntax(const std::string& token, const int& p
     return indx_errors;
 }
 
-Command* Parser::createCommand(const std::string& cmd_name, const std::vector<std::string>& arguments, const std::vector<std::string>& options) 
+Command* Parser::createCommand(const std::string& cmd_name, const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next) 
 {
     if (cmd_name == EchoCommand::getType())
     {
-        return new EchoCommand(arguments, options);
+        return new EchoCommand(arguments, options, next);
     }
     if (cmd_name == TimeCommand::getType())
     {
-        return new TimeCommand(arguments, options);
+        return new TimeCommand(arguments, options, next);
     }
     if (cmd_name == DateCommand::getType())
     {
-        return new DateCommand(arguments, options);
+        return new DateCommand(arguments, options, next);
     }
     if (cmd_name == TouchCommand::getType())
     {
-        return new TouchCommand(arguments, options);
+        return new TouchCommand(arguments, options, next);
     }
     if (cmd_name == WcCommand::getType())
     {
-        return new WcCommand(arguments, options);
+        return new WcCommand(arguments, options, next);
     }
     if (cmd_name == ExitCommand::getType())
     {
-        return new ExitCommand(arguments, options);
+        return new ExitCommand(arguments, options, next);
     }
     if (cmd_name == HeadCommand::getType())
     {
-        return new HeadCommand(arguments, options);
+        return new HeadCommand(arguments, options, next);
     }
     if (cmd_name == PromptCommand::getType())
     {
-        return new PromptCommand(arguments, options);
+        return new PromptCommand(arguments, options, next);
     }
     if (cmd_name == RmCommand::getType())
     {
-        return new RmCommand(arguments, options);
+        return new RmCommand(arguments, options, next);
     }
     if (cmd_name == TrCommand::getType())
     {
-        return new TrCommand(arguments, options);
+        return new TrCommand(arguments, options, next);
     }
     if (cmd_name == TrunicateCommand::getType())
     {
-        return new TrunicateCommand(arguments, options);
+        return new TrunicateCommand(arguments, options, next);
     }
     if (cmd_name == BatchCommand::getType())
     {
-        return new BatchCommand(arguments, options);
+        return new BatchCommand(arguments, options, next);
     }
 
     throw CommandException(cmd_name);
 }
 
-void Parser::checkTokensSemantics(std::vector<std::string>& args)
+void Parser::checkTokensSemantics(std::vector<std::string>& args, const bool& pipeline)
 {
     bool reg_input = false, redirect_input = false, redirect_output = false;
 
@@ -295,5 +291,75 @@ void Parser::checkTokensSemantics(std::vector<std::string>& args)
 
     if (reg_input && redirect_input)
         throw SemanticFlowException(true);
+
+    if (pipeline && redirect_output)
+        throw SemanticFlowException(false);
+    
+    if (pipeline && (reg_input || redirect_input))
+        throw SemanticFlowException(true);
+}
+
+Command* Parser::createPipeline(std::vector<std::string>& tokens)
+{
+    std::vector<std::vector<std::string>> command_tokens;
+    command_tokens.push_back({});
+    for (int i = 0; i < tokens.size(); i++)
+    {
+        if (tokens[i] == "|")
+        {
+            command_tokens.push_back({});
+            continue;
+        }
+
+        command_tokens[command_tokens.size() - 1].push_back(tokens[i]);
+    }
+
+    Command *curr = NULL;
+
+    for (int i = command_tokens.size()-1; i >= 0; i--)
+    {
+        std::vector<std::string> arguments, options;
+        std::string command_type; 
+        bool input_redirect = false;
+        for (int j = 0; j < command_tokens[i].size(); j++)
+                if (command_tokens[i][j][0] == '>')
+                {
+                    input_redirect = true;
+                    break;
+                }
+        classifyTokens(command_tokens[i], command_type, arguments, options);
+        checkTokensSemantics(arguments, i != 0);
+
+        if (input_redirect)
+            tokenizeRedirect(arguments);
+
+        curr = createCommand(command_type, arguments, options, curr);
+    }
+    return curr;
+}
+
+
+void Parser::classifyTokens(const std::vector<std::string>& tokens, std::string& cmd_name, std::vector<std::string>& args, std::vector<std::string>& options)
+{
+    cmd_name = tokens[0];
+    for (int i = 1; i < tokens.size(); i++)
+    {
+        if (tokens[i][0] == '-')
+            options.push_back(tokens[i]);
+        else
+        {
+            if (tokens[i] == "<" || tokens[i] == "<<" || tokens[i] == ">")
+                if (i == tokens.size()-1 || !isalpha(tokens[i+1][0]))
+                    throw SemanticFlowException(tokens[i]);
+                else
+                {
+                    std::string new_arg = tokens[i] + tokens[i+1];
+                    i++;
+                    args.push_back(new_arg);
+                }
+            else
+                args.push_back(tokens[i]);
+        }
+    }
 }
 

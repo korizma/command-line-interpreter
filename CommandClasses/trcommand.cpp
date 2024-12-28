@@ -21,11 +21,9 @@ std::string TrCommand::getType()
     return "tr";
 }
 
-void TrCommand::execute()
+std::string TrCommand::getOutput()
 {
-    isValid();
-
-
+        return "";
 }
 
 

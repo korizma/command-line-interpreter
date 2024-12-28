@@ -10,6 +10,7 @@ using namespace std;
 int main()
 {
     cout << "Welcome to CLI!" << endl;
+    // Terminal::testProgram();
     Terminal::run();
     return 0;
 }

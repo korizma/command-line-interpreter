@@ -22,11 +22,9 @@ std::string BatchCommand::getType()
     return "batch";
 }
 
-void BatchCommand::execute()
+std::string BatchCommand::getOutput()
 {
-    isValid();
-
-    if (arguments.size() == 0)
+        if (arguments.size() == 0)
     {
         std::string cmd_input = IOHandler::getInput();
         arguments.push_back("\"" + cmd_input + "\"");
@@ -89,8 +87,10 @@ void BatchCommand::execute()
         catch (const std::exception& e)
         {
             std::cerr << e.what() << '\n';
+            return "";
         }
     }
+    return "";
 }
 
 

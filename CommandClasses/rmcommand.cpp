@@ -27,11 +27,12 @@ std::string RmCommand::getType()
     return "rm";
 }
 
-void RmCommand::execute()
+std::string RmCommand::getOutput()
 {
-    isValid();
-    
+        
     IOHandler::deleteFile(arguments[0]);
+
+    return "";
 }
 
 

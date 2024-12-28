@@ -17,6 +17,7 @@ class Terminal
         std::string getPath();
         static Terminal* getInstance();
         void changeSign(std::string new_sign);
+        static void testProgram();
 
 };
 

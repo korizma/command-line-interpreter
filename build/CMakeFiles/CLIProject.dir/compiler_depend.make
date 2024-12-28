@@ -2546,6 +2546,9 @@ CMakeFiles/CLIProject.dir/CommandClasses/wccommand.cpp.o: /home/korizma/Document
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
 
 CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o: /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/parser.cpp \
+  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/ExceptionClasses/exception.h \
+  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/terminal.h \
+  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/iohandler.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/batchcommand.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/command.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/datecommand.h \
@@ -2560,7 +2563,6 @@ CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o: /home/korizma/Documents/Fa
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/trunicatecommand.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/wccommand.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/ExceptionClasses/exception.h \
-  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/terminal.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/iohandler.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/parser.h \
   /usr/include/alloca.h \
@@ -2782,9 +2784,10 @@ CMakeFiles/CLIProject.dir/HelperClasses/parser.cpp.o: /home/korizma/Documents/Fa
 
 CMakeFiles/CLIProject.dir/main.cpp.o: /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/main.cpp \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/command.h \
-  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/command.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/ExceptionClasses/exception.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/terminal.h \
+  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/iohandler.h \
+  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/command.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/iohandler.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/parser.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/terminal.h \
@@ -3017,10 +3020,11 @@ CMakeFiles/CLIProject.dir/main.cpp.o: /home/korizma/Documents/Faks/OOP1/Projekat
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
 
 CMakeFiles/CLIProject.dir/terminal.cpp.o: /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/terminal.cpp \
-  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/command.h \
-  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/command.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/ExceptionClasses/exception.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/terminal.h \
+  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/iohandler.h \
+  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/command.h \
+  /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/CommandClasses/command.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/iohandler.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/HelperClasses/parser.h \
   /home/korizma/Documents/Faks/OOP1/ProjekatCLI/CLI/terminal.h \

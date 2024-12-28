@@ -24,13 +24,13 @@ std::string DateCommand::getType()
     return "date";
 }
 
-void DateCommand::execute()
+std::string DateCommand::getOutput()
 {
-    isValid();
-
-    std::time_t current_time = std::time(nullptr);
+        std::time_t current_time = std::time(nullptr);
     std::tm* local_time = std::localtime(&current_time);
-    std::cout << std::put_time(local_time, "%Y-%m-%d") << std::endl;
+    std::ostringstream oss;
+    oss << std::put_time(local_time, "%Y-%m-%d");
+    return oss.str();
 }
 
 

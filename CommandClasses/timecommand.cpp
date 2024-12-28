@@ -23,13 +23,13 @@ std::string TimeCommand::getType()
     return "time";
 }
 
-void TimeCommand::execute()
+std::string TimeCommand::getOutput()
 {
-    isValid();
-
-    std::time_t current_time = std::time(nullptr);
+        std::time_t current_time = std::time(nullptr);
     std::tm* local_time = std::localtime(&current_time);
-    std::cout << std::put_time(local_time, "%H:%M:%S") << std::endl;
+    std::ostringstream oss;
+    oss << std::put_time(local_time, "%H:%M:%S");
+    return oss.str();
 }
 
 

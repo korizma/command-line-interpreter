@@ -22,11 +22,11 @@ std::string ExitCommand::getType()
     return "exit";
 }
 
-void ExitCommand::execute()
+std::string ExitCommand::getOutput()
 {
-    isValid();
-    
+        
     exit(0);
+    return "";
 }
 
 

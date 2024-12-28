@@ -27,11 +27,12 @@ std::string TrunicateCommand::getType()
     return "trunicate";
 }
 
-void TrunicateCommand::execute()
+std::string TrunicateCommand::getOutput()
 {
-    isValid();
-    
+        
     IOHandler::clearFile(arguments[0]);
+    
+    return "";
 }
 
 

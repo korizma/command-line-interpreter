@@ -27,11 +27,12 @@ std::string TouchCommand::getType()
     return "touch";
 }
 
-void TouchCommand::execute()
+std::string TouchCommand::getOutput()
 {
-    isValid();
-    
-    IOHandler::createFile(arguments[0]);   
+        
+    IOHandler::createFile(arguments[0]);  
+
+    return ""; 
 }
 
 

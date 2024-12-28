@@ -25,11 +25,9 @@ std::string HeadCommand::getType()
     return "head";
 }
 
-void HeadCommand::execute()
+std::string HeadCommand::getOutput()
 {
-    isValid();
-
-    
+        return "";
 }
 
 
