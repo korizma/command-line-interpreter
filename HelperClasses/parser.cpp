@@ -294,9 +294,6 @@ void Parser::checkTokensSemantics(std::vector<std::string>& args, const bool& pi
 
     if (pipeline && redirect_output)
         throw SemanticFlowException(false);
-    
-    if (pipeline && (reg_input || redirect_input))
-        throw SemanticFlowException(true);
 }
 
 Command* Parser::createPipeline(std::vector<std::string>& tokens)

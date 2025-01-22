@@ -68,7 +68,10 @@ inline void Command::output(std::string& text)
 
 inline void Command::acceptArgument(std::string& argument)
 {
-    arguments.push_back("\'" + argument + "\'");
+    if (arguments.size() == 0)
+        arguments.push_back("\'" + argument + "\'");
+    else
+        arguments.insert(arguments.begin(), "\'" + argument + "\'");
 }
 
 inline void Command::execute()

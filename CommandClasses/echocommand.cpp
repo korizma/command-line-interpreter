@@ -24,7 +24,7 @@ std::string EchoCommand::getType()
 
 std::string EchoCommand::getOutput()
 {
-        if (arguments.size() == 0)
+    if (arguments.size() == 0)
     {
         std::string cmd_input = IOHandler::getInput();
         arguments.push_back("\"" + cmd_input + "\"");

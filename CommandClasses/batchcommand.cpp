@@ -6,7 +6,7 @@
 
 void BatchCommand::isValid() 
 {
-    if (arguments.size() != 1)
+    if (arguments.size() > 1)
     {
         throw ArgumentException(1, arguments.size());
     }
@@ -24,7 +24,7 @@ std::string BatchCommand::getType()
 
 std::string BatchCommand::getOutput()
 {
-        if (arguments.size() == 0)
+    if (arguments.size() == 0)
     {
         std::string cmd_input = IOHandler::getInput();
         arguments.push_back("\"" + cmd_input + "\"");
@@ -52,11 +52,11 @@ std::string BatchCommand::getOutput()
         }
     }
 
-    for (int i = 0; i <= command_lines.size(); i++)
+    for (int i = 0; i < command_lines.size(); i++)
     {
         try
         {
-            Command* curr = Parser::parse(command_lines[0]);
+            Command* curr = Parser::parse(command_lines[i]);
             curr->execute();
             
         }
