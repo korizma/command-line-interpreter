@@ -27,11 +27,12 @@ std::string PromptCommand::getType()
     return "prompt";
 }
 
-void PromptCommand::execute()
+std::string PromptCommand::getOutput()
 {
-    isValid();
-    
+        
     Terminal::getInstance()->changeSign(arguments[0].substr(1, arguments[0].size()-2));
+
+    return "";
 }
 
 

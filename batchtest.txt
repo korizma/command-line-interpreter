@@ -1,0 +1,5 @@
+echo "test za batch"
+time
+date
+wc -c "12345"
+time | tr ":" "-"

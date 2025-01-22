@@ -27,11 +27,9 @@ std::string WcCommand::getType()
     return "wc";
 }
 
-void WcCommand::execute()
+std::string WcCommand::getOutput()
 {
-    isValid();
-
-    if (arguments.size() == 0)
+        if (arguments.size() == 0)
     {
         std::string cmd_input = IOHandler::getInput();
         arguments.push_back("\"" + cmd_input + "\"");
@@ -50,7 +48,7 @@ void WcCommand::execute()
 
     if (options[0] == "-c")
     {
-        std::cout << arguments[0].size() << std::endl;
+        return std::to_string(arguments[0].size());
     }
     if (options[0] == "-w")
     {
@@ -64,9 +62,9 @@ void WcCommand::execute()
             last = arguments[0][i];
             i++;
         }
-        std::cout << counter << std::endl;
+        return std::to_string(counter);
     }
-
+    return "";
 }
 
 

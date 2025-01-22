@@ -8,12 +8,12 @@ class TimeCommand : public Command
     private:
         virtual void isValid() override;
 
-    public:
-        TimeCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options)
-                : Command(arguments, options) {}
-        ~TimeCommand();
+        virtual std::string getOutput() override;
 
-        virtual void execute() override;
+    public:
+        TimeCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline = NULL)
+                : Command(arguments, options, next_in_pipeline) {}
+        ~TimeCommand();
 
         static std::string getType();
 };

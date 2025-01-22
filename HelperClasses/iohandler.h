@@ -14,6 +14,8 @@ class IOHandler
 
         static void writeFile(const std::string& filename, const std::string& content);
 
+        static void appendFile(const std::string& filename, const std::string& content);
+
         static void createFile(const std::string& filename);
 
         static void clearFile(const std::string& filename);
@@ -49,6 +51,18 @@ inline void IOHandler::writeFile(const std::string& filename, const std::string&
 {
     std::string full_path = Terminal::getInstance()->getPath() + "/" + filename;
     std::ofstream file(full_path);
+    if (!file.is_open()) 
+    {
+        throw FileException(filename);
+    }
+    file << content;
+    file.close();
+}
+
+inline void IOHandler::appendFile(const std::string& filename, const std::string& content)
+{
+    std::string full_path = Terminal::getInstance()->getPath() + "/" + filename;
+    std::ofstream file(full_path, std::ios::app);
     if (!file.is_open()) 
     {
         throw FileException(filename);

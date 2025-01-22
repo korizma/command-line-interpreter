@@ -22,10 +22,8 @@ std::string EchoCommand::getType()
     return "echo";
 }
 
-void EchoCommand::execute()
+std::string EchoCommand::getOutput()
 {
-    isValid();
-
     if (arguments.size() == 0)
     {
         std::string cmd_input = IOHandler::getInput();
@@ -33,11 +31,11 @@ void EchoCommand::execute()
     }
 
     if (arguments[0][0] == '\"'|| arguments[0][0] == '\'')
-        std::cout << arguments[0].substr(1, arguments[0].size()-2) << std::endl;
+        return arguments[0].substr(1, arguments[0].size()-2);
     else
     {
         std::string file_input = IOHandler::readFile(arguments[0]);
-        std::cout << file_input << std::endl;
+        return file_input;
     }
 }
 

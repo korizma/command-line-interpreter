@@ -8,12 +8,12 @@ class RmCommand : public Command
     private:
         virtual void isValid() override;
 
-    public:
-        RmCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options)
-                : Command(arguments, options) {}
-        ~RmCommand();
+        virtual std::string getOutput() override;
 
-        virtual void execute() override;
+    public:
+        RmCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline = NULL)
+                : Command(arguments, options, next_in_pipeline) {}
+        ~RmCommand();
 
         static std::string getType();
 };
