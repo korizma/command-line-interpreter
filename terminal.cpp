@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include "CommandClasses/command.h"
 #include "HelperClasses/parser.h"
-#include "HelperClasses/iohandler.h"
+#include "HelperClasses/iohelper.h"
 
 
 Terminal::Terminal()
@@ -41,7 +41,7 @@ void Terminal::start()
     while (true)
     {
         std::cout << ready_sign;
-        line = IOHandler::getLine();
+        line = io.getLine();
         curr_command = Parser::parse(line);
         curr_command->execute();
         delete curr_command;

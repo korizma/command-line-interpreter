@@ -1,7 +1,6 @@
 #include "echocommand.h"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohandler.h"
 #include "../ExceptionClasses/exception.h"
 
 void EchoCommand::isValid() 
@@ -46,7 +45,7 @@ void EchoCommand::execute()
 
     if (arguments.size() == 0)
     {
-        std::string cmd_input = IOHandler::getInput();
+        std::string cmd_input = io.getInput();
         arguments.push_back("\"" + cmd_input + "\"");
     }
 
@@ -56,7 +55,7 @@ void EchoCommand::execute()
     {
         try 
         {
-            std::string file_input = IOHandler::readFile(arguments[0]);
+            std::string file_input = io.readFile(arguments[0]);
             std::cout << file_input << std::endl;
         }
         catch (const FileException& e)

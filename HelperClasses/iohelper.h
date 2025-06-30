@@ -2,7 +2,6 @@
 #define IOHELPER_H
 #include <string>
 #include <fstream>
-#include "../terminal.h"
 #include "../ExceptionClasses/exception.h"
 #include "iointerface.h"
 

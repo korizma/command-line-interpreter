@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include "../HelperClasses/iohelper.h"
 
 class Command
 {
@@ -14,6 +15,8 @@ class Command
 
         std::string in;
         std::string out;
+
+        IOHelper io;
 
         virtual void isValid() = 0;
 

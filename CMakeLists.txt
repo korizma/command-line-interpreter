@@ -24,7 +24,6 @@ set(SOURCES
     CommandClasses/exitcommand.cpp
     terminal.h
     terminal.cpp
-    HelperClasses/iohandler.h
     HelperClasses/parser.h
     HelperClasses/parser.cpp
     HelperClasses/iointerface.h

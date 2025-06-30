@@ -1,7 +1,6 @@
 #include "exitcommand.h"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohandler.h"
 
 void ExitCommand::isValid() 
 {
@@ -11,7 +10,6 @@ void ExitCommand::isValid()
     }
     if (options.size() != 0)
     {
-        
         throw OptionException("this command doesn't have options!");
     }
 }

@@ -1,7 +1,6 @@
 #include "touchcommand.h"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohandler.h"
 #include <ctime>
 #include <iomanip>
 
@@ -50,7 +49,7 @@ void TouchCommand::execute()
     }
     try
     {
-        IOHandler::createFile(arguments[0]);   
+        io.createFile(arguments[0]);   
     }
     catch(const FileException e)
     {
