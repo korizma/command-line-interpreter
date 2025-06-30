@@ -27,6 +27,9 @@ set(SOURCES
     HelperClasses/iohandler.h
     HelperClasses/parser.h
     HelperClasses/parser.cpp
+    HelperClasses/iointerface.h
+    HelperClasses/iohelper.h
+    HelperClasses/iohelper.cpp
     ExceptionClasses/exception.h
 )
 
