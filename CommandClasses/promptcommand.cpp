@@ -1,9 +1,10 @@
 #include "promptcommand.h"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohandler.h"
 #include <ctime>
 #include <iomanip>
+#include "../terminal.h"
+#include "../ExceptionClasses/exception.h"
 
 void PromptCommand::isValid() 
 {

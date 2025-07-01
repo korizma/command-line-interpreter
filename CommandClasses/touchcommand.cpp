@@ -1,7 +1,7 @@
 #include "touchcommand.h"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohandler.h"
+#include "../HelperClasses/iohelper.h"
 #include <ctime>
 #include <iomanip>
 
@@ -30,7 +30,7 @@ std::string TouchCommand::getType()
 std::string TouchCommand::getOutput()
 {
         
-    IOHandler::createFile(arguments[0]);  
+    io.createFile(arguments[0]);  
 
     return ""; 
 }

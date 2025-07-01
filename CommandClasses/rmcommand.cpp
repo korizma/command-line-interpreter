@@ -1,7 +1,7 @@
 #include "rmcommand.h"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohandler.h"
+#include "../HelperClasses/iohelper.h"
 #include <ctime>
 #include <iomanip>
 
@@ -21,16 +21,14 @@ void RmCommand::isValid()
     }
 }
 
-
 std::string RmCommand::getType()
 {
     return "rm";
 }
 
 std::string RmCommand::getOutput()
-{
-        
-    IOHandler::deleteFile(arguments[0]);
+{  
+    io.deleteFile(arguments[0]);
 
     return "";
 }

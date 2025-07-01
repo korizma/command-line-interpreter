@@ -1,7 +1,7 @@
 #include "trunicatecommand.h"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohandler.h"
+#include "../HelperClasses/iohelper.h"
 #include <ctime>
 #include <iomanip>
 
@@ -21,16 +21,14 @@ void TrunicateCommand::isValid()
     }
 }
 
-
 std::string TrunicateCommand::getType()
 {
     return "trunicate";
 }
 
 std::string TrunicateCommand::getOutput()
-{
-        
-    IOHandler::clearFile(arguments[0]);
+{   
+    io.clearFile(arguments[0]);
     
     return "";
 }

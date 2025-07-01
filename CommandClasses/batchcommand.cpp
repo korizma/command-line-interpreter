@@ -1,7 +1,7 @@
 #include "batchcommand.h"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohandler.h"
+#include "../HelperClasses/iohelper.h"
 #include "../HelperClasses/parser.h"
 
 void BatchCommand::isValid() 
@@ -26,13 +26,13 @@ std::string BatchCommand::getOutput()
 {
     if (arguments.size() == 0)
     {
-        std::string cmd_input = IOHandler::getInput();
+        std::string cmd_input = io.getInput();
         arguments.push_back("\"" + cmd_input + "\"");
     }
 
     if (std::isalpha(arguments[0][0]))
     {
-        std::string file_input = IOHandler::readFile(arguments[0]);
+        std::string file_input = io.readFile(arguments[0]);
         arguments[0] = file_input;
     }
     else

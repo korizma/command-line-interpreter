@@ -1,7 +1,6 @@
 #include "exitcommand.h"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohandler.h"
 
 void ExitCommand::isValid() 
 {
@@ -11,11 +10,9 @@ void ExitCommand::isValid()
     }
     if (options.size() != 0)
     {
-        
         throw OptionException(0, options.size());
     }
 }
-
 
 std::string ExitCommand::getType()
 {
@@ -24,7 +21,6 @@ std::string ExitCommand::getType()
 
 std::string ExitCommand::getOutput()
 {
-        
     exit(0);
     return "";
 }

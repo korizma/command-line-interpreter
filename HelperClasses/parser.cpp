@@ -3,7 +3,6 @@
 #include <vector>
 #include "../ExceptionClasses/exception.h"
 #include "parser.h"
-#include "iohandler.h"
 #include "../CommandClasses/echocommand.h"
 #include "../CommandClasses/timecommand.h"
 #include "../CommandClasses/datecommand.h"
@@ -16,6 +15,9 @@
 #include "../CommandClasses/trcommand.h"
 #include "../CommandClasses/trunicatecommand.h"
 #include "../CommandClasses/batchcommand.h"
+
+
+IOHelper Parser::io;
 
 Command* Parser::parse(const std::string& input)
 { 
@@ -70,7 +72,7 @@ void Parser::tokenizeRedirect(std::vector<std::string>& args)
     file_input = args[i].substr(1, args[i].size()-1);
     args.erase(args.begin() + i);
 
-    std::string file_content = IOHandler::readFile(file_input);
+    std::string file_content = io.readFile(file_input);
     for (i = 0; i < file_content.size(); i++)
         if (file_content[i] == '\n')
             break;

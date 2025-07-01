@@ -1,6 +1,6 @@
 #ifndef EXCEPTION_H
 #define EXCEPTION_H
-
+#include <vector>
 #include <exception>
 #include <string>
 

@@ -1,7 +1,6 @@
 #include "timecommand.h"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohandler.h"
 #include <ctime>
 #include <iomanip>
 
@@ -25,7 +24,7 @@ std::string TimeCommand::getType()
 
 std::string TimeCommand::getOutput()
 {
-        std::time_t current_time = std::time(nullptr);
+    std::time_t current_time = std::time(nullptr);
     std::tm* local_time = std::localtime(&current_time);
     std::ostringstream oss;
     oss << std::put_time(local_time, "%H:%M:%S");

@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "../CommandClasses/command.h"
+#include "iohelper.h"
 
 class Parser 
 {
@@ -12,6 +13,7 @@ class Parser
     
 
     private:
+        static IOHelper io;
 
         static Command* createCommand(const std::string& cmd_name, const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next = NULL);
         

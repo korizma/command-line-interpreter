@@ -4,7 +4,8 @@
 #include <cctype>
 #include <vector>
 #include <fstream>
-#include "../HelperClasses/iohandler.h"
+#include "../HelperClasses/iohelper.h"
+#include <iostream>
 
 class Command
 {
@@ -14,6 +15,8 @@ class Command
 
         std::string out;
         Command* next;
+
+        IOHelper io;
 
         virtual void isValid() = 0;
 
@@ -56,9 +59,9 @@ inline void Command::output(std::string& text)
     
     if (out != "")
         if (out[0] == '<')
-            IOHandler::appendFile(out.substr(1, out.size()-1), text);
+            io.appendFile(out.substr(1, out.size()-1), text);
         else
-            IOHandler::writeFile(out, text);
+            io.writeFile(out, text);
     
     if (next == NULL)
         std::cout << text << std::endl;
