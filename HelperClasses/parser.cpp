@@ -135,7 +135,7 @@ std::vector<std::string> Parser::tokenize(const std::string& input, const bool& 
 
     for (int i = 1; i <= line.size(); i++)
     {
-        if (i == line.size() || (curr_par == ' ' && (line[i] == ' ' || line[i] == '\t')))
+        if (i == line.size() || (curr_par == ' ' && (line[i] == ' ' || line[i] == '\t')) || (line[i] == '|' && curr_par == ' '))
         {
             if (curr_token.size() != 0)
             {
@@ -150,6 +150,10 @@ std::vector<std::string> Parser::tokenize(const std::string& input, const bool& 
                 
                 tokens.push_back(curr_token);
             }
+            
+            if (line[i] == '|')
+                tokens.push_back("|");
+
             curr_token = "";
             continue;
         }
@@ -162,6 +166,9 @@ std::vector<std::string> Parser::tokenize(const std::string& input, const bool& 
             if (curr_par == ' ' && (line[i] == '\'' || line[i] == '\"'))
                 curr_par = line[i];
     }
+
+    for (int i = 0; i < tokens.size(); i++)
+        std::cout << "\'" << tokens[i] << "\'" << std::endl;
 
     return tokens;
 }
