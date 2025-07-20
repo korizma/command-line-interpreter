@@ -167,9 +167,6 @@ std::vector<std::string> Parser::tokenize(const std::string& input, const bool& 
                 curr_par = line[i];
     }
 
-    for (int i = 0; i < tokens.size(); i++)
-        std::cout << "\'" << tokens[i] << "\'" << std::endl;
-
     return tokens;
 }
 
