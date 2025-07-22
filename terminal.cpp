@@ -13,6 +13,7 @@ Terminal::Terminal()
     std::string current_dir(buffer);
     path = current_dir;
     ready_sign = "$";
+    io = IOHelper();
 }
 
 Terminal* Terminal::getInstance()

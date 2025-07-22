@@ -9,7 +9,7 @@ class Terminal
         std::string ready_sign;
         std::string path;
 
-        IOHelper io;
+        IOInterface io;
 
         Terminal();
         void start();
