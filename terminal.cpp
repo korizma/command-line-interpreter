@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include "CommandClasses/command.h"
 #include "HelperClasses/parser.h"
+#include "config.h"
 
 
 Terminal::Terminal()
@@ -12,8 +13,7 @@ Terminal::Terminal()
     ::getcwd(buffer, sizeof(buffer));
     std::string current_dir(buffer);
     path = current_dir;
-    ready_sign = "$";
-    io = IOHelper();
+    ready_sign = PATHSIGN;
 }
 
 Terminal* Terminal::getInstance()

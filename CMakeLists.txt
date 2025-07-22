@@ -37,9 +37,9 @@ set(SOURCES
 
     terminal.h
     terminal.cpp
+    config.h
     HelperClasses/iohelper.h
     HelperClasses/iohelper.cpp
-    HelperClasses/iointerface.h
     HelperClasses/parser.h
     HelperClasses/parser.cpp
     ExceptionClasses/exception.h

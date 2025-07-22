@@ -3,26 +3,27 @@
 #include <string>
 #include <fstream>
 #include "../ExceptionClasses/exception.h"
-#include "iointerface.h"
 
-class IOHelper: public IOInterface
+class IOHelper
 {
     public:
-        std::string readFile(const std::string &filename) override;
+        virtual std::string readFile(const std::string &filename);
 
-        void writeFile(const std::string &filename, const std::string &content) override;
+        virtual void writeFile(const std::string &filename, const std::string &content);
 
-        void createFile(const std::string& filename) override;
+        virtual void createFile(const std::string& filename);
 
-        std::string getInput() override;
+        // gets extra input if command requires
+        virtual std::string getInput();
 
-        std::string getLine() override;
+        // gets next line (command)
+        virtual std::string getLine();
 
-        void appendFile(const std::string& filename, const std::string& content) override;
+        virtual void appendFile(const std::string& filename, const std::string& content);
 
-        void clearFile(const std::string& filename) override;
+        virtual void clearFile(const std::string& filename);
 
-        void deleteFile(const std::string& filename) override;
+        virtual void deleteFile(const std::string& filename);
 };
 
 #endif // IOHELPER_H
