@@ -10,6 +10,8 @@ class RmCommand : public Command
 
         virtual std::string getOutput() override;
 
+        virtual void processInput() override;
+
     public:
         RmCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline = NULL)
                 : Command(arguments, options, next_in_pipeline) {}

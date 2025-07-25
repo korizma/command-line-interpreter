@@ -5,9 +5,9 @@
 
 void TrCommand::isValid() 
 {
-    if (arguments.size() != 3)
+    if (arguments.size() < 1 && arguments.size() > 3)
     {
-        throw ArgumentException(2, arguments.size());
+        throw ArgumentException(3, arguments.size());
     }
     if (options.size() != 0)
     {        
@@ -23,14 +23,8 @@ std::string TrCommand::getType()
 
 std::string TrCommand::getOutput()
 {
-    std::string text;
-    if (arguments[0][0] == '\"'|| arguments[0][0] == '\'')
-        text = arguments[0].substr(1, arguments[0].size()-2);
-    else
-    {
-        std::string file_input = io.readFile(arguments[0]);
-        text = file_input;
-    }
+    std::string text = arguments[0].substr(1, arguments[0].size()-2);
+
     std::string original;
     if (arguments[1][0] == '\"' || arguments[1][0] == '\'')
         original = arguments[1].substr(1, arguments[1].size() - 2);
@@ -53,5 +47,17 @@ std::string TrCommand::getOutput()
     return text;
 }
 
-
+void TrCommand::processInput()
+{
+    if (arguments.size() == 1)
+    {
+        std::string cmd_input = io.getInput();
+        arguments.insert(arguments.begin(), "\"" + cmd_input + "\"");
+    }
+    if (arguments[0][0] != '\"' && arguments[0][0] != '\'')
+    {
+        std::string file_input = io.readFile(arguments[0]);
+        arguments[0] = "\'" + file_input + "\'";
+    }
+}
 

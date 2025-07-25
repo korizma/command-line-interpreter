@@ -26,4 +26,5 @@ std::string ExitCommand::getOutput()
 }
 
 
+void ExitCommand::processInput() {}
 

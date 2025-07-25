@@ -12,11 +12,19 @@ class BatchCommand : public Command
 
         virtual std::string getOutput() override;
 
+        virtual void processInput() override;
+
+        bool nested_call;
+
+    protected:
+        void setToNested();
+
+        void acceptNestedArg(std::string &commands);
+
     public:
         BatchCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline = NULL)
-                : Command(arguments, options, next_in_pipeline) {}
+                : Command(arguments, options, next_in_pipeline) { nested_call = false; }
         ~BatchCommand();
-
 
         static std::string getType();
 };

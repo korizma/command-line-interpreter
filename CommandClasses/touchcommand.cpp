@@ -36,4 +36,5 @@ std::string TouchCommand::getOutput()
 }
 
 
+void TouchCommand::processInput() {}
 

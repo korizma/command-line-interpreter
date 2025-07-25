@@ -34,4 +34,6 @@ std::string TrunicateCommand::getOutput()
 }
 
 
+void TrunicateCommand::processInput() {}
+
 

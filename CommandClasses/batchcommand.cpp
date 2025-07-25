@@ -22,23 +22,14 @@ std::string BatchCommand::getType()
     return "batch";
 }
 
+void BatchCommand::setToNested()
+{
+    nested_call = true;
+}
+
 std::string BatchCommand::getOutput()
 {
-    if (arguments.size() == 0)
-    {
-        std::string cmd_input = io.getInput();
-        arguments.push_back("\"" + cmd_input + "\"");
-    }
-
-    if (std::isalpha(arguments[0][0]))
-    {
-        std::string file_input = io.readFile(arguments[0]);
-        arguments[0] = file_input;
-    }
-    else
-    {
-        arguments[0] = arguments[0].substr(1, arguments[0].size()-2);
-    }
+    arguments[0] = arguments[0].substr(1, arguments[0].length()-2);
 
     std::vector<std::string> command_lines;
     int begin = 0;
@@ -57,6 +48,23 @@ std::string BatchCommand::getOutput()
         try
         {
             Command* curr = Parser::parse(command_lines[i]);
+            BatchCommand* casted = dynamic_cast<BatchCommand*>(curr);
+
+            if (casted)
+            {
+                casted->setToNested();
+                
+                std::string commands = "";
+                for (int j = i+1; j < command_lines.size(); j++)
+                    commands += command_lines[j] + "\n";
+                
+                commands = "\'" + commands + "\'";
+                
+                casted->acceptNestedArg(commands);
+                casted->execute();
+                break;
+            }
+
             curr->execute();
             
         }
@@ -93,5 +101,22 @@ std::string BatchCommand::getOutput()
     return "";
 }
 
+void BatchCommand::processInput()
+{
+    if (arguments.size() == 0 && !nested_call)
+    {
+        std::string cmd_input = io.getInput();
+        arguments.push_back("\"" + cmd_input + "\"");
+    }
+    if (arguments[0][0] != '\"' && arguments[0][0] != '\'')
+    {
+        std::string file_input = io.readFile(arguments[0]);
+        arguments[0] = "\'" + file_input + "\'";
+    }
+}
 
+void BatchCommand::acceptNestedArg(std::string &commands)
+{
+    arguments.push_back(commands);
+}
 

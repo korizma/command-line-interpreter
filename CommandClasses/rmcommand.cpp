@@ -34,4 +34,5 @@ std::string RmCommand::getOutput()
 }
 
 
+void RmCommand::processInput() {}
 

@@ -13,7 +13,7 @@ std::string IOHelper::readFile(const std::string &filename)
 
     if (!file.is_open()) 
     {
-        throw FileException("this file does't exist!");
+        throw FileException("this file doesn't exist!");
     }
     std::string content;
     std::string line;

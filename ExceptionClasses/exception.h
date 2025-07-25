@@ -116,6 +116,10 @@ class SyntaxException : public std::exception
             message += temp;
         }
 
+        explicit SyntaxException(const std::string& error_msg)
+        {
+            message = "Something unexpected happened: " + error_msg;
+        }
 
         virtual const char* what() const noexcept override {
             return message.c_str();

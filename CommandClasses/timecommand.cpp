@@ -32,4 +32,7 @@ std::string TimeCommand::getOutput()
 }
 
 
+void TimeCommand::processInput() {}
+
+
 

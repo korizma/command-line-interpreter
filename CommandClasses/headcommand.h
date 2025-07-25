@@ -10,8 +10,6 @@ class HeadCommand : public Command
 {
     private:
         virtual void isValid() override;
-        
-        static std::vector<std::string> getNLines(std::string text, int n);
 
         virtual std::string getOutput() override;
 

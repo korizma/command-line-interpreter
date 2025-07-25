@@ -9,7 +9,7 @@ void HeadCommand::isValid()
     {
         throw ArgumentException(1, arguments.size());
     }
-    if (options.size() == 1 && options[0] != "-n" && options[0].size() > 7)
+    if (options.size() == 1 && (options[1] != "n" || options[0].size() > 7))
     {
         throw OptionException(options[0]);
     }
@@ -29,16 +29,6 @@ std::string HeadCommand::getOutput()
 {
     int x = std::stoi(options[0].substr(2, options[0].size()-2));
 
-    if (std::isalpha(arguments[0][0]))
-    {
-        std::string file_input = io.readFile(arguments[0]);
-        arguments[0] = file_input;
-    }
-    else
-    {
-        arguments[0] = arguments[0].substr(1, arguments[0].size()-2);
-    }
-
     int i;
     for (i = 0; i < arguments[0].size(); i++)
     {
@@ -47,7 +37,6 @@ std::string HeadCommand::getOutput()
         if (arguments[0][i] == '\n')
             x--;
     }
-
     
     return arguments[0].substr(0, i);
 }

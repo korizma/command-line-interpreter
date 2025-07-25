@@ -31,5 +31,4 @@ std::string DateCommand::getOutput()
     return oss.str();
 }
 
-
-
+void DateCommand::processInput() {}

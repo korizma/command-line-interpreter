@@ -37,4 +37,6 @@ std::string PromptCommand::getOutput()
 }
 
 
+void PromptCommand::processInput() {}
+
 

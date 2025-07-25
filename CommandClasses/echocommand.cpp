@@ -24,20 +24,10 @@ std::string EchoCommand::getType()
 
 std::string EchoCommand::getOutput()
 {
-    if (arguments.size() == 0)
-    {
-        std::string cmd_input = io.getInput();
-        arguments.push_back("\"" + cmd_input + "\"");
-    }
-
-    if (arguments[0][0] == '\"'|| arguments[0][0] == '\'')
-        return arguments[0].substr(1, arguments[0].size()-2);
-    else
-    {
-        std::string file_input = io.readFile(arguments[0]);
-        return file_input;
-    }
+    if (arguments[0][0] == '\"' || arguments[0][0] == '\'')
+        return arguments[0].substr(1, arguments[0].length() - 2);
+    else 
+        throw SyntaxException(arguments[0]);
 }
-
 
 

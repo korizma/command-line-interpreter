@@ -14,6 +14,7 @@ class Command
         std::vector<std::string> options;
 
         std::string out;
+        bool redirect_append;
         Command* next;
 
         IOHelper io;
@@ -23,6 +24,8 @@ class Command
         void output(std::string& text);
 
         virtual std::string getOutput() = 0;
+
+        virtual void processInput();
 
     public:
         Command(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline);
@@ -37,9 +40,15 @@ class Command
 inline Command::Command( const std::vector<std::string>& arguments,
      const std::vector<std::string>& options, Command* next_in_pipeline) : options(options), next(next_in_pipeline)
         {
+            redirect_append = false;
             for (int i = 0; i < arguments.size(); i++)
             {
-                if (arguments[i][0] == '<')
+                if (arguments[i][0] == '<' && arguments[i][1] == '<')
+                {
+                    out = arguments[i].substr(2, arguments[i].size()-2);
+                    redirect_append = true;
+                }
+                else if (arguments[i][0] == '<')
                     out = arguments[i].substr(1, arguments[i].size()-1);
                 else
                     this->arguments.push_back(arguments[i]);
@@ -58,8 +67,8 @@ inline void Command::output(std::string& text)
         return;
     
     if (out != "")
-        if (out[0] == '<')
-            io.appendFile(out.substr(1, out.size()-1), text);
+        if (redirect_append)
+            io.appendFile(out, text);
         else
             io.writeFile(out, text);
     
@@ -80,12 +89,25 @@ inline void Command::acceptArgument(std::string& argument)
 inline void Command::execute()
 {
     isValid();
+    processInput();
     std::string text = getOutput();
     output(text);
     if (next)
         next->execute();
 }
 
-
+inline void Command::processInput()
+{
+    if (arguments.size() == 0)
+    {
+        std::string cmd_input = io.getInput();
+        arguments.push_back("\"" + cmd_input + "\"");
+    }
+    if (arguments[0][0] != '\"' && arguments[0][0] != '\'')
+    {
+        std::string file_input = io.readFile(arguments[0]);
+        arguments[0] = "\'" + file_input + "\'";
+    }
+}
 
 #endif // COMMAND_H
