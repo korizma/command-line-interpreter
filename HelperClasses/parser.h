@@ -4,32 +4,47 @@
 #include <vector>
 #include "../CommandClasses/command.h"
 #include "iohelper.h"
+#include "config.h"
 
 class Parser 
 {
     public:
 
-        static Command* parse(const std::string& input);
+        Command* parse();
+
+        Parser(std::string &line);
     
 
     private:
-        static IOHelper io;
+        IOHelper io;
 
-        static Command* createCommand(const std::string& cmd_name, const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next = NULL);
+        bool is_pipeline_cmd;
+        bool has_regular_args;
+
+        std::string input_redirect, output_redirect;
+
+        std::string original_line;
+        std::vector<std::string> tokens;
         
-        static std::vector<std::string> tokenize(const std::string& input, const bool& is_redirect = false);
+        std::string command_name;
+        std::vector<std::string> args, options;
 
-        static std::vector<int> checkTokenSyntax(const std::string& token, const int& pos_in_line);
+        Command* final_command;
 
-        static void checkTokensSemantics(std::vector<std::string>& args, const bool& pipeline = false);
+        void seperateOnWhitespaces();
 
-        static void tokenizeRedirect(std::vector<std::string>& args);
+        void tokenize();
 
-        static std::vector<int> checkTokenRedirectSyntax(const std::string& token, const int& pos_in_line);
+        void readRedirect();
 
-        static Command* createPipeline(std::vector<std::string>& tokens);
+        Command* parsePipelineCmd();
 
-        static void classifyTokens(const std::vector<std::string>& tokens, std::string& cmd_name, std::vector<std::string>& args, std::vector<std::string>& options);
+        void classifyTokens();
+
+        Command* createCommand();
+
+        TokenType classifyToken();
+
 };
 
 #endif // PARSER_H
