@@ -4,7 +4,8 @@
 #include <vector>
 #include "../CommandClasses/command.h"
 #include "iohelper.h"
-#include "config.h"
+#include "../config.h"
+#include "token.h"
 
 class Parser 
 {
@@ -22,9 +23,10 @@ class Parser
         bool has_regular_args;
 
         std::string input_redirect, output_redirect;
+        bool output_redirect_append;
 
         std::string original_line;
-        std::vector<std::string> tokens;
+        std::vector<Token*> cmd_tokens;
         
         std::string command_name;
         std::vector<std::string> args, options;
@@ -33,7 +35,7 @@ class Parser
 
         void seperateOnWhitespaces();
 
-        void tokenize();
+        void tokenize(std::vector<std::string> &tokens, std::vector<int> &token_indx);
 
         void readRedirect();
 
@@ -41,9 +43,15 @@ class Parser
 
         void classifyTokens();
 
+        void semanticTokenAnalysis();
+
+        void syntaxTokenAnalysis();
+
+        void semanticFlowAnalysis();
+
         Command* createCommand();
 
-        TokenType classifyToken();
+        void print();
 
 };
 

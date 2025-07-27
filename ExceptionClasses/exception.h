@@ -3,6 +3,7 @@
 #include <vector>
 #include <exception>
 #include <string>
+#include "../config.h"
 
 class ArgumentException : public std::exception {
 public:
@@ -116,6 +117,26 @@ class SyntaxException : public std::exception
             message += temp;
         }
 
+        explicit SyntaxException(TokenType stype)
+        {
+            if (stype == InRedirect)
+            {
+                message = "Invalid input redirect position in command!";
+            }
+            else if (stype == Option)
+            {
+                message = "Invalid option position in command!";
+            }
+            else if (stype == OutRedirect)
+            {
+                message = "Invalid output redirect position in command!";
+            }
+            else if (stype == Arg)
+            {
+                message = "Invalid argument position in command!";
+            }
+        }
+
         explicit SyntaxException(const std::string& error_msg)
         {
             message = "Something unexpected happened: " + error_msg;
@@ -145,6 +166,21 @@ class SemanticFlowException : public std::exception
             message = "No source/destination after: \'" + type + "\'!";
         }
 
+        virtual const char* what() const noexcept override {
+            return message.c_str();
+        }
+
+    private:
+        std::string message;
+};
+
+class PipelineException : public std::exception
+{
+    public:
+        explicit PipelineException(const std::string& filename) 
+        {
+            message = "Input redirect file: \'" + filename + "\', has pipeline arguments!";
+        }
 
         virtual const char* what() const noexcept override {
             return message.c_str();

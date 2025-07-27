@@ -42,6 +42,8 @@ set(SOURCES
     HelperClasses/iohelper.cpp
     HelperClasses/parser.h
     HelperClasses/parser.cpp
+    HelperClasses/tokenchecker.h
+    HelperClasses/tokenchecker.cpp
     ExceptionClasses/exception.h
 )
 
