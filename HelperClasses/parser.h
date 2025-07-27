@@ -14,6 +14,8 @@ class Parser
         Command* parse();
 
         Parser(std::string &line);
+        void print();
+
     
 
     private:
@@ -33,13 +35,13 @@ class Parser
 
         Command* final_command;
 
+        bool is_first_in_pipeline;
+
         void seperateOnWhitespaces();
 
         void tokenize(std::vector<std::string> &tokens, std::vector<int> &token_indx);
 
         void readRedirect();
-
-        Command* parsePipelineCmd();
 
         void classifyTokens();
 
@@ -49,9 +51,13 @@ class Parser
 
         void semanticFlowAnalysis();
 
-        Command* createCommand();
+        void createCommand();
 
-        void print();
+        Command* parsePipelineCmd();
+        
+        Command* createPipeline();
+
+        Parser(const std::string cmd_name, std::vector<Token*> &tokens, bool first_command, std::string in_redirect, std::string out_redirect, bool out_append);
 
 };
 

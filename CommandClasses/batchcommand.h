@@ -22,8 +22,8 @@ class BatchCommand : public Command
         void acceptNestedArg(std::string &commands);
 
     public:
-        BatchCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline = NULL)
-                : Command(arguments, options, next_in_pipeline) { nested_call = false; }
+        BatchCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, const std::string &output_redirect, bool is_append)        
+                : Command(arguments, options, output_redirect, is_append) { nested_call = false; }
         ~BatchCommand();
 
         static std::string getType();

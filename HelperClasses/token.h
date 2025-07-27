@@ -102,6 +102,25 @@ inline bool Token::isAppendOutputRedirect() const
 inline void Token::print()
 {
     std::cout << "Token: " << value() << " at position: " << indx() << std::endl;
+    switch (type_)
+    {
+        case Arg:
+            std::cout << "Type: Argument" << std::endl;
+            break;
+        case Option:
+            std::cout << "Type: Option" << std::endl;
+            break;
+        case InRedirect:
+            std::cout << "Type: Input Redirect" << std::endl;
+            break;
+        case OutRedirect:
+            std::cout << "Type: Output Redirect" << std::endl;
+            break;
+        case PipeSign:
+            std::cout << "Type: Pipe Sign" << std::endl;
+            break;
+    }
+
 }
 
 #endif

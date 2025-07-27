@@ -23,26 +23,28 @@ Command* Parser::parse()
     seperateOnWhitespaces();
 
     semanticFlowAnalysis();
-    semanticTokenAnalysis();
     syntaxTokenAnalysis();
+    semanticTokenAnalysis();
+
     classifyTokens();
-    print();
-    return NULL;
 
     if (input_redirect != "")
     {
         readRedirect();
+
         seperateOnWhitespaces();
+
         semanticFlowAnalysis();
+        syntaxTokenAnalysis();
+        semanticTokenAnalysis();
+
+        classifyTokens();
     }
 
     if (is_pipeline_cmd)
     {
-        return parsePipelineCmd();
+        return createPipeline();
     }
-
-
-    classifyTokens();
 
     createCommand();
     return final_command;
@@ -69,7 +71,7 @@ void Parser::seperateOnWhitespaces()
     for (int i = 0; i < original_line.length(); i++)
     {
         curr_ch = original_line[i];
-        if (curr_ch == '\t')
+        if (curr_ch == '\t' || curr_ch == '\n')
             curr_ch = ' ';
 
         if (curr_ch == '|' && (curr_segment == ' ' || curr_segment == '*'))
@@ -274,7 +276,6 @@ void Parser::classifyTokens()
     }
 }
 
-
 void Parser::print()
 {
     std::cout << "Command name: " << command_name << std::endl;
@@ -292,9 +293,153 @@ void Parser::print()
         std::cout << opt << " ";
     std::cout << std::endl;
 
-    // for (const auto& token : cmd_tokens)
-    //     token->print();
+    std::cout << "Tokens: " << std::endl;
+    for (const auto& token : cmd_tokens)
+        token->print();
 }
+
+void Parser::createCommand()
+{
+    final_command = NULL;
+    if (command_name == EchoCommand::getType())
+    {
+        final_command =  new EchoCommand(args, options, output_redirect, output_redirect_append);
+    }
+    if (command_name == TimeCommand::getType())
+    {
+        final_command =  new TimeCommand(args, options, output_redirect, output_redirect_append);
+    }
+    if (command_name == DateCommand::getType())
+    {
+        final_command =  new DateCommand(args, options, output_redirect, output_redirect_append);
+    }
+    if (command_name == TouchCommand::getType())
+    {
+        final_command =  new TouchCommand(args, options, output_redirect, output_redirect_append);
+    }
+    if (command_name == WcCommand::getType())
+    {
+        final_command =  new WcCommand(args, options, output_redirect, output_redirect_append);
+    }
+    if (command_name == ExitCommand::getType())
+    {
+        final_command =  new ExitCommand(args, options, output_redirect, output_redirect_append);
+    }
+    if (command_name == HeadCommand::getType())
+    {
+        final_command =  new HeadCommand(args, options, output_redirect, output_redirect_append);
+    }
+    if (command_name == PromptCommand::getType())
+    {
+        final_command =  new PromptCommand(args, options, output_redirect, output_redirect_append);
+    }
+    if (command_name == RmCommand::getType())
+    {
+        final_command =  new RmCommand(args, options, output_redirect, output_redirect_append);
+    }
+    if (command_name == TrCommand::getType())
+    {
+        final_command =  new TrCommand(args, options, output_redirect, output_redirect_append);
+    }
+    if (command_name == TrunicateCommand::getType())
+    {
+        final_command =  new TrunicateCommand(args, options, output_redirect, output_redirect_append);
+    }
+    if (command_name == BatchCommand::getType())
+    {
+        final_command =  new BatchCommand(args, options, output_redirect, output_redirect_append);
+    }
+
+    if (final_command == NULL)
+        throw CommandException(command_name);
+}
+
+Command* Parser::createPipeline() 
+{
+    for (int i = 0; i < cmd_tokens.size()-1; i++)
+        if (cmd_tokens[i]->type() == cmd_tokens[i+1]->type() && cmd_tokens[i]->type() == PipeSign)
+            throw SyntaxException("Invalid pipeline creation");
+
+    std::vector<Token*> curr_tokens;
+
+    std::vector<Command*> finished_commands;
+
+    bool first_command_processed = false;
+
+
+    for (int i = 0; i <= cmd_tokens.size(); i++)
+    {
+        if (i == cmd_tokens.size() ||cmd_tokens[i]->type() == PipeSign)
+        {
+
+            if (!first_command_processed)
+            {
+                Parser pipeline_parse = Parser(command_name, curr_tokens, true, input_redirect, output_redirect, output_redirect_append);
+                finished_commands.push_back(pipeline_parse.parsePipelineCmd());
+                first_command_processed = true;
+            }
+            else
+            {
+                command_name = curr_tokens[0]->value();
+                curr_tokens.erase(curr_tokens.begin());
+                Parser pipeline_parse = Parser(command_name, curr_tokens, false, "", "", false);
+                finished_commands.push_back(pipeline_parse.parsePipelineCmd());
+            }
+
+
+            curr_tokens = {};
+            
+            continue;
+        }
+
+        if (cmd_tokens[i]->type() != InRedirect && cmd_tokens[i]->type() != OutRedirect)
+            curr_tokens.push_back(cmd_tokens[i]);
+
+    }
+
+    for (int i = 0; i < finished_commands.size()-1; i++)
+    {
+        finished_commands[i]->setNext(finished_commands[i+1]);
+    }
+    return finished_commands[0];
+}
+
+void Parser::readRedirect() 
+{
+    IOHelper io = IOHelper();
+    original_line = io.readFile(input_redirect);
+
+    for (int i = 0; i < cmd_tokens.size(); i++)
+        delete cmd_tokens[i];
+
+    cmd_tokens.clear();
+}
+
+Parser::Parser(const std::string cmd_name, std::vector<Token*> &tokens, bool first_command, std::string in_redirect, std::string out_redirect, bool out_append)
+    : command_name(cmd_name), cmd_tokens(tokens), is_first_in_pipeline(first_command), input_redirect(in_redirect), output_redirect(out_redirect), output_redirect_append(out_append)
+{
+}
+
+Command* Parser::parsePipelineCmd()
+{
+    classifyTokens();
+
+    if (is_first_in_pipeline && input_redirect != "")
+    {   
+        readRedirect();
+
+        seperateOnWhitespaces();
+
+        semanticFlowAnalysis();
+        syntaxTokenAnalysis();
+        semanticTokenAnalysis();
+
+        classifyTokens();
+    }
+    createCommand();
+    return final_command;
+}
+
 
 
 

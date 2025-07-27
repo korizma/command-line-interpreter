@@ -29,6 +29,11 @@ std::string WcCommand::getType()
 
 std::string WcCommand::getOutput()
 {
+    if (arguments[0][0] != '\'' && arguments[0][0] != '\"')
+        throw ArgumentException(false);
+    else
+        arguments[0] = arguments[0].substr(1, arguments[0].length()-2);
+
     if (options[0] == "-c")
     {
         return std::to_string(arguments[0].size());

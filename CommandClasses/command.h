@@ -26,34 +26,25 @@ class Command
         virtual std::string getOutput() = 0;
 
         virtual void processInput();
-
-    public:
-        Command(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline);
-        ~Command();
-
-        void execute();
         
         void acceptArgument(std::string& argument);
 
+    public:
+        Command(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline);
+        Command(const std::vector<std::string>& arguments, const std::vector<std::string>& options, const std::string &output_redirect, bool is_append);
+        ~Command();
+
+        void execute();
+
+        void setNext(Command *nextC);
+
+        void print();
+
 };
 
-inline Command::Command( const std::vector<std::string>& arguments,
-     const std::vector<std::string>& options, Command* next_in_pipeline) : options(options), next(next_in_pipeline)
-        {
-            redirect_append = false;
-            for (int i = 0; i < arguments.size(); i++)
-            {
-                if (arguments[i][0] == '<' && arguments[i][1] == '<')
-                {
-                    out = arguments[i].substr(2, arguments[i].size()-2);
-                    redirect_append = true;
-                }
-                else if (arguments[i][0] == '<')
-                    out = arguments[i].substr(1, arguments[i].size()-1);
-                else
-                    this->arguments.push_back(arguments[i]);
-            }
-        }
+inline Command::Command(const std::vector<std::string>& arguments, const std::vector<std::string>& options, const std::string &output_redirect, bool is_append)
+         : arguments(arguments), options(options), out(output_redirect), redirect_append(is_append)
+        { next = NULL;}
 
 inline Command::~Command()
 {   
@@ -65,12 +56,15 @@ inline void Command::output(std::string& text)
 {
     if (text == "" && next == NULL)
         return;
-    
-    if (out != "")
+
+    if (out.length() != 0)
+    {
         if (redirect_append)
             io.appendFile(out, text);
         else
             io.writeFile(out, text);
+        return;
+    }
     
     if (next == NULL)
         std::cout << text << std::endl;
@@ -108,6 +102,27 @@ inline void Command::processInput()
         std::string file_input = io.readFile(arguments[0]);
         arguments[0] = "\'" + file_input + "\'";
     }
+}
+
+inline void Command::setNext(Command* nextC) { next = nextC;}
+
+inline void Command::print()
+{
+    std::cout << "Command: ";
+    for (const auto& arg : arguments)
+        std::cout << "[" << arg << "] ";
+    std::cout << "\nOptions: ";
+    for (const auto& opt : options)
+        std::cout << "[" << opt << "] ";
+    std::cout << "\nOutput redirect: [" << out << "] len: " << out.length();
+    std::cout << "\nRedirect append: " << (redirect_append ? "true" : "false") << std::endl;
+    if (next != NULL)
+    {
+        std::cout << "Next command: " << std::endl;
+        next->print();
+    }
+    else
+        std::cout << "No next command." << std::endl;
 }
 
 #endif // COMMAND_H

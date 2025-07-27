@@ -13,8 +13,8 @@ class PromptCommand : public Command
         virtual void processInput() override;
 
     public:
-        PromptCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, Command* next_in_pipeline = NULL)
-                : Command(arguments, options, next_in_pipeline) {}
+        PromptCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, const std::string &output_redirect, bool is_append)        
+                : Command(arguments, options, output_redirect, is_append)  {}
         ~PromptCommand();
 
         static std::string getType();
