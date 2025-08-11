@@ -7,13 +7,13 @@ using namespace std;
 
 int main()
 {
-    // cout << "Welcome to CLI!" << endl;
-    // Terminal::run();
-    IOHelper nes;
-    string input = "echo 'nesto' | wc -c"; 
-    Parser* temp = new Parser(input);
-    Command* a = temp->parse();
-    // a->print();
-    a->execute();
+    cout << "Welcome to CLI!" << endl;
+    Terminal::run();
+    // IOHelper nes;
+    // string input = nes.getLine(); 
+    // Parser* temp = new Parser(input);
+    // Command* a = temp->parse();
+    // // a->print();
+    // a->execute();
     return 0;
 }

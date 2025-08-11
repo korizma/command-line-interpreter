@@ -9,7 +9,7 @@ void HeadCommand::isValid()
     {
         throw ArgumentException(1, arguments.size());
     }
-    if (options.size() == 1 && (options[1] != "n" || options[0].size() > 7))
+    if (options.size() == 1 && (options[0][1] != 'n' || options[0].size() > 7))
     {
         throw OptionException(options[0]);
     }
@@ -28,6 +28,8 @@ std::string HeadCommand::getType()
 std::string HeadCommand::getOutput()
 {
     int x = std::stoi(options[0].substr(2, options[0].size()-2));
+    
+    arguments[0] = arguments[0].substr(1, arguments[0].length()-2);
 
     int i;
     for (i = 0; i < arguments[0].size(); i++)

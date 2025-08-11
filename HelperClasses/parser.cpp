@@ -46,6 +46,8 @@ Command* Parser::parse()
         return createPipeline();
     }
 
+    
+
     createCommand();
     return final_command;
 }
@@ -436,6 +438,8 @@ Command* Parser::parsePipelineCmd()
 
         classifyTokens();
     }
+    for (int i = 0; i < cmd_tokens.size(); i++)
+        cmd_tokens[i]->print();
     createCommand();
     return final_command;
 }
