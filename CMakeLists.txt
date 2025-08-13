@@ -9,6 +9,11 @@ set(CMAKE_CXX_STANDARD 17)
 # List the source files explicitly
 set(SOURCES
     main.cpp
+    terminal.cpp
+    terminal.h
+    config.h
+
+    # Command classes
     CommandClasses/command.h
     CommandClasses/echocommand.h
     CommandClasses/echocommand.cpp
@@ -35,16 +40,34 @@ set(SOURCES
     CommandClasses/rmcommand.h
     CommandClasses/rmcommand.cpp
 
-    terminal.h
-    terminal.cpp
-    config.h
+    # Helper classes
     HelperClasses/iohelper.h
     HelperClasses/iohelper.cpp
-    HelperClasses/parser.h
-    HelperClasses/parser.cpp
+
+    # Parser classes
+    ParserClasses/parser.h
+    ParserClasses/parser.cpp
+
+    # Token classes
+    TokenClasses/token.h
+    TokenClasses/ArgumentToken.h
+    TokenClasses/ArgumentToken.cpp
+    TokenClasses/OptionToken.h
+    TokenClasses/OptionToken.cpp
+    TokenClasses/CommandToken.h
+    TokenClasses/CommandToken.cpp
+    TokenClasses/RedirectToken.h
+    TokenClasses/RedirectToken.cpp
+
+    # Stream classes (if needed)
+    StreamClasses/inputstream.h
+
+    # Exception classes
+    ExceptionClasses/exception.h
+
+    # Helper classes
     HelperClasses/tokenchecker.h
     HelperClasses/tokenchecker.cpp
-    ExceptionClasses/exception.h
 )
 
 # Create an executable from the specified source files

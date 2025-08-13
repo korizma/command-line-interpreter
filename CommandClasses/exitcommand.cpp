@@ -4,14 +4,19 @@
 
 void ExitCommand::isValid() 
 {
-    if (arguments.size() != 0)
+    if (_args.size() != 0)
     {
-        throw ArgumentException(0, arguments.size());
+        throw ArgumentException(0, _args.size());
     }
-    if (options.size() != 0)
+    if (_options.size() != 0)
     {
-        throw OptionException(0, options.size());
+        throw OptionException(0, _options.size());
     }
+}
+
+bool ExitCommand::hasOutputStream() const
+{
+    return false;
 }
 
 std::string ExitCommand::getType()
@@ -26,5 +31,4 @@ std::string ExitCommand::getOutput()
 }
 
 
-void ExitCommand::processInput() {}
 

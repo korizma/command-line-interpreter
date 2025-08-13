@@ -6,13 +6,17 @@
 class EchoCommand : public Command 
 {
     private:
-        virtual void isValid() override;
+        void isValid() override;
 
-        virtual std::string getOutput() override;
+        std::string getOutput() override;
+
+        bool needsInput() const override;
+
+        bool acceptsFileArgRead() const override;
 
     public:
-        EchoCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, const std::string &output_redirect, bool is_append)        
-                : Command(arguments, options, output_redirect, is_append)  {}
+        EchoCommand(InputStream* inputStream, OutStream* outputStream, const std::vector<Token*>& options)
+            : Command(inputStream, outputStream, options) {}
         ~EchoCommand();
 
         static std::string getType();

@@ -10,11 +10,9 @@ class TouchCommand : public Command
 
         virtual std::string getOutput() override;
 
-        virtual void processInput() override;
-
     public:
-        TouchCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, const std::string &output_redirect, bool is_append)        
-                : Command(arguments, options, output_redirect, is_append)  {}
+        TouchCommand(InputStream* inputStream, OutStream* outputStream, const std::vector<Token*>& options)
+            : Command(inputStream, outputStream, options) {}
         ~TouchCommand();
 
         static std::string getType();

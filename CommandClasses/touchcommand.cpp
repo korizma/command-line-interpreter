@@ -7,17 +7,17 @@
 
 void TouchCommand::isValid() 
 {
-    if (arguments.size() != 1)
+    if (_args.size() != 1)
     {
-        throw ArgumentException(1, arguments.size());
+        throw ArgumentException(1, _args.size());
     }
-    if (arguments.size() == 1 && (arguments[0][0] == '\'' || arguments[0][0] == '\"'))
+    if (_args.size() == 1 && _args[0]->subType() == ArgString)
     {
         throw ArgumentException(true);
     }
-    if (options.size() != 0)
+    if (_options.size() != 0)
     {
-        throw OptionException(0, options.size());
+        throw OptionException(0, _options.size());
     }
 }
 
@@ -29,12 +29,10 @@ std::string TouchCommand::getType()
 
 std::string TouchCommand::getOutput()
 {
-        
-    io.createFile(arguments[0]);  
+    IOHelper io;
+    io.createFile(_args[0]->value());  
 
     return ""; 
 }
 
-
-void TouchCommand::processInput() {}
 

@@ -6,18 +6,18 @@
 class PromptCommand : public Command 
 {
     private:
-        virtual void isValid() override;
+        void isValid() override;
 
-        virtual std::string getOutput() override;
-
-        virtual void processInput() override;
+        std::string getOutput() override;
 
     public:
-        PromptCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, const std::string &output_redirect, bool is_append)        
-                : Command(arguments, options, output_redirect, is_append)  {}
+        PromptCommand(InputStream* inputStream, OutStream* outputStream, const std::vector<Token*>& options)
+            : Command(inputStream, outputStream, options) {}
         ~PromptCommand();
 
         static std::string getType();
+
+        bool hasOutputStream() const override;
 };
 
 

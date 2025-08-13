@@ -131,7 +131,7 @@ class SyntaxException : public std::exception
             {
                 message = "Invalid output redirect position in command!";
             }
-            else if (stype == Arg)
+            else if (stype == Argument)
             {
                 message = "Invalid argument position in command!";
             }

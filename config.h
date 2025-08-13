@@ -4,11 +4,37 @@
 #define MAXLINELEN 512
 #define ARGALLOWEDCHRS "/_.-"
 
+
 enum TokenType
 {
-    Arg,
+    Argument,
     Option,
     InRedirect,
     OutRedirect,
-    PipeSign
+    PipeSign,
+    CommandName
+};
+
+enum SubTokenType
+{
+    ArgString,
+    ArgFile,
+    OutWrite,
+    OutAppend,
+    SubTokenNone
+};
+
+enum class InputStreamType
+{
+    ArgInStream,
+    FileInStream,
+    StdInStream,
+    CommandInStream
+};
+
+enum class OutStreamType
+{
+    CommandOutStream,
+    FileOutStream,
+    StdOutStream
 };

@@ -7,18 +7,23 @@
 
 void TrunicateCommand::isValid() 
 {
-    if (arguments.size() != 1)
+    if (_args.size() != 1)
     {
-        throw ArgumentException(1, arguments.size());
+        throw ArgumentException(1, _args.size());
     }
-    if (arguments.size() == 1 && (arguments[0][0] == '\'' || arguments[0][0] == '\"'))
+    if (_args.size() == 1 && _args[0]->subType() == ArgString)
     {
         throw ArgumentException(true);
     }
-    if (options.size() != 0)
+    if (_options.size() != 0)
     {
-        throw OptionException(0, options.size());
+        throw OptionException(0, _options.size());
     }
+}
+
+bool TrunicateCommand::hasOutputStream() const
+{
+    return false;
 }
 
 std::string TrunicateCommand::getType()
@@ -28,12 +33,10 @@ std::string TrunicateCommand::getType()
 
 std::string TrunicateCommand::getOutput()
 {   
-    io.clearFile(arguments[0]);
-    
+    IOHelper io;
+    io.clearFile(_args[0]->value());
     return "";
 }
 
-
-void TrunicateCommand::processInput() {}
 
 

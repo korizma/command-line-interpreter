@@ -7,20 +7,29 @@
 
 void WcCommand::isValid() 
 {
-    if (arguments.size() > 1)
+    if (_args.size() != 1)
     {
-        throw ArgumentException(1, arguments.size());
+        throw ArgumentException(1, _args.size());
     }
-    if (options.size() == 1 && options[0] != "-w" && options[0] != "-c")
+    if (_options.size() == 1 && _options[0]->value() != "-w" && _options[0]->value() != "-c")
     {
-        throw OptionException(options[0]);
+        throw OptionException(_options[0]->value());
     }
-    if (options.size() != 1)
+    if (_options.size() != 1)
     {
-        throw OptionException(1, options.size());
+        throw OptionException(1, _options.size());
     }
 }
 
+bool WcCommand::needsInput() const
+{
+    return _args.empty();
+}
+
+bool WcCommand::acceptsFileArgRead() const
+{
+    return true;
+}
 
 std::string WcCommand::getType()
 {
@@ -29,25 +38,20 @@ std::string WcCommand::getType()
 
 std::string WcCommand::getOutput()
 {
-    if (arguments[0][0] != '\'' && arguments[0][0] != '\"')
-        throw ArgumentException(false);
-    else
-        arguments[0] = arguments[0].substr(1, arguments[0].length()-2);
-
-    if (options[0] == "-c")
+    if (_options[0]->value() == "-c")
     {
-        return std::to_string(arguments[0].size());
+        return std::to_string(_args[0]->value().size());
     }
-    if (options[0] == "-w")
+    if (_options[0]->value() == "-w")
     {
         int i = 0, counter = 0;
         char last = 'a';
-        arguments[0] += " ";
-        while (i < arguments[0].size())
+        _args[0]->value() += " ";
+        while (i < _args[0]->value().size())
         {
-            if (!std::isspace(last) && std::isspace(arguments[0][i]))
+            if (!std::isspace(last) && std::isspace(_args[0]->value()[i]))
                 counter++;
-            last = arguments[0][i];
+            last = _args[0]->value()[i];
             i++;
         }
         return std::to_string(counter);

@@ -7,13 +7,13 @@
 
 void DateCommand::isValid() 
 {
-    if (arguments.size() != 0)
+    if (_args.size() != 0)
     {
-        throw ArgumentException(0, arguments.size());
+        throw ArgumentException(0, _args.size());
     }
-    if (options.size() != 0)
+    if (_options.size() != 0)
     {
-        throw OptionException(0, options.size());
+        throw OptionException(0, _options.size());
     }
 }
 
@@ -31,4 +31,3 @@ std::string DateCommand::getOutput()
     return oss.str();
 }
 
-void DateCommand::processInput() {}

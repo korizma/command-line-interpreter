@@ -6,13 +6,13 @@
 
 void TimeCommand::isValid() 
 {
-    if (arguments.size() != 0)
+    if (_args.size() != 0)
     {
-        throw ArgumentException(0, arguments.size());
+        throw ArgumentException(0, _args.size());
     }
-    if (options.size() != 0)
+    if (_options.size() != 0)
     {
-        throw OptionException(0, arguments.size());
+        throw OptionException(0, _options.size());
     }
 }
 
@@ -31,8 +31,6 @@ std::string TimeCommand::getOutput()
     return oss.str();
 }
 
-
-void TimeCommand::processInput() {}
 
 
 

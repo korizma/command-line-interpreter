@@ -6,15 +6,13 @@
 class DateCommand : public Command 
 {
     private:
-        virtual void isValid() override;
+        void isValid() override;
 
-        virtual std::string getOutput() override;
-
-        virtual void processInput() override;
+        std::string getOutput() override;
 
     public:
-        DateCommand(const std::vector<std::string>& arguments, const std::vector<std::string>& options, const std::string &output_redirect, bool is_append)        
-                : Command(arguments, options, output_redirect, is_append)  {}
+        DateCommand(InputStream* inputStream, OutStream* outputStream, const std::vector<Token*>& options)
+            : Command(inputStream, outputStream, options) {}
         ~DateCommand();
 
         static std::string getType();
