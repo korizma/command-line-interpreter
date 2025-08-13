@@ -22,21 +22,23 @@ Command* Parser::parse()
 {
     seperateOnWhitespaces();
 
+
+
     semanticFlowAnalysis();
     syntaxTokenAnalysis();
     semanticTokenAnalysis();
 
     classifyTokens();
 
-    if (input_redirect != "")
+    if (input_redirect != "" && !is_pipeline_cmd)
     {
         readRedirect();
 
         seperateOnWhitespaces();
 
-        semanticFlowAnalysis();
         syntaxTokenAnalysis();
-        semanticTokenAnalysis();
+
+        checkRedirectTokens();
 
         classifyTokens();
     }
@@ -222,7 +224,7 @@ void Parser::semanticFlowAnalysis()
         }
     }
 
-    if (has_args && has_input_redirect)
+    if (has_args && has_input_redirect && !is_pipeline_cmd)
         throw SemanticFlowException(true);
 }
 
@@ -409,7 +411,7 @@ Command* Parser::createPipeline()
 void Parser::readRedirect() 
 {
     IOHelper io = IOHelper();
-    original_line = io.readFile(input_redirect);
+    original_line = "\"" + io.readFile(input_redirect) + "\"";
 
     for (int i = 0; i < cmd_tokens.size(); i++)
         delete cmd_tokens[i];
@@ -432,20 +434,25 @@ Command* Parser::parsePipelineCmd()
 
         seperateOnWhitespaces();
 
-        semanticFlowAnalysis();
         syntaxTokenAnalysis();
-        semanticTokenAnalysis();
+
+        checkRedirectTokens();
 
         classifyTokens();
     }
-    for (int i = 0; i < cmd_tokens.size(); i++)
-        cmd_tokens[i]->print();
+
     createCommand();
     return final_command;
 }
 
-
-
+void Parser::checkRedirectTokens()
+{
+    for (int i = 0; i < cmd_tokens.size(); i++)
+    {
+        if (cmd_tokens[i]->type() != Arg)
+            throw SyntaxException("Input redirect can only contain arguments!");
+    }
+}
 
 
 

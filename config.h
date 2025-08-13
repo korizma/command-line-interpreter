@@ -2,6 +2,7 @@
 
 #define PATHSIGN "$"
 #define MAXLINELEN 512
+#define ARGALLOWEDCHRS "/_.-"
 
 enum TokenType
 {

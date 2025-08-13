@@ -1,5 +1,6 @@
 #include "tokenchecker.h"
 #include "token.h"
+#include "../config.h"
 
 TokenChecker::TokenChecker() {}
 
@@ -12,8 +13,8 @@ std::vector<int> TokenChecker::checkArgument(const std::string &token)
 
     for (int i = 0; i < n; i++)
     {
-        if (!std::isalnum(token[i]) && token[i] != '\\' && token[i] != '.' && token[i] != '_')
-            errs.push_back(i);
+            if (!std::isalnum(token[i]) && std::string(ARGALLOWEDCHRS).find(token[i]) == std::string::npos)
+                errs.push_back(i);
     }
     return errs;
 }
@@ -49,8 +50,8 @@ std::vector<int> TokenChecker::checkArgument(const std::string &token)
 
     for (int i = start; i < n; i++)
     {
-        if (token[i] != '.' && !std::isalnum(token[i]))
-            errs.push_back(i);
+        if (!std::isalnum(token[i]) && std::string(ARGALLOWEDCHRS).find(token[i]) == std::string::npos)
+                errs.push_back(i);
     }
 
     return errs;
