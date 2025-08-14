@@ -20,20 +20,9 @@ class CommandInStream : public InputStream
     public:
 	    CommandInStream();
     	std::vector<Token*> readStream() override;
-	
+
+        void print() const override;
+
 };
-
-inline CommandInStream::CommandInStream()
-	: InputStream(InputStreamType::CommandInStream) {}
-
-inline std::vector<Token*> CommandInStream::readStream() 
-{
-	return _command_args;
-}
-
-inline void CommandInStream::writeStream(const std::string& data) 
-{
-    _command_args.push_back(new ArgumentToken(data, 0));
-}
 
 #endif // COMMANDINSTREAM_H

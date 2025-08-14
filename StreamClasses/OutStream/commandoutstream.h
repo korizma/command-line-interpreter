@@ -10,20 +10,16 @@ class CommandOutStream : public OutStream
 {
 
     private:
-        CommandInStream _commandInStream;
+        CommandInStream* _commandInStream;
 
     public:
-        CommandOutStream(CommandInStream& commandInStream);
+        CommandOutStream(CommandInStream* commandInStream);
 
         void writeStream(const std::string& data) override;
+
+        void print() const override;
+
 };
 
-inline CommandOutStream::CommandOutStream(CommandInStream& commandInStream)
-	: OutStream(OutStreamType::CommandOutStream), _commandInStream(commandInStream) {}
-
-inline void CommandOutStream::writeStream(const std::string& data) 
-{
-	_commandInStream.writeStream(data);
-}
 
 #endif // COMMANDOUTSTREAM_H

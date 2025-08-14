@@ -15,6 +15,7 @@ class Command
         OutStream* _output_stream;
 
         Command* _next_command;
+        bool _is_pipeline_cmd;
 
     protected:
         Command(InputStream* inputStream, OutStream* outputStream, std::vector<Token*> options);
@@ -27,9 +28,6 @@ class Command
 
         // command logic in here
         virtual std::string getOutput() = 0;
-
-        // sets the next command to be executed
-        void setNextCommand(Command* next);
 
         // this needs to be overridden if the command accepts input
         virtual bool needsInput() const;
@@ -47,6 +45,9 @@ class Command
         void print();
 
         virtual bool hasOutputStream() const;
+
+        // sets the next command to be executed
+        void setNextCommand(Command* next);
 };
 
 #endif // COMMAND_H

@@ -11,7 +11,6 @@ enum TokenType
     Option,
     InRedirect,
     OutRedirect,
-    PipeSign,
     CommandName
 };
 

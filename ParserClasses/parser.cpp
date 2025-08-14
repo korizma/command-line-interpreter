@@ -38,7 +38,6 @@ Command* Parser::parse()
     semanticTokenAnalysis();
 
     classifyTokens();
-
     if (_is_pipeline_cmd)
     {
         return createPipeline();
@@ -52,7 +51,8 @@ Parser::Parser(std::string &line)
 {
     _original_line = line;
     _is_pipeline_cmd = false;
-    _input_redirect = _output_redirect = NULL;
+    _input_redirect = NULL;
+    _output_redirect = NULL;
 }
 
 void Parser::seperateOnWhitespaces()
@@ -144,11 +144,16 @@ void Parser::tokenize(std::vector<std::string> &tokens, std::vector<int> &token_
         {
             _cmd_tokens.push_back(Token::createToken(tokens[i], token_indx[i]));
         }
+        if (_cmd_tokens[_cmd_tokens.size()-1]->type() == CommandName)
+            _is_pipeline_cmd = true;
     }
 }
 
 void Parser::semanticTokenAnalysis()
 {
+    if (_is_pipeline_cmd)
+        return;
+
     bool has_input_redirect = false, has_output_redirect = false, has_args = false, has_opt = false;
 
     for (int i = 0; i < _cmd_tokens.size(); i++)
@@ -243,10 +248,10 @@ void Parser::classifyTokens()
                 _options.push_back(_cmd_tokens[i]);
                 break;
             case InRedirect:
-                _input_redirect = _cmd_tokens[i];
+                _input_redirect = new FileInStream(_cmd_tokens[i]->value());
                 break;
             case OutRedirect:
-                _output_redirect = _cmd_tokens[i];
+                _output_redirect = new FileOutStream(_cmd_tokens[i]->value(), _cmd_tokens[i]->subType() == OutAppend);
                 break;
         }
     }
@@ -277,76 +282,65 @@ void Parser::createCommand()
 {
     _final_command = NULL;
 
-    InputStream *input_stream;
-    OutStream *output_stream;
-
-    if (_input_redirect)
+    if (_input_redirect == NULL)
     {
-        input_stream = new FileInStream(_input_redirect->value());
-    }
-    else 
-    {
-        input_stream = new ArgInStream(_args);
+        _input_redirect = new ArgInStream(_args);
     }
 
-    if (_output_redirect)
+    if (_output_redirect == NULL)
     {
-        output_stream = new FileOutStream(_output_redirect->value(), _output_redirect->subType() == OutAppend);
-    }
-    else
-    {
-        output_stream = new StdOutStream();
+        _output_redirect = new StdOutStream();
     }
 
     std::string command_name = _command_token->value();
 
     if (command_name == EchoCommand::getType())
     {
-        _final_command =  new EchoCommand(input_stream, output_stream, _options);
+        _final_command =  new EchoCommand(_input_redirect, _output_redirect, _options);
     }
     if (command_name == TimeCommand::getType())
     {
-        _final_command =  new TimeCommand(input_stream, output_stream, _options);
+        _final_command =  new TimeCommand(_input_redirect, _output_redirect, _options);
     }
     if (command_name == DateCommand::getType())
     {
-        _final_command =  new DateCommand(input_stream, output_stream, _options);
+        _final_command =  new DateCommand(_input_redirect, _output_redirect, _options);
     }
     if (command_name == TouchCommand::getType())
     {
-        _final_command =  new TouchCommand(input_stream, output_stream, _options);
+        _final_command =  new TouchCommand(_input_redirect, _output_redirect, _options);
     }
     if (command_name == WcCommand::getType())
     {
-        _final_command =  new WcCommand(input_stream, output_stream, _options);
+        _final_command =  new WcCommand(_input_redirect, _output_redirect, _options);
     }
     if (command_name == ExitCommand::getType())
     {
-        _final_command =  new ExitCommand(input_stream, output_stream, _options);
+        _final_command =  new ExitCommand(_input_redirect, _output_redirect, _options);
     }
     if (command_name == HeadCommand::getType())
     {
-        _final_command =  new HeadCommand(input_stream, output_stream, _options);
+        _final_command =  new HeadCommand(_input_redirect, _output_redirect, _options);
     }
     if (command_name == PromptCommand::getType())
     {
-        _final_command =  new PromptCommand(input_stream, output_stream, _options);
+        _final_command =  new PromptCommand(_input_redirect, _output_redirect, _options);
     }
     if (command_name == RmCommand::getType())
     {
-        _final_command =  new RmCommand(input_stream, output_stream, _options);
+        _final_command =  new RmCommand(_input_redirect, _output_redirect, _options);
     }
     if (command_name == TrCommand::getType())
     {
-        _final_command =  new TrCommand(input_stream, output_stream, _options);
+        _final_command =  new TrCommand(_input_redirect, _output_redirect, _options);
     }
     if (command_name == TrunicateCommand::getType())
     {
-        _final_command =  new TrunicateCommand(input_stream, output_stream, _options);
+        _final_command =  new TrunicateCommand(_input_redirect, _output_redirect, _options);
     }
     // if (command_name == BatchCommand::getType())
     // {
-    //     _final_command =  new BatchCommand(input_stream, output_stream, _options);
+    //     _final_command =  new BatchCommand(_input_redirect, _output_redirect, _options);
     // }
 
     if (_final_command == NULL)
@@ -355,66 +349,76 @@ void Parser::createCommand()
 
 Command* Parser::createPipeline() 
 {
-    // for (int i = 0; i < cmd_tokens.size()-1; i++)
-    //     if (cmd_tokens[i]->type() == cmd_tokens[i+1]->type() && cmd_tokens[i]->type() == PipeSign)
-    //         throw SyntaxException("Invalid pipeline creation");
+    _cmd_tokens.insert(_cmd_tokens.begin(), _command_token);
 
-    // std::vector<Token*> curr_tokens;
+    int num_of_redirects = (_input_redirect != NULL) + (_output_redirect != NULL);
 
-    // std::vector<Command*> finished_commands;
+    if (_output_redirect == NULL)
+    {
+        _output_redirect = new StdOutStream();
+    }
 
-    // bool first_command_processed = false;
+    std::vector<Token*> curr_tokens;
+    Command* curr_cmd = NULL, *next_cmd = NULL;
 
-
-    // for (int i = 0; i <= cmd_tokens.size(); i++)
-    // {
-    //     if (i == cmd_tokens.size() ||cmd_tokens[i]->type() == PipeSign)
-    //     {
-
-    //         if (!first_command_processed)
-    //         {
-    //             Parser pipeline_parse = Parser(command_name, curr_tokens, true, input_redirect, output_redirect, output_redirect_append);
-    //             finished_commands.push_back(pipeline_parse.parsePipelineCmd());
-    //             first_command_processed = true;
-    //         }
-    //         else
-    //         {
-    //             command_name = curr_tokens[0]->value();
-    //             curr_tokens.erase(curr_tokens.begin());
-    //             Parser pipeline_parse = Parser(command_name, curr_tokens, false, "", "", false);
-    //             finished_commands.push_back(pipeline_parse.parsePipelineCmd());
-    //         }
+    CommandInStream *curr_in_str;
+    OutStream *curr_out_str = _output_redirect;
 
 
-    //         curr_tokens = {};
-            
-    //         continue;
-    //     }
+    for (int i = _cmd_tokens.size()-1 - num_of_redirects; i >= 0; i--)
+    {
+        curr_tokens.insert(curr_tokens.begin(), _cmd_tokens[i]);
+        
+        if (_cmd_tokens[i]->type() == CommandName && i != 0)
+        {
+            curr_in_str = new CommandInStream();
+            Parser pipe_parser = Parser(curr_tokens, curr_in_str, curr_out_str);
 
-    //     if (cmd_tokens[i]->type() != InRedirect && cmd_tokens[i]->type() != OutRedirect)
-    //         curr_tokens.push_back(cmd_tokens[i]);
+            curr_cmd = pipe_parser.parsePipelineCommand();
+            curr_cmd->setNextCommand(next_cmd);
 
-    // }
+            curr_out_str = new CommandOutStream(curr_in_str);
 
-    // for (int i = 0; i < finished_commands.size()-1; i++)
-    // {
-    //     finished_commands[i]->setNext(finished_commands[i+1]);
-    // }
-    // return finished_commands[0];
+            next_cmd = curr_cmd;
+
+            curr_tokens.clear();
+        }
+        else if (_cmd_tokens[i]->type() == CommandName && i == 0)
+        {
+            CommandOutStream *out_stream = new CommandOutStream(curr_in_str);
+            Parser pipe_parser = Parser(curr_tokens, _input_redirect, out_stream);
+            curr_cmd = pipe_parser.parsePipelineCommand();
+            curr_cmd->setNextCommand(next_cmd);
+        }
+
+        if (curr_cmd != NULL && !curr_cmd->hasOutputStream())
+        {
+            throw PipelineException(_cmd_tokens[i]->value());
+        }
+    }
+
+    return curr_cmd;
 }
 
+Parser::Parser(std::vector<Token*> tokens, InputStream* in_stream, OutStream* out_stream)
+{
+    _command_token = tokens[0];
+    _cmd_tokens.assign(tokens.begin() + 1, tokens.end());
+    _input_redirect = in_stream;
+    _output_redirect = out_stream;
+}
 
-
-// Parser::Parser(const std::string cmd_name, std::vector<Token*> &tokens, bool first_command, std::string in_redirect, std::string out_redirect, bool out_append)
-//     : command_name(cmd_name), cmd_tokens(tokens), is_first_in_pipeline(first_command), input_redirect(in_redirect), output_redirect(out_redirect), output_redirect_append(out_append)
-// {
-// }
-
-Command* Parser::parsePipelineCmd()
+Command* Parser::parsePipelineCommand()
 {
     classifyTokens();
 
-    createCommand();
-    return _final_command;
-}
+    if (_input_redirect == NULL)
+        _input_redirect = new ArgInStream(_args);
 
+    createCommand();
+
+    if (!_final_command->hasOutputStream())
+        throw PipelineException(_command_token->value());
+
+    return _final_command;    
+}

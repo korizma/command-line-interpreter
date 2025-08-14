@@ -16,7 +16,6 @@ void TimeCommand::isValid()
     }
 }
 
-
 std::string TimeCommand::getType()
 {
     return "time";

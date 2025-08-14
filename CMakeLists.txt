@@ -61,6 +61,7 @@ set(SOURCES
     StreamClasses/InStream/inputstream.h
     StreamClasses/InStream/arginstream.h
     StreamClasses/InStream/commandinstream.h
+    StreamClasses/InStream/commandinstream.cpp
     StreamClasses/InStream/fileinstream.h
     StreamClasses/InStream/stdinstream.h
 
@@ -68,6 +69,7 @@ set(SOURCES
     StreamClasses/OutStream/outstream.cpp
     StreamClasses/OutStream/fileoutstream.h
     StreamClasses/OutStream/commandoutstream.h
+    StreamClasses/OutStream/commandoutstream.cpp
     StreamClasses/OutStream/stdoutstream.h
 
     # Exception classes

@@ -15,6 +15,7 @@ Command::Command(InputStream* inputStream, OutStream* outputStream, std::vector<
 void Command::setNextCommand(Command* next)
 {
     _next_command = next;
+    _is_pipeline_cmd = true;
 }
 
 bool Command::needsInput() const
@@ -36,13 +37,16 @@ void Command::execute()
 {
     _args = _input_stream->readStream();
 
+
     // sees if the command needs additional input
-    if (needsInput())
+    if (needsInput() && _input_stream->getType() == InputStreamType::StdInStream)
     {
         StdInStream temp = StdInStream();
         std::vector<Token*> temp_args = temp.readStream();
         _args.insert(_args.begin(), temp_args.begin(), temp_args.end());
     }
+
+    isValid();
 
     // if the first arg is a file and the command can read it
     if (acceptsFileArgRead() && _args[0]->subType() == ArgFile)
@@ -53,8 +57,6 @@ void Command::execute()
         delete _args[0];
         _args[0] = new ArgumentToken("\"" + content + "\"", 0);
     }
-
-    isValid();
 
     std::string output_text = getOutput();
 

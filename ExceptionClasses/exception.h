@@ -180,9 +180,10 @@ class SemanticFlowException : public std::exception
 class PipelineException : public std::exception
 {
     public:
-        explicit PipelineException(const std::string& filename) 
+
+        explicit PipelineException(const std::string& command_name) 
         {
-            message = "Input redirect file: \'" + filename + "\', has pipeline arguments!";
+            message = "Command: \"" + command_name + "\" has no output stream, so it cannot be used in a pipeline!";
         }
 
         virtual const char* what() const noexcept override {

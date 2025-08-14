@@ -7,6 +7,7 @@
 #include "../config.h"
 #include "../TokenClasses/token.h"
 
+
 class Parser 
 {
     public:
@@ -17,12 +18,18 @@ class Parser
 
         void print();
 
+    protected:
+
+        // parse the command that is in the pipeline
+        Command* parsePipelineCommand();
+
     private:
         IOHelper _io;
 
         bool _is_pipeline_cmd;
 
-        Token* _input_redirect, *_output_redirect;
+        InputStream* _input_redirect;
+        OutStream* _output_redirect;
 
         std::string _original_line;
         std::vector<Token*> _cmd_tokens;
@@ -37,12 +44,6 @@ class Parser
 
         // called in the seperateOneWhitespaces function to finish the tokenizing
         void tokenize(std::vector<std::string> &tokens, std::vector<int> &token_indx);
-
-        // reads the input redirect into the original line
-        void readRedirect();
-
-        // checks if the tokens read from the input redirect are all args
-        void checkRedirectTokens();
 
         // classifies the tokens in their respective roles
         void classifyTokens();
@@ -59,14 +60,12 @@ class Parser
         // creates the command based on the parsers data
         void createCommand();
 
-        // command creator for parts of the pipeline, only called in the createPipeline function
-        Command* parsePipelineCmd();
-
         // if the original line is a pipeline command this function parses it
         Command* createPipeline();
         
         // constructor for the command pipeline part
-        Parser(const std::string cmd_name, std::vector<Token*> &tokens, bool first_command, std::string in_redirect, std::string out_redirect, bool out_append);
+        Parser(std::vector<Token*> tokens, InputStream* in_stream, OutStream* out_stream);
+
 
 };
 
