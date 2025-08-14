@@ -38,3 +38,4 @@ enum class OutStreamType
     FileOutStream,
     StdOutStream
 };
+

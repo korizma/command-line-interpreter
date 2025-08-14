@@ -3,8 +3,8 @@
 
 #include <string>
 #include <vector>
-#include "../TokenClasses/token.h"
-#include "../config.h"
+#include "../../TokenClasses/token.h"
+#include "../../config.h"
 
 class InputStream 
 {

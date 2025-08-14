@@ -5,9 +5,9 @@
 #include "inputstream.h"
 #include <vector>
 #include <string>
-#include "../TokenClasses/token.h"
+#include "../../TokenClasses/token.h"
 #include "../../HelperClasses/iohelper.h"
-#include "../TokenClasses/argumenttoken.h" 
+#include "../../TokenClasses/argumenttoken.h" 
 
 class StdInStream : public InputStream 
 {
@@ -24,7 +24,7 @@ inline std::vector<Token*> StdInStream::readStream()
 {
     IOHelper io;
     std::vector<Token*> tokens;
-    Token* input_token = new ArgumentToken("\'" + io.getLine() + "\'", 0);
+    Token* input_token = new ArgumentToken("\'" + io.getInput() + "\'", 0);
 
     tokens.push_back(input_token);
     return tokens;

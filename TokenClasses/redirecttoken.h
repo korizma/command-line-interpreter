@@ -10,36 +10,32 @@ class RedirectToken : public Token
         bool _isInput;
         SubTokenType _subtype;
     public:
-        // Constructor: sign + path in one string
-        RedirectToken(const std::string &token_value, int token_pos)
-            : Token("", token_pos)
+        // Constructor: sign and path as a single string
+        RedirectToken(const std::string &sign_and_path, int token_pos)
+            : Token(sign_and_path, token_pos)
         {
-            std::string path;
-            if (token_value.size() >= 2 && token_value[0] == '>' && token_value[1] == '>')
+            int n = sign_and_path.length();
+            int remove = 1;
+            if (n > 1 && sign_and_path[0] == '>' && sign_and_path[1] == '>')
             {
                 _isInput = false;
                 _subtype = OutAppend;
-                path = token_value.substr(2);
+                remove = 2;
             }
-            else if (!token_value.empty() && token_value[0] == '>')
+            else if (n > 0 && sign_and_path[0] == '>')
             {
                 _isInput = false;
                 _subtype = OutWrite;
-                path = token_value.substr(1);
             }
-            else if (!token_value.empty() && token_value[0] == '<')
+            else if (n > 0 && sign_and_path[0] == '<')
             {
                 _isInput = true;
                 _subtype = SubTokenNone;
-                path = token_value.substr(1);
             }
-            else
+            if (n > 2)
             {
-                _isInput = true;
-                _subtype = SubTokenNone;
-                path = token_value;
+                setValue(sign_and_path.substr(remove, n - remove));
             }
-            setValue(path);
         }
 
         // Constructor: sign and path as separate strings

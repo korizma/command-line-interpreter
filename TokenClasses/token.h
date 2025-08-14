@@ -30,6 +30,8 @@ class Token
 
     virtual void print() const;
 
+    static Token* createToken(const std::string &token_value, int token_pos, const std::string &next_value = "", int next_pos = -1);
+
 };
 
 inline void Token::setValue(const std::string &value)

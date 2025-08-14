@@ -66,9 +66,9 @@ public:
     explicit FileException(const std::string& file, const bool& file_exists) 
     {
         if (file_exists)
-            message = "File \'" + file + "\' already exsists!";  
+            message = "File \'" + file + "\' already exists!";  
         else
-            message = "File \'" + file + "\' doesn't exsists!";  
+            message = "File \'" + file + "\' doesn't exists!";  
     }
 
     explicit FileException(const std::string& file): message("Something went wrong! Problem: \'" + file + "\'") {}
@@ -109,8 +109,11 @@ class SyntaxException : public std::exception
 
             std::string temp = "";
             for (int i = 0; i < line.size(); i++)
-                temp += " ";
-            
+                if (line[i] == '\t')
+                    temp += "\t";
+                else
+                    temp += " ";
+
             for (int i = 0; i < indx_errors.size(); i++)
                 temp[indx_errors[i]] = '^';
             

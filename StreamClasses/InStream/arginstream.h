@@ -4,8 +4,8 @@
 #include "inputstream.h"
 #include <vector>
 #include <string>
-#include "../TokenClasses/token.h"
-#include "../TokenClasses/argumenttoken.h"
+#include "../../TokenClasses/token.h"
+#include "../../TokenClasses/argumenttoken.h"
 #include "../../HelperClasses/iohelper.h"
 
 class ArgInStream : public InputStream 

@@ -6,9 +6,9 @@
 #include <vector>
 #include <string>
 #include <fstream>
-#include "../TokenClasses/token.h"
-#include "../TokenClasses/argumenttoken.h"
-#include "../HelperClasses/iohelper.h"
+#include "../../TokenClasses/token.h"
+#include "../../TokenClasses/argumenttoken.h"
+#include "../../HelperClasses/iohelper.h"
 
 class FileInStream : public InputStream 
 {
@@ -30,7 +30,7 @@ inline std::vector<Token*> FileInStream::readStream()
 {
 	std::vector<Token*> tokens;
     IOHelper io;
-    std::string input = io.readFile(_filename);
+    std::string input = "\"" + io.readFile(_filename) + "\"";
     tokens.push_back(new ArgumentToken(input, 0));
     return tokens;
 }

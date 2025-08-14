@@ -18,7 +18,7 @@ class BatchCommand : public Command
         void acceptNestedArg(std::string &commands);
 
     public:
-        BatchCommand(InputStream* inputStream, OutStream* outputStream, const std::vector<Token*>& args, const std::vector<Token*>& options);
+        BatchCommand(InputStream* inputStream, OutStream* outputStream, const std::vector<Token*>& options);
         ~BatchCommand();
 
         static std::string getType();

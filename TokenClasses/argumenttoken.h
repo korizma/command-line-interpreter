@@ -6,11 +6,13 @@ class ArgumentToken : public Token
 {
     private:
         SubTokenType _subtype;
+        bool _is_valid_string;
 
     public:
         ArgumentToken(const std::string& token_value, int token_pos)
-            : Token(token_value, token_pos) 
+            : Token(token_value, token_pos)
         {
+            _is_valid_string = (token_value[0] == token_value[token_value.length() - 1]) && (token_value[0] == '"' || token_value[0] == '\'');
             if (!token_value.empty() && (token_value[0] == '"' || token_value[0] == '\''))
             {
                 if (token_value.length() >= 2)
@@ -38,7 +40,7 @@ class ArgumentToken : public Token
             int n = val.length();
             if (_subtype == ArgString) 
             {
-                if (n < 2 || val[0] != val[n-1] || (val[0] != '"' && val[0] != '\'')) 
+                if (n < 2 || !_is_valid_string) 
                 {
                     errs.push_back(pos()); // sets the error at the starting position of the token
                 }

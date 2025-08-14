@@ -41,7 +41,7 @@ void Command::execute()
     {
         StdInStream temp = StdInStream();
         std::vector<Token*> temp_args = temp.readStream();
-        _args.insert(_args.end(), temp_args.begin(), temp_args.end());
+        _args.insert(_args.begin(), temp_args.begin(), temp_args.end());
     }
 
     // if the first arg is a file and the command can read it

@@ -3,7 +3,7 @@
 
 #include <string>
 #include <iostream>
-#include "../config.h"
+#include "../../config.h"
 
 class OutStream 
 {
@@ -20,28 +20,5 @@ class OutStream
         virtual void print() const;
 };
 
-inline OutStream::OutStream(OutStreamType type)
-    : _type(type) {}
-
-    OutStreamType OutStream::getType() const
-{
-    return _type;
-}
-
-inline void OutStream::print() const
-{
-    switch (_type)
-    {
-        case OutStreamType::CommandOutStream:
-            std::cout << "OutStream Type: COMMAND" << std::endl;
-            break;
-        case OutStreamType::FileOutStream:
-            std::cout << "OutStream Type: FILE" << std::endl;
-            break;
-        case OutStreamType::StdOutStream:
-            std::cout << "OutStream Type: STDOUT" << std::endl;
-            break;
-    }
-}
 
 #endif // OUTSTREAM_H

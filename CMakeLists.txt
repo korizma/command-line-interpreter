@@ -15,6 +15,7 @@ set(SOURCES
 
     # Command classes
     CommandClasses/command.h
+    CommandClasses/command.cpp
     CommandClasses/echocommand.h
     CommandClasses/echocommand.cpp
     CommandClasses/timecommand.h
@@ -50,24 +51,27 @@ set(SOURCES
 
     # Token classes
     TokenClasses/token.h
-    TokenClasses/ArgumentToken.h
-    TokenClasses/ArgumentToken.cpp
-    TokenClasses/OptionToken.h
-    TokenClasses/OptionToken.cpp
-    TokenClasses/CommandToken.h
-    TokenClasses/CommandToken.cpp
-    TokenClasses/RedirectToken.h
-    TokenClasses/RedirectToken.cpp
+    TokenClasses/token.cpp
+    TokenClasses/argumenttoken.h
+    TokenClasses/optiontoken.h
+    TokenClasses/commandtoken.h
+    TokenClasses/redirecttoken.h
 
-    # Stream classes (if needed)
-    StreamClasses/inputstream.h
+    # Stream classes
+    StreamClasses/InStream/inputstream.h
+    StreamClasses/InStream/arginstream.h
+    StreamClasses/InStream/commandinstream.h
+    StreamClasses/InStream/fileinstream.h
+    StreamClasses/InStream/stdinstream.h
+
+    StreamClasses/OutStream/outstream.h
+    StreamClasses/OutStream/outstream.cpp
+    StreamClasses/OutStream/fileoutstream.h
+    StreamClasses/OutStream/commandoutstream.h
+    StreamClasses/OutStream/stdoutstream.h
 
     # Exception classes
     ExceptionClasses/exception.h
-
-    # Helper classes
-    HelperClasses/tokenchecker.h
-    HelperClasses/tokenchecker.cpp
 )
 
 # Create an executable from the specified source files

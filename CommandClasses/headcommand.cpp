@@ -19,7 +19,7 @@ void HeadCommand::isValid()
     {
         throw ArgumentException(1, _args.size());
     }
-    if (_options.size() == 1 && (_options[0]->value()[0] != 'n' || _options[0]->value().size() > 7))
+    if (_options.size() == 1 && (_options[0]->value()[0] != 'n' || _options[0]->value().size() > 7 || _options[0]->value().size() < 3))
     {
         throw OptionException(_options[0]->value());
     }
