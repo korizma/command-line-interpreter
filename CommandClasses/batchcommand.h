@@ -15,7 +15,6 @@ class BatchCommand : public Command
 
     protected:
         void setToNested();
-        void acceptNestedArg(std::string &commands);
 
     public:
         BatchCommand(InputStream* inputStream, OutStream* outputStream, const std::vector<Token*>& options);

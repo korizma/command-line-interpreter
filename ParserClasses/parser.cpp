@@ -133,6 +133,9 @@ void Parser::tokenize(std::vector<std::string> &tokens, std::vector<int> &token_
     {
         if (tokens[i] == "<" || tokens[i] == ">>" || tokens[i] == ">" || tokens[i] == "|")
         {
+            if (i + 1 == tokens.size())
+                throw SemanticFlowException(tokens[i]);
+            
             _cmd_tokens.push_back(Token::createToken(tokens[i], token_indx[i], tokens[i+1], token_indx[i+1]));
             i++;
         }

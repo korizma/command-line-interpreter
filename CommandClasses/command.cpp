@@ -59,7 +59,7 @@ void Command::execute()
 
     std::string output_text = getOutput();
 
-    if (hasOutputStream())
+    if (hasOutputStream() && !output_text.empty())
         _output_stream->writeStream(output_text);
 
     if (_next_command != NULL)
@@ -89,4 +89,9 @@ void Command::print()
     }
     else
         std::cout << "No next command." << std::endl;
+}
+
+void Command::setInputStream(InputStream* input_stream)
+{
+    _input_stream = input_stream;
 }

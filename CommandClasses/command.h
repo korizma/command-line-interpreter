@@ -36,6 +36,8 @@ class Command
         // this needs to be overridden if the command has output
         virtual bool acceptsFileArgRead() const;
 
+        void setInputStream(InputStream* input_stream);
+
     public:
         
         ~Command();

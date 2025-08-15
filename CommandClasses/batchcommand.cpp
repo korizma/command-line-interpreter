@@ -3,6 +3,7 @@
 #include <string>
 #include "../HelperClasses/iohelper.h"
 #include "../ParserClasses/parser.h"
+#include "../StreamClasses/InStream/arginstream.h"
 
 void BatchCommand::isValid() 
 {
@@ -68,10 +69,11 @@ std::string BatchCommand::getOutput()
                 std::string commands = "";
                 for (int j = i+1; j < command_lines.size(); j++)
                     commands += command_lines[j] + "\n";
-                
+
                 commands = "\'" + commands + "\'";
-                
-                casted->acceptNestedArg(commands);
+                InputStream* nested_input = new ArgInStream({new ArgumentToken(commands, 0)});
+
+                casted->setInputStream(nested_input);
                 casted->execute();
                 break;
             }
@@ -110,12 +112,6 @@ std::string BatchCommand::getOutput()
         }
     }
     return "";
-}
-
-
-void BatchCommand::acceptNestedArg(std::string &commands)
-{
-    _args.push_back(new ArgumentToken(commands, 0));
 }
 
 BatchCommand::BatchCommand(InputStream* inputStream, OutStream* outputStream, const std::vector<Token*>& options)

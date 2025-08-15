@@ -166,7 +166,10 @@ class SemanticFlowException : public std::exception
 
         explicit SemanticFlowException(const std::string& type) 
         {
-            message = "No source/destination after: \'" + type + "\'!";
+            if (type == "|")
+                message = "Expected a command after pipeline sign!";
+            else
+                message = "No source/destination after: \'" + type + "\'!";
         }
 
         virtual const char* what() const noexcept override {

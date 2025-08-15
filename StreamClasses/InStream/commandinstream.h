@@ -10,21 +10,18 @@
 
 class CommandInStream : public InputStream 
 {
-    friend class CommandOutStream;
-    friend class Parser;
-
     private:
         std::vector<Token*> _command_args;
-
-        void writeStream(const std::string& data);
-
-        void addArgs(Token* arg);
 
     public:
 	    CommandInStream();
     	std::vector<Token*> readStream() override;
 
         void print() const override;
+
+        void addArgs(Token* arg);
+
+        void writeStream(const std::string& data);
 
 };
 

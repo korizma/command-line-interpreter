@@ -46,12 +46,13 @@ std::string WcCommand::getOutput()
     {
         int i = 0, counter = 0;
         char last = 'a';
-        _args[0]->value() += " ";
-        while (i < _args[0]->value().size())
+        std::string text = _args[0]->value();
+        text += " ";
+        while (i < text.size())
         {
-            if (!std::isspace(last) && std::isspace(_args[0]->value()[i]))
+            if (!std::isspace(last) && std::isspace(text[i]))
                 counter++;
-            last = _args[0]->value()[i];
+            last = text[i];
             i++;
         }
         return std::to_string(counter);
