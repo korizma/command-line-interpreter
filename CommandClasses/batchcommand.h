@@ -22,6 +22,10 @@ class BatchCommand : public Command
         ~BatchCommand();
 
         static std::string getType();
+
+        bool needsInput() const override;
+
+        bool acceptsFileArgRead() const override;
 };
 
 #endif // BATCHCOMMAND_H

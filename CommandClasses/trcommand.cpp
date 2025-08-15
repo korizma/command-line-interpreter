@@ -44,7 +44,15 @@ std::string TrCommand::getOutput()
 
     std::string original = _args[1]->value();
 
-    std::string replacement = _args[2]->value();
+    std::string replacement;
+    if (_args.size() == 3)
+    {
+        replacement = _args[2]->value();
+    }
+    else
+    {
+        replacement = "";
+    }
 
     int pos = 0;
 

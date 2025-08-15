@@ -338,10 +338,10 @@ void Parser::createCommand()
     {
         _final_command =  new TrunicateCommand(_input_redirect, _output_redirect, _options);
     }
-    // if (command_name == BatchCommand::getType())
-    // {
-    //     _final_command =  new BatchCommand(_input_redirect, _output_redirect, _options);
-    // }
+    if (command_name == BatchCommand::getType())
+    {
+        _final_command =  new BatchCommand(_input_redirect, _output_redirect, _options);
+    }
 
     if (_final_command == NULL)
         throw CommandException(command_name);
@@ -414,6 +414,15 @@ Command* Parser::parsePipelineCommand()
 
     if (_input_redirect == NULL)
         _input_redirect = new ArgInStream(_args);
+
+    if (_input_redirect->getType() == InputStreamType::CommandInStream)
+    {
+        CommandInStream* command_in_stream = dynamic_cast<CommandInStream*>(_input_redirect);
+        for (int i = 0; i < _args.size(); i++)
+        {
+            command_in_stream->addArgs(_args[i]);
+        }
+    }
 
     createCommand();
 

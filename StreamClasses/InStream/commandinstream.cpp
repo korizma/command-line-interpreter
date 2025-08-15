@@ -10,7 +10,12 @@ std::vector<Token*> CommandInStream::readStream()
 
 void CommandInStream::writeStream(const std::string& data) 
 {
-    _command_args.push_back(new ArgumentToken("\"" + data + "\"", 0));
+    _command_args.insert(_command_args.begin(), new ArgumentToken("\"" + data + "\"", 0));
+}
+
+void CommandInStream::addArgs(Token* arg)
+{
+    _command_args.push_back(arg);
 }
 
 void CommandInStream::print() const

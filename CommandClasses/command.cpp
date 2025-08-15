@@ -37,9 +37,8 @@ void Command::execute()
 {
     _args = _input_stream->readStream();
 
-
     // sees if the command needs additional input
-    if (needsInput() && _input_stream->getType() == InputStreamType::StdInStream)
+    if (needsInput() && _input_stream->getType() == InputStreamType::ArgInStream)
     {
         StdInStream temp = StdInStream();
         std::vector<Token*> temp_args = temp.readStream();
