@@ -48,6 +48,8 @@ set(SOURCES
     # Parser classes
     ParserClasses/parser.h
     ParserClasses/parser.cpp
+    ParserClasses/validitychecker.cpp
+    ParserClasses/validitychecker.h
 
     # Token classes
     TokenClasses/token.h

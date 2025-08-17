@@ -12,7 +12,7 @@ class Parser
 {
     public:
 
-        Command* parse();
+        virtual Command* parse();
 
         Parser(std::string &line);
 
@@ -23,7 +23,10 @@ class Parser
         // parse the command that is in the pipeline
         Command* parsePipelineCommand();
 
-    private:
+
+        // constructor for the command pipeline part
+        Parser(std::vector<Token*> tokens, InputStream* in_stream, OutStream* out_stream);
+
         IOHelper _io;
 
         bool _is_pipeline_cmd;
@@ -37,6 +40,11 @@ class Parser
         Token* _command_token;
         std::vector<Token*> _args, _options;
 
+        // creates the command based on the parsers data
+        virtual void createCommand();
+
+    private:
+
         Command* _final_command;
 
         // tokenizes the input line 
@@ -48,25 +56,9 @@ class Parser
         // classifies the tokens in their respective roles
         void classifyTokens();
 
-        // checks for semantic errors in the tokens (invalid order of args)
-        void semanticTokenAnalysis();
-
-        // checks for syntax errors in the tokens (unwanted chars, invalid formats)
-        void syntaxTokenAnalysis();
-
-        // checks for semantic errors in the tokens (flow collisions)
-        void semanticFlowAnalysis();
-
-        // creates the command based on the parsers data
-        void createCommand();
-
         // if the original line is a pipeline command this function parses it
         Command* createPipeline();
         
-        // constructor for the command pipeline part
-        Parser(std::vector<Token*> tokens, InputStream* in_stream, OutStream* out_stream);
-
-
 };
 
 #endif // PARSER_H

@@ -141,9 +141,13 @@ std::string BatchCommand::getOutput()
     std::string final_output = "";
     std::vector<Token*> command_outputs = batch_in_stream->readStream();
 
-    for (int i = command_outputs.size()-1; i >= 0; i--)
+    for (int i = command_outputs.size()-1; i > 0; i--)
     {
         final_output += command_outputs[i]->value() + "\n";
+    }
+    if (command_outputs.size() > 0)
+    {
+        final_output += command_outputs[0]->value();
     }
 
     return final_output;

@@ -28,14 +28,15 @@
 #include "../StreamClasses/OutStream/stdoutstream.h"
 #include "../StreamClasses/OutStream/commandoutstream.h"
 
+#include "validitychecker.h"
+
 
 Command* Parser::parse()
 {
     seperateOnWhitespaces();
 
-    semanticFlowAnalysis();
-    syntaxTokenAnalysis();
-    semanticTokenAnalysis();
+    ValidityChecker checker(_cmd_tokens, _original_line);
+    checker.checkAll();
 
     classifyTokens();
     if (_is_pipeline_cmd)
@@ -150,92 +151,6 @@ void Parser::tokenize(std::vector<std::string> &tokens, std::vector<int> &token_
         if (_cmd_tokens[_cmd_tokens.size()-1]->type() == CommandName)
             _is_pipeline_cmd = true;
     }
-}
-
-void Parser::semanticTokenAnalysis()
-{
-    if (_is_pipeline_cmd)
-        return;
-
-    bool has_input_redirect = false, has_output_redirect = false, has_args = false, has_opt = false;
-
-    for (int i = 0; i < _cmd_tokens.size(); i++)
-    {
-        switch (_cmd_tokens[i]->type())
-        {
-            case Option:
-                has_opt = true;
-                if (has_input_redirect)
-                    throw SyntaxException(InRedirect);
-                if (has_output_redirect)
-                    throw SyntaxException(OutRedirect);
-                if (has_args)
-                    throw SyntaxException(Argument);
-                break;
-            case Argument:
-                has_args = true;
-                if (has_input_redirect)
-                    throw SyntaxException(InRedirect);
-                if (has_output_redirect)
-                    throw SyntaxException(OutRedirect);
-                break;
-            case InRedirect:
-                has_input_redirect = true;
-                break;
-            case OutRedirect:
-                has_output_redirect = true;
-                break;
-        }
-    }
-
-}
-
-void Parser::semanticFlowAnalysis()
-{
-    bool has_input_redirect = false, has_output_redirect = false, has_args = false;
-
-    for (int i = 0; i < _cmd_tokens.size(); i++)
-    {
-        TokenType curr_type = _cmd_tokens[i]->type();
-        if (curr_type == Argument)
-            has_args = true;
-        else if (curr_type == InRedirect)
-        {
-            if (has_input_redirect)
-                throw SemanticFlowException(true);
-
-            has_input_redirect = true;
-        }
-        else if (curr_type == OutRedirect)
-        {
-            if (has_output_redirect)
-                throw SemanticFlowException(false);
-
-            has_output_redirect = true;
-        }
-        else if (curr_type == CommandName)
-        {
-            _is_pipeline_cmd = true;
-        }
-    }
-
-    if (has_args && has_input_redirect && !_is_pipeline_cmd)
-        throw SemanticFlowException(true);
-}
-
-void Parser::syntaxTokenAnalysis()
-{
-    std::vector<int> errs, temp;
-
-    for (int i = 0; i < _cmd_tokens.size(); i++)
-    {
-        temp = _cmd_tokens[i]->checkToken();
-
-        errs.insert(errs.end(), temp.begin(), temp.end());
-    }
-    
-    if (errs.size() != 0)
-        throw SyntaxException(_original_line, errs);
 }
 
 void Parser::classifyTokens()
