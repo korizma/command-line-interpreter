@@ -1,4 +1,4 @@
-#include "outstream.h"
+#include "outstream.hpp"
 
 OutStream::OutStream(OutStreamType type)
     : _type(type) {}

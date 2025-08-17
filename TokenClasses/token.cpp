@@ -1,8 +1,8 @@
-#include "token.h"
-#include "argumenttoken.h"
-#include "redirecttoken.h"
-#include "optiontoken.h"
-#include "commandtoken.h"
+#include "token.hpp"
+#include "argumenttoken.hpp"
+#include "redirecttoken.hpp"
+#include "optiontoken.hpp"
+#include "commandtoken.hpp"
 
 Token* Token::createToken(const std::string &token_value, int token_pos, const std::string &next_value, int next_pos)
 {

@@ -1,11 +1,11 @@
-#include "batchcommand.h"
+#include "batchcommand.hpp"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohelper.h"
-#include "../ParserClasses/parser.h"
-#include "../StreamClasses/InStream/arginstream.h"
-#include "../StreamClasses/InStream/commandinstream.h"
-#include "../StreamClasses/OutStream/commandoutstream.h"
+#include "../HelperClasses/iohelper.hpp"
+#include "../ParserClasses/parser.hpp"
+#include "../StreamClasses/InStream/arginstream.hpp"
+#include "../StreamClasses/InStream/commandinstream.hpp"
+#include "../StreamClasses/OutStream/commandoutstream.hpp"
 
 BatchCommand::~BatchCommand()
 {

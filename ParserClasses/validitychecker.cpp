@@ -1,5 +1,5 @@
-#include "validitychecker.h"
-#include "../ExceptionClasses/exception.h"
+#include "validitychecker.hpp"
+#include "../ExceptionClasses/exception.hpp"
 
 void ValidityChecker::checkSemantic()
 {

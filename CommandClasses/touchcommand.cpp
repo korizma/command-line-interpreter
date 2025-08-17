@@ -1,7 +1,7 @@
-#include "touchcommand.h"
+#include "touchcommand.hpp"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohelper.h"
+#include "../HelperClasses/iohelper.hpp"
 #include <ctime>
 #include <iomanip>
 

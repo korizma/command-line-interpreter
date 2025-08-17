@@ -1,9 +1,9 @@
-#include "datecommand.h"
+#include "datecommand.hpp"
 #include <iostream>
 #include <string>
 #include <ctime>
 #include <iomanip>
-#include "../ExceptionClasses/exception.h"
+#include "../ExceptionClasses/exception.hpp"
 
 void DateCommand::isValid() 
 {

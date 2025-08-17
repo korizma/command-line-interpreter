@@ -1,4 +1,4 @@
-#include "timecommand.h"
+#include "timecommand.hpp"
 #include <iostream>
 #include <string>
 #include <ctime>

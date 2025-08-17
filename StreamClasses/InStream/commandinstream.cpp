@@ -1,4 +1,4 @@
-#include "commandinstream.h"
+#include "commandinstream.hpp"
 
 CommandInStream::CommandInStream()
 	: InputStream(InputStreamType::CommandInStream) {}

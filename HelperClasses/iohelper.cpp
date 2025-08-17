@@ -1,8 +1,8 @@
-#include "iohelper.h"
+#include "iohelper.hpp"
 #include <string>
 #include <fstream>
-#include "../terminal.h"
-#include "../ExceptionClasses/exception.h"
+#include "../terminal.hpp"
+#include "../ExceptionClasses/exception.hpp"
 #include <iostream>
 #include <limits>
 

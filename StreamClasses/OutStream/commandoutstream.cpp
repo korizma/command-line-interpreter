@@ -1,4 +1,4 @@
-#include "commandoutstream.h"
+#include "commandoutstream.hpp"
 
 CommandOutStream::CommandOutStream(CommandInStream* commandInStream)
 	: OutStream(OutStreamType::CommandOutStream), _commandInStream(commandInStream) {}

@@ -1,7 +1,7 @@
-#include "trcommand.h"
+#include "trcommand.hpp"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohelper.h"
+#include "../HelperClasses/iohelper.hpp"
 
 void TrCommand::isValid() 
 {

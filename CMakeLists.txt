@@ -10,74 +10,74 @@ set(CMAKE_CXX_STANDARD 17)
 set(SOURCES
     main.cpp
     terminal.cpp
-    terminal.h
-    config.h
+    terminal.hpp
+    config.hpp
 
     # Command classes
-    CommandClasses/command.h
+    CommandClasses/command.hpp
     CommandClasses/command.cpp
-    CommandClasses/echocommand.h
+    CommandClasses/echocommand.hpp
     CommandClasses/echocommand.cpp
-    CommandClasses/timecommand.h
+    CommandClasses/timecommand.hpp
     CommandClasses/timecommand.cpp
-    CommandClasses/datecommand.h
+    CommandClasses/datecommand.hpp
     CommandClasses/datecommand.cpp
-    CommandClasses/touchcommand.h
+    CommandClasses/touchcommand.hpp
     CommandClasses/touchcommand.cpp
-    CommandClasses/wccommand.h
+    CommandClasses/wccommand.hpp
     CommandClasses/wccommand.cpp
-    CommandClasses/exitcommand.h
+    CommandClasses/exitcommand.hpp
     CommandClasses/exitcommand.cpp
-    CommandClasses/batchcommand.h
+    CommandClasses/batchcommand.hpp
     CommandClasses/batchcommand.cpp
-    CommandClasses/headcommand.h
+    CommandClasses/headcommand.hpp
     CommandClasses/headcommand.cpp
-    CommandClasses/trcommand.h
+    CommandClasses/trcommand.hpp
     CommandClasses/trcommand.cpp
-    CommandClasses/trunicatecommand.h
+    CommandClasses/trunicatecommand.hpp
     CommandClasses/trunicatecommand.cpp
-    CommandClasses/promptcommand.h
+    CommandClasses/promptcommand.hpp
     CommandClasses/promptcommand.cpp
-    CommandClasses/rmcommand.h
+    CommandClasses/rmcommand.hpp
     CommandClasses/rmcommand.cpp
 
     # Helper classes
-    HelperClasses/iohelper.h
+    HelperClasses/iohelper.hpp
     HelperClasses/iohelper.cpp
 
     # Parser classes
-    ParserClasses/parser.h
+    ParserClasses/parser.hpp
     ParserClasses/parser.cpp
     ParserClasses/validitychecker.cpp
-    ParserClasses/validitychecker.h
-    ParserClasses/pipelineparser.h
+    ParserClasses/validitychecker.hpp
+    ParserClasses/pipelineparser.hpp
     ParserClasses/pipelineparser.cpp
 
     # Token classes
-    TokenClasses/token.h
+    TokenClasses/token.hpp
     TokenClasses/token.cpp
-    TokenClasses/argumenttoken.h
-    TokenClasses/optiontoken.h
-    TokenClasses/commandtoken.h
-    TokenClasses/redirecttoken.h
+    TokenClasses/argumenttoken.hpp
+    TokenClasses/optiontoken.hpp
+    TokenClasses/commandtoken.hpp
+    TokenClasses/redirecttoken.hpp
 
     # Stream classes
-    StreamClasses/InStream/inputstream.h
-    StreamClasses/InStream/arginstream.h
-    StreamClasses/InStream/commandinstream.h
+    StreamClasses/InStream/inputstream.hpp
+    StreamClasses/InStream/arginstream.hpp
+    StreamClasses/InStream/commandinstream.hpp
     StreamClasses/InStream/commandinstream.cpp
-    StreamClasses/InStream/fileinstream.h
-    StreamClasses/InStream/stdinstream.h
+    StreamClasses/InStream/fileinstream.hpp
+    StreamClasses/InStream/stdinstream.hpp
 
-    StreamClasses/OutStream/outstream.h
+    StreamClasses/OutStream/outstream.hpp
     StreamClasses/OutStream/outstream.cpp
-    StreamClasses/OutStream/fileoutstream.h
-    StreamClasses/OutStream/commandoutstream.h
+    StreamClasses/OutStream/fileoutstream.hpp
+    StreamClasses/OutStream/commandoutstream.hpp
     StreamClasses/OutStream/commandoutstream.cpp
-    StreamClasses/OutStream/stdoutstream.h
+    StreamClasses/OutStream/stdoutstream.hpp
 
     # Exception classes
-    ExceptionClasses/exception.h
+    ExceptionClasses/exception.hpp
 )
 
 # Create an executable from the specified source files

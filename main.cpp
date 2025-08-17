@@ -1,5 +1,5 @@
 #include <iostream>
-#include "terminal.h"
+#include "terminal.hpp"
 #include <csignal>
 
 using namespace std;

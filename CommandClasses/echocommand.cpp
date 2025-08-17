@@ -1,8 +1,8 @@
-#include "echocommand.h"
+#include "echocommand.hpp"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohelper.h"
-#include "../ExceptionClasses/exception.h"
+#include "../HelperClasses/iohelper.hpp"
+#include "../ExceptionClasses/exception.hpp"
 
 bool EchoCommand::needsInput() const
 {

@@ -1,4 +1,4 @@
-#include "exitcommand.h"
+#include "exitcommand.hpp"
 #include <iostream>
 #include <string>
 

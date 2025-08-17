@@ -1,7 +1,7 @@
-#include "rmcommand.h"
+#include "rmcommand.hpp"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohelper.h"
+#include "../HelperClasses/iohelper.hpp"
 #include <ctime>
 #include <iomanip>
 

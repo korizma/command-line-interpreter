@@ -1,10 +1,10 @@
-#include "promptcommand.h"
+#include "promptcommand.hpp"
 #include <iostream>
 #include <string>
 #include <ctime>
 #include <iomanip>
-#include "../terminal.h"
-#include "../ExceptionClasses/exception.h"
+#include "../terminal.hpp"
+#include "../ExceptionClasses/exception.hpp"
 
 void PromptCommand::isValid() 
 {

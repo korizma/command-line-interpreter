@@ -1,8 +1,8 @@
-#include "pipelineparser.h"
-#include "../StreamClasses/InStream/arginstream.h"
-#include "../StreamClasses/InStream/arginstream.h"
-#include "../StreamClasses/OutStream/commandoutstream.h"
-#include "validitychecker.h"
+#include "pipelineparser.hpp"
+#include "../StreamClasses/InStream/arginstream.hpp"
+#include "../StreamClasses/InStream/arginstream.hpp"
+#include "../StreamClasses/OutStream/commandoutstream.hpp"
+#include "validitychecker.hpp"
 
 
 PipelineParser::PipelineParser(std::vector<Token*> tokens, InputStream* in_stream, OutStream* out_stream)

@@ -1,10 +1,10 @@
-#include "terminal.h"
+#include "terminal.hpp"
 #include <string>
 #include <iostream>
 #include <unistd.h>
-#include "CommandClasses/command.h"
-#include "ParserClasses/parser.h"
-#include "config.h"
+#include "CommandClasses/command.hpp"
+#include "ParserClasses/parser.hpp"
+#include "config.hpp"
 
 
 Terminal::Terminal()

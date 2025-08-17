@@ -1,7 +1,7 @@
-#include "headcommand.h"
+#include "headcommand.hpp"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohelper.h"
+#include "../HelperClasses/iohelper.hpp"
 
 bool HeadCommand::needsInput() const
 {
