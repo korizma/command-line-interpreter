@@ -39,6 +39,8 @@ class Command
         void setInputStream(InputStream* input_stream);
 
     public:
+
+        void setOutputStream(OutStream* output_stream);
         
         ~Command();
 

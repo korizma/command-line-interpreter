@@ -3,6 +3,10 @@
 
 Command::~Command()
 {
+    if (_input_stream != NULL)
+        delete _input_stream;
+    if (_output_stream != NULL)
+        delete _output_stream;
     if (_next_command != NULL)
         delete _next_command;
 }
@@ -93,5 +97,23 @@ void Command::print()
 
 void Command::setInputStream(InputStream* input_stream)
 {
+    if (_input_stream != NULL)
+        delete _input_stream;
+
     _input_stream = input_stream;
+}
+
+void Command::setOutputStream(OutStream* output_stream)
+{
+    Command* curr = this;
+    while (curr->_next_command != NULL)
+    {
+        curr = curr->_next_command;
+    }
+
+    if (curr->_output_stream->getType() == OutStreamType::StdOutStream)
+    {
+        delete curr->_output_stream;
+        curr->_output_stream = output_stream;
+    }
 }

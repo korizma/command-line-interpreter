@@ -73,6 +73,10 @@ void Terminal::start()
         {
             std::cerr << "File Error: " << e.what() << std::endl; 
         }
+        catch (const PipelineException& e)
+        {
+            std::cerr << "Pipeline Error: " << e.what() << std::endl; 
+        }
         catch (const std::exception& e)
         {
             std::cerr << "Error: " << e.what() << std::endl; 

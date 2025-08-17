@@ -17,6 +17,8 @@ class ArgInStream : public InputStream
         ArgInStream(const std::vector<Token*>& arguments);
 
         std::vector<Token*> readStream() override;
+
+        int getArgCount() const;
 };
 
 inline ArgInStream::ArgInStream(const std::vector<Token*>& arguments)
@@ -27,6 +29,9 @@ inline std::vector<Token*> ArgInStream::readStream()
     return _args;
 }
 
-
+inline int ArgInStream::getArgCount() const
+{
+    return _args.size();
+}
 
 #endif // ARGINSTREAM_H
