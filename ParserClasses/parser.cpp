@@ -29,7 +29,7 @@
 #include "../StreamClasses/OutStream/commandoutstream.h"
 
 #include "validitychecker.h"
-
+#include "pipelineparser.h"
 
 Command* Parser::parse()
 {
@@ -267,85 +267,58 @@ void Parser::createCommand()
 
 Command* Parser::createPipeline() 
 {
-    _cmd_tokens.insert(_cmd_tokens.begin(), _command_token);
+    std::vector<std::vector<Token*>> pipeline_command;
+    pipeline_command.push_back({_command_token});
 
-    int num_of_redirects = (_input_redirect != NULL) + (_output_redirect != NULL);
-
-    if (_output_redirect == NULL)
+    int curr_command_num = 0;
+    for (int i = 0; i < _cmd_tokens.size(); i++)
     {
-        _output_redirect = new StdOutStream();
+
+        if (_cmd_tokens[i]->type() == CommandName)
+        {
+            curr_command_num++;
+            pipeline_command.push_back({_cmd_tokens[i]});
+            continue;
+        }
+
+        pipeline_command[curr_command_num].push_back(_cmd_tokens[i]);
     }
 
-    std::vector<Token*> curr_tokens;
-    Command* curr_cmd = NULL, *next_cmd = NULL;
+    if (pipeline_command.size() == 0)
+        throw std::runtime_error("Something is really wrong!");
 
-    CommandInStream *curr_in_str;
-    OutStream *curr_out_str = _output_redirect;
+    std::vector<InputStream*> command_in_stream = {NULL};
+    std::vector<OutStream*> command_out_stream;
 
-
-    for (int i = _cmd_tokens.size()-1 - num_of_redirects; i >= 0; i--)
+    for (int i = 1; i < pipeline_command.size(); i++)
     {
-        curr_tokens.insert(curr_tokens.begin(), _cmd_tokens[i]);
-        
-        if (_cmd_tokens[i]->type() == CommandName && i != 0)
-        {
-            curr_in_str = new CommandInStream();
-            Parser pipe_parser = Parser(curr_tokens, curr_in_str, curr_out_str);
+        command_in_stream.push_back(new CommandInStream());
+    }
+    for (int i = 0; i < pipeline_command.size()-1; i++)
+    {
+        command_out_stream.push_back(new CommandOutStream(dynamic_cast<CommandInStream*>(command_in_stream[i+1])));
+    }
+    command_out_stream.push_back(NULL);
 
-            curr_cmd = pipe_parser.parsePipelineCommand();
-            curr_cmd->setNextCommand(next_cmd);
+    PipelineParser* p = new PipelineParser(pipeline_command[0], command_in_stream[0], command_out_stream[0]);
+    Command* first_command = p->parse();
+    Command* prev_command = first_command;
 
-            curr_out_str = new CommandOutStream(curr_in_str);
-
-            next_cmd = curr_cmd;
-
-            curr_tokens.clear();
-        }
-        else if (_cmd_tokens[i]->type() == CommandName && i == 0)
-        {
-            CommandOutStream *out_stream = new CommandOutStream(curr_in_str);
-            Parser pipe_parser = Parser(curr_tokens, _input_redirect, out_stream);
-            curr_cmd = pipe_parser.parsePipelineCommand();
-            curr_cmd->setNextCommand(next_cmd);
-        }
-
-        if (curr_cmd != NULL && !curr_cmd->hasOutputStream())
-        {
-            throw PipelineException(_cmd_tokens[i]->value());
-        }
+    for (int i = 1; i < pipeline_command.size(); i++)
+    {
+        delete p;
+        p = new PipelineParser(pipeline_command[i], command_in_stream[i], command_out_stream[i]);
+        Command* curr_cmd = p->parse();
+        prev_command->setNextCommand(curr_cmd);
+        prev_command = curr_cmd;
     }
 
-    return curr_cmd;
+    return first_command;
 }
 
-Parser::Parser(std::vector<Token*> tokens, InputStream* in_stream, OutStream* out_stream)
-{
-    _command_token = tokens[0];
-    _cmd_tokens.assign(tokens.begin() + 1, tokens.end());
-    _input_redirect = in_stream;
-    _output_redirect = out_stream;
-}
-
-Command* Parser::parsePipelineCommand()
-{
-    classifyTokens();
-
-    if (_input_redirect == NULL)
-        _input_redirect = new ArgInStream(_args);
-
-    if (_input_redirect->getType() == InputStreamType::CommandInStream)
-    {
-        CommandInStream* command_in_stream = dynamic_cast<CommandInStream*>(_input_redirect);
-        for (int i = 0; i < _args.size(); i++)
-        {
-            command_in_stream->addArgs(_args[i]);
-        }
-    }
-
-    createCommand();
-
-    if (!_final_command->hasOutputStream())
-        throw PipelineException(_command_token->value());
-
-    return _final_command;    
+Parser::Parser() {
+    _command_token = nullptr;
+    _input_redirect = nullptr;
+    _output_redirect = nullptr;
+    _final_command = nullptr;
 }

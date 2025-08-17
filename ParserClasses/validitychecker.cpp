@@ -50,14 +50,14 @@ void ValidityChecker::checkFlow()
             has_args = true;
         else if (curr_type == InRedirect)
         {
-            if (has_input_redirect)
+            if (has_input_redirect || (_in_pipeline && _pos_in_pipeline != PosInPipeline::Start))
                 throw SemanticFlowException(true);
 
             has_input_redirect = true;
         }
         else if (curr_type == OutRedirect)
         {
-            if (has_output_redirect)
+            if (has_output_redirect || (_in_pipeline && _pos_in_pipeline != PosInPipeline::End))
                 throw SemanticFlowException(false);
 
             has_output_redirect = true;
@@ -94,7 +94,7 @@ void ValidityChecker::checkAll()
     checkSemantic();
 }
 
-ValidityChecker::ValidityChecker(const std::vector<Token*>& tokens, const std::string& original_line)
-    : _tokens(tokens), _original_line(original_line), _is_pipeline_cmd(false)
+ValidityChecker::ValidityChecker(const std::vector<Token*>& tokens, const std::string& original_line, bool in_pipeline, PosInPipeline pos_in_pipeline)
+    : _tokens(tokens), _original_line(original_line), _is_pipeline_cmd(false), _in_pipeline(in_pipeline), _pos_in_pipeline(pos_in_pipeline)
 {
 }

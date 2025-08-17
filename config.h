@@ -38,3 +38,10 @@ enum class OutStreamType
     StdOutStream
 };
 
+enum class PosInPipeline
+{
+    Start,
+    Middle,
+    End
+};
+

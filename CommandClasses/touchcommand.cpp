@@ -35,4 +35,7 @@ std::string TouchCommand::getOutput()
     return ""; 
 }
 
-
+bool TouchCommand::hasOutputStream() const
+{
+    return false;
+}

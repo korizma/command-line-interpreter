@@ -50,6 +50,8 @@ set(SOURCES
     ParserClasses/parser.cpp
     ParserClasses/validitychecker.cpp
     ParserClasses/validitychecker.h
+    ParserClasses/pipelineparser.h
+    ParserClasses/pipelineparser.cpp
 
     # Token classes
     TokenClasses/token.h

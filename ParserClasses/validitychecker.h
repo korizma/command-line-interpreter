@@ -8,7 +8,7 @@
 class ValidityChecker 
 {
     public:
-        ValidityChecker(const std::vector<Token*>& tokens, const std::string& original_line);
+        ValidityChecker(const std::vector<Token*>& tokens, const std::string& original_line, bool in_pipeline = false, PosInPipeline pos_in_pipeline = PosInPipeline::Start);
 
         // Perform all checks (syntax, semantic, flow)
         void checkAll();
@@ -17,6 +17,8 @@ class ValidityChecker
         std::vector<Token*> _tokens;
         std::string _original_line;
         bool _is_pipeline_cmd;
+        bool _in_pipeline;
+        PosInPipeline _pos_in_pipeline;
 
         // Individual checks
         void checkSyntax();

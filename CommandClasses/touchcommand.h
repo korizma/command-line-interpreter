@@ -16,6 +16,8 @@ class TouchCommand : public Command
         ~TouchCommand();
 
         static std::string getType();
+
+        virtual bool hasOutputStream() const override;
 };
 
 

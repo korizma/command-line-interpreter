@@ -48,6 +48,7 @@ class Command
 
         void print();
 
+        // needs to be overridden by commands if they have no output
         virtual bool hasOutputStream() const;
 
         // sets the next command to be executed
