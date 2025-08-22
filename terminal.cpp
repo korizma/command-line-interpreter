@@ -1,7 +1,14 @@
 #include "terminal.hpp"
 #include <string>
 #include <iostream>
-#include <unistd.h>
+
+// windows support
+#ifdef _WIN32 || _WIN64
+    #include <windows.h>
+#else
+    #include <unistd.h>
+#endif
+
 #include "CommandClasses/command.hpp"
 #include "ParserClasses/parser.hpp"
 #include "config.hpp"
@@ -10,9 +17,19 @@
 Terminal::Terminal()
 {
     char buffer[500];
-    ::getcwd(buffer, sizeof(buffer));
-    std::string current_dir(buffer);
-    path = current_dir;
+    #ifdef _WIN32 || _WIN64
+        if (::GetCurrentDirectoryA(sizeof(buffer), buffer) == 0) {
+            path = "";
+        } else {
+            path = std::string(buffer);
+        }
+    #else
+        if (::getcwd(buffer, sizeof(buffer)) == nullptr) {
+            path = "";
+        } else {
+            path = std::string(buffer);
+        }
+    #endif
     ready_sign = PATHSIGN;
 }
 

@@ -63,10 +63,13 @@ std::string IOHelper::getInput()
     while ((c = getchar()) != EOF)
         input += c;
     std::cin.clear();
-    //for linux use
-    std::freopen("/dev/tty", "r", stdin); 
     // for windows use 
-    // std::freopen("CON", "r", stdin); 
+    #ifdef _WIN32 || _WIN64
+        std::freopen("CON", "r", stdin); 
+    #else 
+    //for linux use
+        std::freopen("/dev/tty", "r", stdin); 
+    #endif
     return input;
 }
 
