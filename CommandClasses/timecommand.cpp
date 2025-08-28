@@ -3,6 +3,7 @@
 #include <string>
 #include <ctime>
 #include <iomanip>
+#include <sstream>
 
 void TimeCommand::isValid() 
 {

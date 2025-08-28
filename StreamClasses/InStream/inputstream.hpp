@@ -18,27 +18,10 @@ class InputStream
 
         InputStreamType getType() const { return _type; }
 
-        virtual void print() const;
+    virtual void print() const;
 
 };
 
-inline void InputStream::print() const
-{
-    switch (_type)
-    {
-        case InputStreamType::StdInStream:
-            std::cout << "InputStream Type: STDIN" << std::endl;
-            break;
-        case InputStreamType::FileInStream:
-            std::cout << "InputStream Type: FILE" << std::endl;
-            break;
-        case InputStreamType::ArgInStream:
-            std::cout << "InputStream Type: ARG" << std::endl;
-            break;
-        case InputStreamType::CommandInStream:
-            std::cout << "InputStream Type: COMMAND" << std::endl;
-            break;
-    }
-}
+
 
 #endif // INPUTSTREAM_H

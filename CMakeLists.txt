@@ -60,13 +60,20 @@ set(SOURCES
     TokenClasses/optiontoken.hpp
     TokenClasses/commandtoken.hpp
     TokenClasses/redirecttoken.hpp
+    TokenClasses/argumenttoken.cpp
+    TokenClasses/optiontoken.cpp
+    TokenClasses/commandtoken.cpp
+    TokenClasses/redirecttoken.cpp
 
     # Stream classes
     StreamClasses/InStream/inputstream.hpp
+    StreamClasses/InStream/inputstream.cpp
     StreamClasses/InStream/arginstream.hpp
+    StreamClasses/InStream/arginstream.cpp
     StreamClasses/InStream/commandinstream.hpp
     StreamClasses/InStream/commandinstream.cpp
     StreamClasses/InStream/fileinstream.hpp
+    StreamClasses/InStream/fileinstream.cpp
     StreamClasses/InStream/stdinstream.hpp
 
     StreamClasses/OutStream/outstream.hpp
