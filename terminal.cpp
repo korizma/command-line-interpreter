@@ -3,7 +3,7 @@
 #include <iostream>
 
 // windows support
-#ifdef _WIN32 || _WIN64
+#ifdef defined(_WIN32) || defined(_WIN64)
     #include <windows.h>
 #else
     #include <unistd.h>
@@ -17,7 +17,7 @@
 Terminal::Terminal()
 {
     char buffer[500];
-    #ifdef _WIN32 || _WIN64
+    #ifdef defined(_WIN32) || defined(_WIN64)
         if (::GetCurrentDirectoryA(sizeof(buffer), buffer) == 0) {
             path = "";
         } else {
