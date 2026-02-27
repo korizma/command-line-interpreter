@@ -1,20 +1,37 @@
-#include "trcommand.h"
+#include "trcommand.hpp"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohelper.h"
+#include "../HelperClasses/iohelper.hpp"
 
 void TrCommand::isValid() 
 {
-    if (arguments.size() != 3)
+    if (_args.size() != 2 && _args.size() != 3)
     {
-        throw ArgumentException(2, arguments.size());
+        throw ArgumentException(3, _args.size());
     }
-    if (options.size() != 0)
+    if (_args.size() == 2 && _args[1]->subType() == ArgFile)
+    {
+        throw ArgumentException(false);
+    }
+    if (_args.size() == 3 && (_args[1]->subType() == ArgFile || _args[2]->subType() == ArgFile))
+    {
+        throw ArgumentException(false);
+    }
+    if (_options.size() != 0)
     {        
-        throw OptionException(0, options.size());
+        throw OptionException(0, _options.size());
     }
 }
 
+bool TrCommand::needsInput() const
+{
+    return _args.size() == 1;
+}
+
+bool TrCommand::acceptsFileArgRead() const
+{
+    return true;
+}
 
 std::string TrCommand::getType()
 {
@@ -23,25 +40,19 @@ std::string TrCommand::getType()
 
 std::string TrCommand::getOutput()
 {
-    std::string text;
-    if (arguments[0][0] == '\"'|| arguments[0][0] == '\'')
-        text = arguments[0].substr(1, arguments[0].size()-2);
-    else
-    {
-        std::string file_input = io.readFile(arguments[0]);
-        text = file_input;
-    }
-    std::string original;
-    if (arguments[1][0] == '\"' || arguments[1][0] == '\'')
-        original = arguments[1].substr(1, arguments[1].size() - 2);
-    else
-        throw ArgumentException(1, arguments[1].size());
+    std::string text = _args[0]->value();
+
+    std::string original = _args[1]->value();
 
     std::string replacement;
-    if (arguments[2][0] == '\"' || arguments[2][0] == '\'')
-        replacement = arguments[2].substr(1, arguments[2].size() - 2);
+    if (_args.size() == 3)
+    {
+        replacement = _args[2]->value();
+    }
     else
-        throw ArgumentException(2, arguments[2].size());
+    {
+        replacement = "";
+    }
 
     int pos = 0;
 
@@ -52,6 +63,5 @@ std::string TrCommand::getOutput()
 
     return text;
 }
-
 
 

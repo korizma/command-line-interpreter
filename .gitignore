@@ -2,3 +2,5 @@
 /.vscode
 /build
 *.txt
+*.md
+*.sh

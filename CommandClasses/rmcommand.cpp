@@ -1,24 +1,29 @@
-#include "rmcommand.h"
+#include "rmcommand.hpp"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohelper.h"
+#include "../HelperClasses/iohelper.hpp"
 #include <ctime>
 #include <iomanip>
 
 void RmCommand::isValid() 
 {
-    if (arguments.size() != 1)
+    if (_args.size() != 1)
     {
-        throw ArgumentException(1, arguments.size());
+        throw ArgumentException(1, _args.size());
     }
-    if (arguments.size() == 1 && (arguments[0][0] == '\'' || arguments[0][0] == '\"'))
+    if (_args.size() == 1 && _args[0]->subType() != ArgFile)
     {
         throw ArgumentException(true);
     }
-    if (options.size() != 0)
+    if (_options.size() != 0)
     {
-        throw OptionException(0, options.size());
+        throw OptionException(0, _options.size());
     }
+}
+
+bool RmCommand::hasOutputStream() const
+{
+    return false;
 }
 
 std::string RmCommand::getType()
@@ -28,10 +33,9 @@ std::string RmCommand::getType()
 
 std::string RmCommand::getOutput()
 {  
-    io.deleteFile(arguments[0]);
-
+    IOHelper io;
+    io.deleteFile(_args[0]->value());
     return "";
 }
-
 
 

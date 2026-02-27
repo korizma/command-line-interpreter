@@ -1,26 +1,35 @@
-#include "wccommand.h"
+#include "wccommand.hpp"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohelper.h"
+#include "../HelperClasses/iohelper.hpp"
 #include <ctime>
 #include <iomanip>
 
 void WcCommand::isValid() 
 {
-    if (arguments.size() > 1)
+    if (_args.size() != 1)
     {
-        throw ArgumentException(1, arguments.size());
+        throw ArgumentException(1, _args.size());
     }
-    if (options.size() == 1 && options[0] != "-w" && options[0] != "-c")
+    if (_options.size() == 1 && _options[0]->value() != "-w" && _options[0]->value() != "-c")
     {
-        throw OptionException(options[0]);
+        throw OptionException(_options[0]->value());
     }
-    if (options.size() != 1)
+    if (_options.size() != 1)
     {
-        throw OptionException(1, options.size());
+        throw OptionException(1, _options.size());
     }
 }
 
+bool WcCommand::needsInput() const
+{
+    return _args.empty();
+}
+
+bool WcCommand::acceptsFileArgRead() const
+{
+    return true;
+}
 
 std::string WcCommand::getType()
 {
@@ -29,37 +38,21 @@ std::string WcCommand::getType()
 
 std::string WcCommand::getOutput()
 {
-        if (arguments.size() == 0)
+    if (_options[0]->value() == "-c")
     {
-        std::string cmd_input = io.getInput();
-        arguments.push_back("\"" + cmd_input + "\"");
+        return std::to_string(_args[0]->value().size());
     }
-
-    
-    if (arguments[0][0] != '\'' && arguments[0][0] != '\"')
-    {
-        std::string file_input = io.readFile(arguments[0]);
-        arguments[0] = file_input;
-    } 
-    else
-    {
-        arguments[0] = arguments[0].substr(1, arguments[0].size()-2);
-    }
-
-    if (options[0] == "-c")
-    {
-        return std::to_string(arguments[0].size());
-    }
-    if (options[0] == "-w")
+    if (_options[0]->value() == "-w")
     {
         int i = 0, counter = 0;
         char last = 'a';
-        arguments[0] += " ";
-        while (i < arguments[0].size())
+        std::string text = _args[0]->value();
+        text += " ";
+        while (i < text.size())
         {
-            if (!std::isspace(last) && std::isspace(arguments[0][i]))
+            if (!std::isspace(last) && std::isspace(text[i]))
                 counter++;
-            last = arguments[0][i];
+            last = text[i];
             i++;
         }
         return std::to_string(counter);

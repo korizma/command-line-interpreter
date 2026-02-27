@@ -1,18 +1,28 @@
-#include "echocommand.h"
+#include "echocommand.hpp"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohelper.h"
-#include "../ExceptionClasses/exception.h"
+#include "../HelperClasses/iohelper.hpp"
+#include "../ExceptionClasses/exception.hpp"
+
+bool EchoCommand::needsInput() const
+{
+    return _args.empty();
+}
+
+bool EchoCommand::acceptsFileArgRead() const
+{
+    return true;
+}
 
 void EchoCommand::isValid() 
 {
-    if (arguments.size() > 1)
+    if (_args.size() != 1)
     {
-        throw ArgumentException(1, arguments.size());
+        throw ArgumentException(1, _args.size());
     }
-    if (options.size() != 0)
+    if (_options.size() != 0)
     {
-        throw OptionException(0, options.size());
+        throw OptionException(0, _options.size());
     }
 }
 
@@ -24,20 +34,7 @@ std::string EchoCommand::getType()
 
 std::string EchoCommand::getOutput()
 {
-    if (arguments.size() == 0)
-    {
-        std::string cmd_input = io.getInput();
-        arguments.push_back("\"" + cmd_input + "\"");
-    }
-
-    if (arguments[0][0] == '\"'|| arguments[0][0] == '\'')
-        return arguments[0].substr(1, arguments[0].size()-2);
-    else
-    {
-        std::string file_input = io.readFile(arguments[0]);
-        return file_input;
-    }
+    return _args[0]->value();
 }
-
 
 

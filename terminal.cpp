@@ -1,18 +1,36 @@
-#include "terminal.h"
+#include "terminal.hpp"
 #include <string>
 #include <iostream>
-#include <unistd.h>
-#include "CommandClasses/command.h"
-#include "HelperClasses/parser.h"
+
+// windows support
+#ifdef defined(_WIN32) || defined(_WIN64)
+    #include <windows.h>
+#else
+    #include <unistd.h>
+#endif
+
+#include "CommandClasses/command.hpp"
+#include "ParserClasses/parser.hpp"
+#include "config.hpp"
 
 
 Terminal::Terminal()
 {
     char buffer[500];
-    ::getcwd(buffer, sizeof(buffer));
-    std::string current_dir(buffer);
-    path = current_dir;
-    ready_sign = "$";
+    #ifdef defined(_WIN32) || defined(_WIN64)
+        if (::GetCurrentDirectoryA(sizeof(buffer), buffer) == 0) {
+            path = "";
+        } else {
+            path = std::string(buffer);
+        }
+    #else
+        if (::getcwd(buffer, sizeof(buffer)) == nullptr) {
+            path = "";
+        } else {
+            path = std::string(buffer);
+        }
+    #endif
+    ready_sign = PATHSIGN;
 }
 
 Terminal* Terminal::getInstance()
@@ -43,7 +61,8 @@ void Terminal::start()
         line = io.getLine();
         try 
         {
-            curr_command = Parser::parse(line);
+            Parser p = Parser(line);
+            curr_command = p.parse();
             curr_command->execute();
             delete curr_command;
         }
@@ -70,6 +89,10 @@ void Terminal::start()
         catch (const FileException& e)
         {
             std::cerr << "File Error: " << e.what() << std::endl; 
+        }
+        catch (const PipelineException& e)
+        {
+            std::cerr << "Pipeline Error: " << e.what() << std::endl; 
         }
         catch (const std::exception& e)
         {

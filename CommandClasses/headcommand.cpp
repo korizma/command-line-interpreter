@@ -1,21 +1,31 @@
-#include "headcommand.h"
+#include "headcommand.hpp"
 #include <iostream>
 #include <string>
-#include "../HelperClasses/iohelper.h"
+#include "../HelperClasses/iohelper.hpp"
+
+bool HeadCommand::needsInput() const
+{
+    return _args.empty();
+}
+
+bool HeadCommand::acceptsFileArgRead() const
+{
+    return true;
+}
 
 void HeadCommand::isValid() 
 {
-    if (arguments.size() > 1)
+    if (_args.size() != 1)
     {
-        throw ArgumentException(1, arguments.size());
+        throw ArgumentException(1, _args.size());
     }
-    if (options.size() == 1 && options[0] != "-n" && options[0].size() > 7)
+    if (_options.size() == 1 && (_options[0]->value()[1] != 'n' || _options[0]->value().size() > 7 || _options[0]->value().size() < 3))
     {
-        throw OptionException(options[0]);
+        throw OptionException(_options[0]->value());
     }
-    if (options.size() != 1)
-    {        
-        throw OptionException(1, options.size());
+    if (_options.size() != 1)
+    {
+        throw OptionException(1, _options.size());
     }
 }
 
@@ -27,29 +37,18 @@ std::string HeadCommand::getType()
 
 std::string HeadCommand::getOutput()
 {
-    int x = std::stoi(options[0].substr(2, options[0].size()-2));
-
-    if (std::isalpha(arguments[0][0]))
-    {
-        std::string file_input = io.readFile(arguments[0]);
-        arguments[0] = file_input;
-    }
-    else
-    {
-        arguments[0] = arguments[0].substr(1, arguments[0].size()-2);
-    }
+    int x = std::stoi(_options[0]->value().substr(2, _options[0]->value().size()-2));
 
     int i;
-    for (i = 0; i < arguments[0].size(); i++)
+    for (i = 0; i < _args[0]->value().size(); i++)
     {
         if (x == 0)
             break;
-        if (arguments[0][i] == '\n')
+        if (_args[0]->value()[i] == '\n')
             x--;
     }
 
-    
-    return arguments[0].substr(0, i);
+    return _args[0]->value().substr(0, i);
 }
 
 

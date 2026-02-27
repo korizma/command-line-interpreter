@@ -1,8 +1,8 @@
-#include "iohelper.h"
+#include "iohelper.hpp"
 #include <string>
 #include <fstream>
-#include "../terminal.h"
-#include "../ExceptionClasses/exception.h"
+#include "../terminal.hpp"
+#include "../ExceptionClasses/exception.hpp"
 #include <iostream>
 #include <limits>
 
@@ -13,7 +13,7 @@ std::string IOHelper::readFile(const std::string &filename)
 
     if (!file.is_open()) 
     {
-        throw FileException("this file does't exist!");
+        throw FileException(filename, false);
     }
     std::string content;
     std::string line;
@@ -63,10 +63,13 @@ std::string IOHelper::getInput()
     while ((c = getchar()) != EOF)
         input += c;
     std::cin.clear();
-    //for linux use
-    std::freopen("/dev/tty", "r", stdin); 
     // for windows use 
-    // std::freopen("CON", "r", stdin); 
+    #ifdef _WIN32 || _WIN64
+        std::freopen("CON", "r", stdin); 
+    #else 
+    //for linux use
+        std::freopen("/dev/tty", "r", stdin); 
+    #endif
     return input;
 }
 

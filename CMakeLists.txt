@@ -9,40 +9,82 @@ set(CMAKE_CXX_STANDARD 17)
 # List the source files explicitly
 set(SOURCES
     main.cpp
-    CommandClasses/command.h
-    CommandClasses/echocommand.h
+    terminal.cpp
+    terminal.hpp
+    config.hpp
+
+    # Command classes
+    CommandClasses/command.hpp
+    CommandClasses/command.cpp
+    CommandClasses/echocommand.hpp
     CommandClasses/echocommand.cpp
-    CommandClasses/timecommand.h
+    CommandClasses/timecommand.hpp
     CommandClasses/timecommand.cpp
-    CommandClasses/datecommand.h
+    CommandClasses/datecommand.hpp
     CommandClasses/datecommand.cpp
-    CommandClasses/touchcommand.h
+    CommandClasses/touchcommand.hpp
     CommandClasses/touchcommand.cpp
-    CommandClasses/wccommand.h
+    CommandClasses/wccommand.hpp
     CommandClasses/wccommand.cpp
-    CommandClasses/exitcommand.h
+    CommandClasses/exitcommand.hpp
     CommandClasses/exitcommand.cpp
-    CommandClasses/batchcommand.h
+    CommandClasses/batchcommand.hpp
     CommandClasses/batchcommand.cpp
-    CommandClasses/headcommand.h
+    CommandClasses/headcommand.hpp
     CommandClasses/headcommand.cpp
-    CommandClasses/trcommand.h
+    CommandClasses/trcommand.hpp
     CommandClasses/trcommand.cpp
-    CommandClasses/trunicatecommand.h
+    CommandClasses/trunicatecommand.hpp
     CommandClasses/trunicatecommand.cpp
-    CommandClasses/promptcommand.h
+    CommandClasses/promptcommand.hpp
     CommandClasses/promptcommand.cpp
-    CommandClasses/rmcommand.h
+    CommandClasses/rmcommand.hpp
     CommandClasses/rmcommand.cpp
 
-    terminal.h
-    terminal.cpp
-    HelperClasses/iohelper.h
+    # Helper classes
+    HelperClasses/iohelper.hpp
     HelperClasses/iohelper.cpp
-    HelperClasses/iointerface.h
-    HelperClasses/parser.h
-    HelperClasses/parser.cpp
-    ExceptionClasses/exception.h
+
+    # Parser classes
+    ParserClasses/parser.hpp
+    ParserClasses/parser.cpp
+    ParserClasses/validitychecker.cpp
+    ParserClasses/validitychecker.hpp
+    ParserClasses/pipelineparser.hpp
+    ParserClasses/pipelineparser.cpp
+
+    # Token classes
+    TokenClasses/token.hpp
+    TokenClasses/token.cpp
+    TokenClasses/argumenttoken.hpp
+    TokenClasses/optiontoken.hpp
+    TokenClasses/commandtoken.hpp
+    TokenClasses/redirecttoken.hpp
+    TokenClasses/argumenttoken.cpp
+    TokenClasses/optiontoken.cpp
+    TokenClasses/commandtoken.cpp
+    TokenClasses/redirecttoken.cpp
+
+    # Stream classes
+    StreamClasses/InStream/inputstream.hpp
+    StreamClasses/InStream/inputstream.cpp
+    StreamClasses/InStream/arginstream.hpp
+    StreamClasses/InStream/arginstream.cpp
+    StreamClasses/InStream/commandinstream.hpp
+    StreamClasses/InStream/commandinstream.cpp
+    StreamClasses/InStream/fileinstream.hpp
+    StreamClasses/InStream/fileinstream.cpp
+    StreamClasses/InStream/stdinstream.hpp
+
+    StreamClasses/OutStream/outstream.hpp
+    StreamClasses/OutStream/outstream.cpp
+    StreamClasses/OutStream/fileoutstream.hpp
+    StreamClasses/OutStream/commandoutstream.hpp
+    StreamClasses/OutStream/commandoutstream.cpp
+    StreamClasses/OutStream/stdoutstream.hpp
+
+    # Exception classes
+    ExceptionClasses/exception.hpp
 )
 
 # Create an executable from the specified source files
